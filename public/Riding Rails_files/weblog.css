@@ -1,0 +1,17 @@
+p.asset-left {
+  float:left;
+}
+
+p.asset-left img {
+  margin-right:20px;
+}
+
+p.asset-right {
+  float:right;
+}
+
+p.asset-right img {
+  margin-left:20px;
+}
+
+pre { overflow:auto; }

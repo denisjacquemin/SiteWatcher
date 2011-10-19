@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Url:</b>
+  <%= @site.url %>
+</p>
+
+<p>
+  <b>Selector:</b>
+  <%= @site.selector %>
+</p>
+
+<% @site.snippets.each do |snippet| %>
+  <p>
+    <input type="checkbox" value="snippet.id" /> <%= snippet.created_at %>
+  </p>
+<% end %>
+
+<%= link_to 'Edit', edit_site_path(@site) %> |
+<%= link_to 'Back', sites_path %>

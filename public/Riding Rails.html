@@ -1,0 +1,873 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0030)http://weblog.rubyonrails.org/ -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Riding Rails</title>
+  
+  <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.feedburner.com/RidingRails">
+  <link href="./Riding Rails_files/rails.css" media="screen" rel="Stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" media="print" href="./Riding Rails_files/print.css">
+  <link href="./Riding Rails_files/weblog.css" rel="stylesheet" type="text/css">
+<script src="./Riding Rails_files/prototype.js" type="text/javascript">
+</script>
+<script src="./Riding Rails_files/effects.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+</script>
+</head>
+
+<body id="weblog">
+  <div id="container">
+    <div id="Header">
+    <div id="Nav">
+<a href="http://rubyonrails.org/">Overview</a> |
+<a href="http://rubyonrails.org/download">Download</a> |
+<a href="http://rubyonrails.org/deploy">Deploy</a> |
+<a href="http://rails.lighthouseapp.com/projects/8994-ruby-on-rails/overview">Code</a> |
+<a href="http://rubyonrails.org/screencasts">Screencasts</a> |
+<a href="http://rubyonrails.org/documentation">Documentation</a> |
+<a href="http://rubyonrails.org/ecosystem">Ecosystem</a> |
+<a href="http://rubyonrails.org/community">Community</a> |
+<a href="./Riding Rails_files/Riding Rails.html">Blog</a>
+    </div>
+    </div>
+
+    <div class="c" style="margin-top: 40px">
+      <div id="sidebar">
+        <a href="./Riding Rails_files/Riding Rails.html"><img src="./Riding Rails_files/rails.png" width="87" height="112" style="margin-bottom: 20px" border="0"></a>
+        <div id="search">
+          <form action="http://weblog.rubyonrails.org/search" id="sform" method="get" name="sform">
+            <label for="q">Search:</label><input type="text" id="q" name="q" value="" size="15"><br>
+            <small>search is working now...</small>
+         </form><br>
+        </div>
+
+        <div class="sidebar-node">
+					<h3>Job Board</h3>
+					<div style="font-size: 13px; font-family: georgia; margin-bottom: 20px; width: 120px">
+						<script language="JavaScript" src="./Riding Rails_files/job.fcgi"></script><div class="job">
+  <a href="http://37signals.com/jobs/9616">Sharethrough is looking for a Sr. Software Engineer (Ruby on Rails).</a>
+</div>
+
+
+					</div>
+				</div>
+
+        <div class="sidebar-node">
+					<h3>Worth attention</h3>
+          <ul id="categories">
+            <li><a href="http://rubyonrailsworkshops.com/">Workshops</a></li>
+            <li><a href="http://ruby5.envylabs.com/">Ruby5 Podcast</a></li>
+            <li><a href="http://5by5.tv/rubyshow">Ruby Show</a></li>
+            <li><a href="http://podcast.rubyonrails.org/">RoR Podcast</a></li>
+          </ul>
+				</div>
+
+        <div class="sidebar-node">
+          <h3>Categories</h3>
+          <ul id="categories">
+            <li><a href="http://weblog.rubyonrails.org/documentation">Documentation</a></li>
+            <li><a href="http://weblog.rubyonrails.org/general">General</a></li>
+            <li><a href="http://weblog.rubyonrails.org/horizon">Horizon</a></li>
+            <li><a href="http://weblog.rubyonrails.org/jobs">Jobs</a></li>
+            <li><a href="http://weblog.rubyonrails.org/launches">Launches</a></li>
+            <li><a href="http://weblog.rubyonrails.org/praise">Praise</a></li>
+            <li><a href="http://weblog.rubyonrails.org/releases">Releases</a></li>
+            <li><a href="http://weblog.rubyonrails.org/sightings">Sightings</a></li>
+            <li><a href="http://weblog.rubyonrails.org/tricks">Tricks</a></li>
+            <li><a href="http://weblog.rubyonrails.org/edge">Edge</a></li>
+            <li><a href="http://weblog.rubyonrails.org/activism">Activism</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-node">
+          <h3>Syndicate</h3>
+          <ul>
+            <li><a href="http://feeds.feedburner.com/RidingRails" title="Articles feed">Articles</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-node">
+          <ul>
+            <li>Powered by <a href="http://mephistoblog.com/">Mephisto</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="content">
+        
+  <div class="blogEntry">
+    <div class="post">
+      <h2><a href="http://weblog.rubyonrails.org/2011/9/15/ann-rails-3-1-1-rc1">[ANN] Rails 3.1.1.rc1</a></h2>
+      <p class="metaData">Posted by spastorino September 15, 2011 @ 12:55 AM</p>
+      <p>Hi everyone,</p>
+
+<p>Rails 3.1.1.rc1 has been released. Please give it a try, it's our chance to fix regressions you might find and make a beautiful 3.1.1 stable release. If there are no regressions I will be releasing 3.1.1 final next September 16th during GoGaRuCo.</p>
+
+<h2>CHANGES</h2>
+
+<p><em>ActionMailer</em></p>
+
+<ul>
+<li>No changes</li>
+</ul>
+
+<p><em>ActionPack</em></p>
+
+<ul>
+<li><p>Allow asset tag helper methods to accept :digest =&gt; false option in order to completely avoid the digest generation.
+Useful for linking assets from static html files or from emails when the user
+could probably look at an older html email with an older asset. [Santiago Pastorino]</p></li>
+<li><p>Don't mount Sprockets server at config.assets.prefix if config.assets.compile is false. [Mark J. Titorenko]</p></li>
+<li><p>Set relative url root in assets when controller isn't available for Sprockets (eg. Sass files using asset_path). Fixes #2435 [Guillermo Iguaran]</p></li>
+<li><p>Fix basic auth credential generation to not make newlines. GH #2882</p></li>
+<li><p>Fixed the behavior of asset pipeline when config.assets.digest and config.assets.compile are false and requested asset isn't precompiled.
+Before the requested asset were compiled anyway ignoring that the config.assets.compile flag is false. [Guillermo Iguaran]</p></li>
+<li><p>CookieJar is now Enumerable. Fixes #2795</p></li>
+<li><p>Fixed AssetNotPrecompiled error raised when rake assets:precompile is compiling certain .erb files. See GH #2763 #2765 #2805 [Guillermo Iguaran]</p></li>
+<li><p>Manifest is correctly placed in assets path when default assets prefix is changed. Fixes #2776 [Guillermo Iguaran]</p></li>
+<li><p>Fixed stylesheet<em>link</em>tag and javascript<em>include</em>tag to respect additional options passed by the users when debug is on. [Guillermo Iguaran]</p></li>
+<li><p>Fix ActiveRecord#exists? when passsed a nil value</p></li>
+<li><p>Fix assert<em>select</em>email to work on multipart and non-multipart emails as the method stopped working correctly in Rails 3.x due to changes in the new mail gem.</p></li>
+</ul>
+
+<p><em>ActiveModel</em></p>
+
+<ul>
+<li><p>Remove hard dependency on bcrypt-ruby to avoid make ActiveModel dependent on a binary library.
+You must add the gem explicitly to your Gemfile if you want use ActiveModel::SecurePassword:</p>
+
+<p>gem 'bcrypt-ruby', '~&gt; 3.0.0'</p>
+
+<p>See GH #2687. [Guillermo Iguaran]</p></li>
+</ul>
+
+<p><em>ActiveRecord</em></p>
+
+<ul>
+<li><p>LRU cache in mysql and sqlite are now per-process caches.</p>
+
+<ul>
+<li>lib/active<em>record/connection</em>adapters/mysql_adapter.rb: LRU cache
+keys are per process id.</li>
+<li>lib/active<em>record/connection</em>adapters/sqlite_adapter.rb: ditto</li>
+</ul></li>
+<li><p>Database adapters use a statement pool for limiting the number of open
+prepared statments on the database.  The limit defaults to 1000, but can
+be adjusted in your database config by changing 'statement_limit'.</p></li>
+<li><p>Fix clash between using 'preload', 'joins' or 'eager_load' in a default scope and including the
+default scoped model in a nested through association. (GH #2834.) [Jon Leighton]</p></li>
+<li><p>Ensure we are not comparing a string with a symbol in HasManyAssociation#inverse<em>updates</em>counter_cache?.
+Fixes GH #2755, where a counter cache could be decremented twice as far as it was supposed to be.</p>
+
+<p>[Jon Leighton]</p></li>
+<li><p>Don't send any queries to the database when the foreign key of a belongs_to is nil. Fixes
+GH #2828. [Georg Friedrich]</p></li>
+<li><p>Fixed find<em>in_batches method to not include order from default</em>scope. See GH #2832 [Arun Agrawal]</p></li>
+<li><p>Don't compute table name for abstract classes. Fixes problem with setting the primary key
+in an abstract class. See GH #2791. [Akira Matsuda]</p></li>
+<li><p>Psych errors with poor yaml formatting are proxied. Fixes GH #2645 and
+GH #2731</p></li>
+<li><p>Use the LIMIT word with the methods #last and #first. Fixes GH #2783 [Damien Mathieu]</p></li>
+</ul>
+
+<p><em>ActiveResource</em></p>
+
+<ul>
+<li>No changes</li>
+</ul>
+
+<p><em>ActiveSupport</em></p>
+
+<ul>
+<li><p>Fixed performance issue where TimeZone lookups would require tzinfo each time [Tim Lucas]</p></li>
+<li><p>ActiveSupport::OrderedHash is now marked as extractable when using Array#extract_options! [Prem Sichanugrist]</p></li>
+</ul>
+
+<p><em>Railties</em></p>
+
+<ul>
+<li>No changes</li>
+</ul>
+
+<p>You can find an exhaustive list of changes on <a href="https://github.com/rails/rails/compare/v3.1.0...v3.1.1.rc1">github</a>. Along with the <a href="https://github.com/rails/rails/issues?milestone=6&state=closed">closed issues marked for v3.1.1</a>.</p>
+
+<p>You can also see issues <a href="https://github.com/rails/rails/issues?milestone=8&state=open">we haven't closed yet</a>.</p>
+
+<p>Thanks to everyone!</p>
+
+      <p class="meta">Posted in <a class="selected" href="http://weblog.rubyonrails.org/releases">Releases</a>
+ <strong>|</strong>&nbsp;
+<a href="http://weblog.rubyonrails.org/2011/9/15/ann-rails-3-1-1-rc1">12 comments</a></p>
+      </div>
+  </div>
+
+  <div class="blogEntry">
+    <div class="post">
+      <h2><a href="http://weblog.rubyonrails.org/2011/8/31/rails-3-1-0-has-been-released">Rails 3.1.0 has been released!</a></h2>
+      <p class="metaData">Posted by aaronp August 31, 2011 @ 09:20 PM</p>
+      <p>Hi everybody!</p>
+
+<p>It's been 3 Months since RailsConf, so I think it's time we released Rails 3.1.0.  So, here it is!  I've released Rails 3.1.0!</p>
+
+<h2>CHANGES</h2>
+
+<p>For a much more attractive and easy to read list of changes, please check out the awesome <a href="http://guides.rubyonrails.org/3_1_release_notes.html">Rails 3.1.0 Release Notes on the Rails Guides site</a>.  For a less attractive list of changes, please continue to read!</p>
+
+<p>Here are some highlights of the major changes in Rails 3.1.0:</p>
+
+<h2><a href="https://github.com/rails/rails/blob/3-1-stable/actionpack/CHANGELOG">ActionPack</a></h2>
+
+<ul>
+<li><p>ActionPack has been updated to include the new asset pipeline.  Please see the <a href="http://edgeguides.rubyonrails.org/asset_pipeline.html">rails guides on the asset pipeline</a>.</p></li>
+<li><p>Streaming response support has been added.  This feature allows you to stream templates to the user before processing has actually finished.  See the Rails Guides, or documentation in <code>ActionController::Metal::Streaming</code> for more information.  Middleware have been refactored to support this feature.</p></li>
+<li><p>RJS has been extracted to a gem.</p></li>
+</ul>
+
+<h2><a href="https://github.com/rails/rails/blob/3-1-stable/activemodel/CHANGELOG">ActiveModel</a></h2>
+
+<ul>
+<li><p><code>attr_accessible</code> and friends now accepts :as as option to specify a role</p></li>
+<li><p>Added <code>ActiveModel::SecurePassword</code> to encapsulate dead-simple password usage with BCrypt encryption and salting.</p></li>
+</ul>
+
+<h2><a href="https://github.com/rails/rails/blob/3-1-stable/activerecord/CHANGELOG">ActiveRecord</a></h2>
+
+<ul>
+<li><p>Prepared statement caches have been integrated.  <code>ActiveRecord::Base#create</code> and simple finders will use a prepared statement and cache for more performant inserts and selects.</p></li>
+<li><p>Associations have been refactored for greater simplicity and maintainability.</p></li>
+<li><p><code>default_scope</code> can take any object that responds to <code>call</code>.</p></li>
+<li><p>PostgreSQL adapter only supports PostgreSQL version 8.2 and higher.</p></li>
+<li><p>Migrations use instance methods rather than class methods.  Rather than defining a <code>self.up</code> method, you should define an instance method <code>up</code>.</p></li>
+<li><p>Migrations are reversible.  When a new migration is generated, the migration will contain one method called <code>change</code>.  Database changes made in this method will automatically know how to reverse themselves.  For more information, see the documentation for <code>ActiveRecord::Migration</code> and <code>ActiveRecord::Migration::CommandRecorder</code>.</p></li>
+<li><p>When a model is generated, <code>add_index</code> is added by default for <code>belongs_to</code> or <code>references</code> columns.</p></li>
+</ul>
+
+<h2><a href="https://github.com/rails/rails/blob/3-1-stable/activeresource/CHANGELOG">ActiveResource</a></h2>
+
+<ul>
+<li>The default format has been changed to JSON for all requests. If you want to continue to use XML you will need to set <code>self.format = :xml</code> in the class.</li>
+</ul>
+
+<h2><a href="https://github.com/rails/rails/blob/3-1-stable/activesupport/CHANGELOG">ActiveSupport</a></h2>
+
+<ul>
+<li><p>ActiveSupport::BufferedLogger set log encoding to BINARY, but still use text mode to output portable newlines.</p></li>
+<li><p>Add Object#in? to test if an object is included in another object.</p></li>
+<li><p>ActiveSupport::Dependencies::ClassCache class has been introduced for holding references to reloadable classes.</p></li>
+<li><p>Added <code>weeks_ago</code> and <code>prev_week</code> to Date/DateTime/Time.</p></li>
+<li><p>JSON decoding now uses the <code>multi_json</code> gem which also vendors a json engine called OkJson. The yaml backend has been removed in favor of OkJson as a default engine for 1.8.x, while the built in 1.9.x json implementation will be used by default.</p></li>
+</ul>
+
+<h2><a href="https://github.com/rails/rails/blob/3-1-stable/railties/CHANGELOG">Railties</a></h2>
+
+<ul>
+<li><p>The default database schema file is written as UTF-8.</p></li>
+<li><p>Rack::Sendfile middleware is used only if <code>x_sendfile_header</code> is present.</p></li>
+<li><p>Add alias <code>r</code> for rails runner.</p></li>
+<li><p>jQuery is the new default JavaScript library.</p></li>
+<li><p>Added <code>config.force_ssl</code> configuration which loads Rack::SSL middleware and force all requests to be under HTTPS protocol</p></li>
+</ul>
+
+<h2>For more info</h2>
+
+<p>For a more detailed list of changes, please see each of the CHANGELOG files checked in to the <a href="http://github.com/rails/rails">Rails repository on github</a>.</p>
+
+<p>For an even more detailed list of changes, please see the <a href="https://github.com/rails/rails/compare/v3.0.10...v3.1.0">commit list between Rails 3.0.10 and 3.1.0</a>.</p>
+
+<h2>The End</h2>
+
+<p>I am personally very proud of this release.  I want to say thank you to the people testing our release candidates, the people submitting patches and sending in bug reports.  I think that Rails 3.1.0 is the best release of Rails to date, and we could not have done it without you.</p>
+
+<p>Please continue to create amazing things with this framework!</p>
+
+<h3>SHA-1</h3>
+
+<ul>
+<li>b68f74ced662145a4139409edf3c51db1159ead8  actionmailer-3.1.0.gem</li>
+<li>136474f270677ae75ad0f9599d26e89cf1d4bc7b  actionpack-3.1.0.gem</li>
+<li>e6b68453c08bb0da52ed1d422ba2f87a5e3aa794  activemodel-3.1.0.gem</li>
+<li>dfbae15c0d395304812c22fbf18aa9daadbe20b4  activerecord-3.1.0.gem</li>
+<li>3f1f547e500d1ffc1f7c3ee4ab9eb1526157a870  activeresource-3.1.0.gem</li>
+<li>f21627c2f429abfa8685d2147fadab6704c13869  activesupport-3.1.0.gem</li>
+<li>21c6592189fb358a066846754a8f7ce7a238fca6  rails-3.1.0.gem</li>
+<li>79cfa1eca232de9a45453829287e4438089b7955  railties-3.1.0.gem</li>
+</ul>
+
+<p>&lt;3 &lt;3 &lt;3</p>
+
+      <p class="meta">
+<a href="http://weblog.rubyonrails.org/2011/8/31/rails-3-1-0-has-been-released">94 comments</a></p>
+      </div>
+  </div>
+
+  <div class="blogEntry">
+    <div class="post">
+      <h2><a href="http://weblog.rubyonrails.org/2011/8/29/the-rails-api-switches-to-sdoc">The Ruby on Rails API Switches to SDoc</a></h2>
+      <p class="metaData">Posted by fxn August 29, 2011 @ 02:29 PM</p>
+      <p>The Ruby on Rails API is switching to <a href="https://github.com/voloko/sdoc">SDoc</a> starting with 3.1.</p>
+
+<p>SDoc is a RDoc format created by Володя Колесников (<a href="https://twitter.com/#!/voloko">@voloko</a>) that has been powering <a href="http://railsapi.com/">railsapi.com</a> for a long time.</p>
+
+<p>Among other things, SDoc provides a search box with fuzzy match completion, tree browsing, keyboard navigation, and a really nice template.</p>
+
+<p>You can already see the upgrade in the <a href="http://edgeapi.rubyonrails.org/">edge API</a>.</p>
+
+<p>We'd like to thank very much Володя for his work updating SDoc for the official API. Thanks man!</p>
+
+      <p class="meta">Posted in <a href="http://weblog.rubyonrails.org/documentation">Documentation</a>
+ <strong>|</strong>&nbsp;
+<a href="http://weblog.rubyonrails.org/2011/8/29/the-rails-api-switches-to-sdoc">44 comments</a></p>
+      </div>
+  </div>
+
+  <div class="blogEntry">
+    <div class="post">
+      <h2><a href="http://weblog.rubyonrails.org/2011/8/29/ann-rails-3-1-0-rc8">[ANN] Rails 3.1.0.rc8</a></h2>
+      <p class="metaData">Posted by spastorino August 29, 2011 @ 01:39 PM</p>
+      <p>Hi everyone,</p>
+
+<p>Rails 3.1.0.rc8 has been released (we've an issue with rc7).  This is
+the final release candidate. Please give it a try, it's our last
+chance to fix regressions and severe issues. We will be releasing
+final 3.1.0 next August 30th.</p>
+
+<h2>CHANGES</h2>
+
+<p>Check the CHANGELOG file of each framework to see what we've changed.</p>
+
+<p>You can find an exhaustive list of changes on
+<a href="https://github.com/rails/rails/compare/v3.1.0.rc6...v3.1.0.rc8">github</a>.
+ Along with the <a href="https://github.com/rails/rails/issues?sort=created&direction=desc&sta...">closed issues marked for
+v3.1.0</a>.</p>
+
+<p>You can also see issues <a href="https://github.com/rails/rails/issues?sort=created&direction=desc&sta...">we haven't
+closed</a>.</p>
+
+<p>A comprehensive CHANGELOG will be announced when 3.1.0 final is released.</p>
+
+<p>Thanks! </p>
+
+      <p class="meta">Posted in <a class="selected" href="http://weblog.rubyonrails.org/releases">Releases</a>
+ <strong>|</strong>&nbsp;
+<a href="http://weblog.rubyonrails.org/2011/8/29/ann-rails-3-1-0-rc8">19 comments</a></p>
+      </div>
+  </div>
+
+  <div class="blogEntry">
+    <div class="post">
+      <h2><a href="http://weblog.rubyonrails.org/2011/8/16/ann-rails-3-1-0-rc6">[ANN] Rails 3.1.0.rc6</a></h2>
+      <p class="metaData">Posted by aaronp August 16, 2011 @ 11:37 PM</p>
+      <p>Hi everyone,</p>
+
+<p>Rails 3.1.0.rc6 has been released.  This release contains critical security fixes.</p>
+
+<h2>CHANGES</h2>
+
+<p>You can find an exhaustive list of changes on <a href="https://github.com/rails/rails/compare/v3.1.0.rc5...v3.1.0.rc6">github</a>.  Along with the <a href="https://github.com/rails/rails/issues?sort=created&direction=desc&state=closed&page=1&milestone=1">closed issues marked for v3.1.0</a>.</p>
+
+<p>You can also see issues <a href="https://github.com/rails/rails/issues?sort=created&direction=desc&state=open&page=1&milestone=1">we haven't closed</a>. </p>
+
+<p>A comprehensive CHANGELOG will be announced when 3.1.0 final is released.  Barring any show stopping bugs, Rails 3.1.0 will be released on August 30th.</p>
+
+<h2>4 Security Fixes</h2>
+
+<ul>
+<li><a href="http://groups.google.com/group/rubyonrails-security/browse_thread/thread/3420ac71aed312d6">Filter Skipping bugs</a></li>
+<li><a href="http://groups.google.com/group/rubyonrails-security/browse_thread/thread/6a1e473744bc389b">SQL Injection issues</a></li>
+<li><a href="http://groups.google.com/group/rubyonrails-security/browse_thread/thread/2b9130749b74ea12">Parse error in <code>strip_tags</code></a></li>
+<li><a href="http://groups.google.com/group/rubyonrails-security/browse_thread/thread/56bffb5923ab1195">UTF-8 escaping vulnerability</a></li>
+</ul>
+
+<p>Please follow the links to see specific information about each vulnerability, along with individual patches for fixing them.</p>
+
+<p>Please note that these security fixes do not have CVE identifiers.  We requested identifiers on August 5th, and have yet to received a response.  When we get identifiers, we'll update the notices with those values.</p>
+
+<p>Also remember to subscribe to the <a href="http://groups.google.com/group/rubyonrails-security">Ruby on Rails Security mailing list</a>.</p>
+
+<h2>Why was this release delayed?</h2>
+
+<p>You may have noticed this release was originally slated to be released on August 8th.  We decided to delay the release in order to obtain CVE identifiers.  Unfortunately, identifiers still have not been issued.  We felt that getting the security fixes to our users was more important than obtaining CVE values.</p>
+
+<p>That is why our release is late, and contains no CVE identifiers.</p>
+
+<h2>THE END</h2>
+
+<p>Thanks! &lt;3 </p>
+
+      <p class="meta">
+<a href="http://weblog.rubyonrails.org/2011/8/16/ann-rails-3-1-0-rc6">4 comments</a></p>
+      </div>
+  </div>
+
+  <div class="blogEntry">
+    <div class="post">
+      <h2><a href="http://weblog.rubyonrails.org/2011/8/16/ann-rails-3-0-10">[ANN] Rails 3.0.10</a></h2>
+      <p class="metaData">Posted by aaronp August 16, 2011 @ 11:36 PM</p>
+      <p>Hi everyone,</p>
+
+<p>Rails 3.0.10 has been released.  This release contains critical security fixes.</p>
+
+<h2>CHANGES</h2>
+
+<p>You can find an exhaustive list of changes on <a href="https://github.com/rails/rails/compare/v3.0.9...v3.0.10">github</a>.  Here are some notable excerpts: </p>
+
+<h2>4 Security Fixes</h2>
+
+<ul>
+<li><a href="http://groups.google.com/group/rubyonrails-security/browse_thread/thread/3420ac71aed312d6">Filter Skipping bugs</a></li>
+<li><a href="http://groups.google.com/group/rubyonrails-security/browse_thread/thread/6a1e473744bc389b">SQL Injection issues</a></li>
+<li><a href="http://groups.google.com/group/rubyonrails-security/browse_thread/thread/2b9130749b74ea12">Parse error in <code>strip_tags</code></a></li>
+<li><a href="http://groups.google.com/group/rubyonrails-security/browse_thread/thread/56bffb5923ab1195">UTF-8 escaping vulnerability</a></li>
+</ul>
+
+<p>Please follow the links to see specific information about each vulnerability, along with individual patches for fixing them.</p>
+
+<p>Please note that these security fixes do not have CVE identifiers.  We requested identifiers on August 5th, and have yet to received a response.  When we get identifiers, we'll update the notices with those values.</p>
+
+<p>Also remember to subscribe to the <a href="http://groups.google.com/group/rubyonrails-security">Ruby on Rails Security mailing list</a>.</p>
+
+<h2>ActionPack:</h2>
+
+<ul>
+<li>Fixes an issue where cache sweepers with only after filters would have no controller object, it would raise undefined method <code>controller_name</code> for <code>nil</code> [jeroenj] </li>
+<li>Ensure status codes are logged when exceptions are raised. </li>
+<li>Subclasses of OutputBuffer are respected. </li>
+<li>Fixed <code>ActionView::FormOptionsHelper#select</code> with <code>:multiple =&gt; false</code> </li>
+<li>Avoid extra call to <code>Cache#read</code> in case of a fragment cache hit </li>
+</ul>
+
+<h2>ActiveRecord:</h2>
+
+<ul>
+<li>Magic encoding comment added to schema.rb files </li>
+<li>schema.rb is written as UTF-8 by default. </li>
+<li>Ensuring an established connection when running <code>rake db:schema:dump</code> </li>
+<li>Association conditions will not clobber join conditions. </li>
+<li>Destroying a record will destroy the HABTM record before destroying itself.  GH #402. </li>
+<li>Make <code>ActiveRecord::Batches#find_each</code> to not return <code>self</code>. </li>
+<li>Update <code>table_exists?</code> in PG to to always use current <code>search_path</code> or schema if explictly set. </li>
+</ul>
+
+<h2>Why was this release delayed?</h2>
+
+<p>You may have noticed this release was originally slated to be released on August 8th.  We decided to delay the release in order to obtain CVE identifiers.  Unfortunately, identifiers still have not been issued.  We felt that getting the security fixes to our users was more important than obtaining CVE values.</p>
+
+<p>That is why our release is late, and contains no CVE identifiers.</p>
+
+<h2>THE END</h2>
+
+<p>Thanks! &lt;3 </p>
+
+      <p class="meta">
+<a href="http://weblog.rubyonrails.org/2011/8/16/ann-rails-3-0-10">3 comments</a></p>
+      </div>
+  </div>
+
+  <div class="blogEntry">
+    <div class="post">
+      <h2><a href="http://weblog.rubyonrails.org/2011/8/16/ann-rails-2-3-14">[ANN] Rails 2.3.14</a></h2>
+      <p class="metaData">Posted by aaronp August 16, 2011 @ 11:35 PM</p>
+      <p>Hi everyone,</p>
+
+<p>Rails 2.3.14 has been released.  This release contains critical security fixes.</p>
+
+<h2>CHANGES</h2>
+
+<p>You can find an exhaustive list of changes on <a href="https://github.com/rails/rails/compare/v2.3.12...v2.3.14">github</a>.  Here are some notable excerpts: </p>
+
+<h2>4 Security Fixes</h2>
+
+<ul>
+<li><a href="http://groups.google.com/group/rubyonrails-security/browse_thread/thread/6ffc93bde0298768">Response Splitting</a></li>
+<li><a href="http://groups.google.com/group/rubyonrails-security/browse_thread/thread/6a1e473744bc389b">SQL Injection issues</a></li>
+<li><a href="http://groups.google.com/group/rubyonrails-security/browse_thread/thread/2b9130749b74ea12">Parse error in <code>strip_tags</code></a></li>
+<li><a href="http://groups.google.com/group/rubyonrails-security/browse_thread/thread/56bffb5923ab1195">UTF-8 escaping vulnerability</a></li>
+</ul>
+
+<p>Please follow the links to see specific information about each vulnerability, along with individual patches for fixing them.</p>
+
+<p>Also remember to subscribe to the <a href="http://groups.google.com/group/rubyonrails-security">Ruby on Rails Security mailing list</a>.</p>
+
+<h2>2 Bug Fixes</h2>
+
+<ul>
+<li>Rescue from RDoc task errors</li>
+<li>OrderedHash can merge with blocks</li>
+</ul>
+
+<h2>THE END</h2>
+
+<p>Thanks! &lt;3 </p>
+
+      <p class="meta">
+<a href="http://weblog.rubyonrails.org/2011/8/16/ann-rails-2-3-14">2 comments</a></p>
+      </div>
+  </div>
+
+  <div class="blogEntry">
+    <div class="post">
+      <h2><a href="http://weblog.rubyonrails.org/2011/8/5/ann-rails-3-0-10-rc1-has-been-released">[ANN] Rails 3.0.10.rc1 has been released!</a></h2>
+      <p class="metaData">Posted by aaronp August 05, 2011 @ 12:31 AM</p>
+      <p>Hi everyone,</p>
+
+<p>Rails 3.0.10.rc1 has been released.  As usual, please try out this release candidate and report any issues to the <a href="http://groups.google.com/group/rubyonrails-core">ruby on rails core mailing list</a>.  If no issues are found, we'll release 3.0.10 on August 8th (around 5pm PDT).</p>
+
+<p>If you do find issues, please send them to the rails core mailing list.  If the release candidate is found to not be backwards compatible with the previous release, we'll do another release candidate and postpone the final release date.</p>
+
+<p>Remember that this is your chance to veto / postpone the rails release.  Please take this opportunity to test!</p>
+
+<h2>CHANGES</h2>
+
+<p>You can find an exhaustive list of changes on <a href="https://github.com/rails/rails/compare/v3.0.9...3-0-10">github</a>.  Here are some notable excerpts:</p>
+
+<p>From ActionPack:</p>
+
+<ul>
+<li><p>Fixes an issue where cache sweepers with only after filters would have no controller object, it would raise undefined method <code>controller_name</code> for <code>nil</code> [jeroenj]</p></li>
+<li><p>Ensure status codes are logged when exceptions are raised.</p></li>
+<li><p>Subclasses of OutputBuffer are respected.</p></li>
+<li><p>Fixed <code>ActionView::FormOptionsHelper#select</code> with <code>:multiple =&gt; false</code></p></li>
+<li><p>Avoid extra call to <code>Cache#read</code> in case of a fragment cache hit</p></li>
+</ul>
+
+<p>From ActiveRecord:</p>
+
+<ul>
+<li><p>Magic encoding comment added to schema.rb files</p></li>
+<li><p>schema.rb is written as UTF-8 by default.</p></li>
+<li><p>Ensuring an established connection when running <code>rake db:schema:dump</code></p></li>
+<li><p>Association conditions will not clobber join conditions.</p></li>
+<li><p>Destroying a record will destroy the HABTM record before destroying itself.  GH #402.</p></li>
+<li><p>Make <code>ActiveRecord::Batches#find_each</code> to not return <code>self</code>.</p></li>
+<li><p>Update <code>table_exists?</code> in PG to to always use current <code>search_path</code> or schema if explictly set.</p></li>
+</ul>
+
+<h2>THE END</h2>
+
+<p>Thanks!</p>
+
+<p>-Aaron &lt;3</p>
+
+      <p class="meta">
+<a href="http://weblog.rubyonrails.org/2011/8/5/ann-rails-3-0-10-rc1-has-been-released">16 comments</a></p>
+      </div>
+  </div>
+
+  <div class="blogEntry">
+    <div class="post">
+      <h2><a href="http://weblog.rubyonrails.org/2011/7/27/rails-now-tested-on-travis-ci">Rails now tested on Travis CI</a></h2>
+      <p class="metaData">Posted by David July 27, 2011 @ 10:18 AM</p>
+      <p>Setting up continuous integration for Rails has been a complicated undertaking in the past.</p>
+
+
+	<p>Rails needs to be tested against different Ruby versions and various modes (such as running test cases in isolation/non-isolation, running ActiveRecord with identitymap enabled/disabled). This made the test suite run for an isanely long time (up to 2 hours on 1.9.2 alone) and required regular maintenance by
+the Rails core team.</p>
+
+
+	<p>Over the past weeks the folks at <a href="http://travis-ci.org/">Travis CI</a> have been working hard to provide a better experience to Rails continous integration and today we can happily announce that
+<a href="http://travis-ci.org/#!/rails/rails">Rails is now testing on Travis CI</a>!</p>
+
+
+	<p>Travis CI is doing a great job in providing multi-ruby testing capabilities and it is dead-simple to use. There’s some great potential to this project and it might change the way we see open-source development and testing quite a bit.</p>
+
+
+	<p>So, if you are publishing any kind of open-source code, library or web application, we recommend you have a look at it. And if you have a spare hour once in a while then consider potentially jumping on board to help improve the code base.</p>
+
+
+	<p>Travis CI is using a separate physical worker server (and a quite beefy one!) for running workers dedicated to Rails builds. This server has kindly been sponsored by the great folks over at <a href="http://enterprise-rails.com/">Enterprise Rails</a>.</p>
+
+
+	<p>[Guest post by Josh Kalderimis &amp; Sven Fuchs]</p>
+
+      <p class="meta">
+<a href="http://weblog.rubyonrails.org/2011/7/27/rails-now-tested-on-travis-ci">11 comments</a></p>
+      </div>
+  </div>
+
+  <div class="blogEntry">
+    <div class="post">
+      <h2><a href="http://weblog.rubyonrails.org/2011/7/14/rails-3-1-hackfest">Rails 3.1 HackFest</a></h2>
+      <p class="metaData">Posted by spastorino July 14, 2011 @ 09:02 PM</p>
+      <p>Have you ever wanted to contribute back to Rails? This is the opportunity you've been looking for. We're organizing a Rails 3.1 Hackfest on the weekend of July 23rd and 24th!!!</p>
+
+<h2>GOAL</h2>
+
+<p>The goal of this event is to have Rails 3.1 as the most stable version as possible. So, in this event we will focus on working on <code>3-1-stable</code> branch of the project.</p>
+
+<h2>HOW</h2>
+
+<p>In order to achieve this we encourage you to:</p>
+
+<ul>
+<li>Upgrade your existing apps to Rails 3.1 and report any existing issue if it doesn't already exist</li>
+<li>Test your favorite plugins/gems with Rails 3.1 and report any existing issue if it doesn't already exist</li>
+<li>Review all the <a href="https://github.com/rails/rails/issues">open issues</a> and <a href="https://github.com/rails/rails/pulls">pull requests</a>
+<ul>
+<li>Check if issues can be reproduced</li>
+<li>If so provide as many details as possible (for example it's important for us to know which Rails version/s are affected. They could be 2-3-stable, 3-0-stable, 3-1-stable or master)</li>
+<li>If it's not possible to reproduce the issue, add a comment on github issue tracker indicating that</li>
+</ul></li>
+<li>Provide test cases and patches for 3-1-stable blockers only (blockers will be tagged as 'blocker')
+<ul>
+<li>Follow  the <a href="http://edgeguides.rubyonrails.org/contributing_to_ruby_on_rails.html">contributing to Ruby on Rails guide</a></li>
+<li>Try to provide a failing test case (if you can't figure out the whole solution)</li>
+<li>Try to provide a full patch (tests, code and docs if needed)</li>
+</ul></li>
+<li>Write documentation (guides, API), you can push modifications directly to <a href="http://github.com/lifo/docrails">docrails</a></li>
+<li>Write blog posts about your experience using 3.1</li>
+</ul>
+
+<p>Please note that since we are on the release candidate already, only patches for blocking issues will be accepted.</p>
+
+<h2>WHO</h2>
+
+<p>From the core team: Aaron Patterson (tenderlove), Xavier Noria (fxn) and Santiago Pastorino (spastorino), and the core contributors: Damien Mathieu (dmathieu), Prem Sichanugrist (sikachu) and Josh Kalderimis (joshk) will be around, so don't hesitate to ask whatever questions you may have.</p>
+
+<h2>WHEN</h2>
+
+<p>The weekend of July 23rd and 24th, 2011</p>
+
+<h2>WHERE</h2>
+
+<p><strong>On IRC:</strong></p>
+
+<p>Server: irc.freenode.net 
+Channel: <a href="irc://irc.freenode.net/rails-contrib">#rails-contrib</a></p>
+
+<p><strong>In real life:</strong></p>
+
+<p>What could be better than gathering together in real life and hacking (and drinking?) on the weekend!? It's the best chance to get together and getting into the depth of Rails core. Contact your friends, your boss, your co-workers, and get them organized!</p>
+
+<p>These are the places that have confirmed the gathering:</p>
+
+<ul>
+<li>Montevideo, Uruguay: <a href="http://www.wyeworks.com/">WyeWorks</a></li>
+<li>Boston, MA: <a href="http://thoughtbot.com/">thoughtbot, inc</a></li>
+<li>Chicago, IL: <a href="http://hashrocket.com/">Hashrocket</a></li>
+<li>Toronto, ON: <a href="http://www.meetup.com/torontoruby/events/25743841/">Toronto Ruby Brigade</a></li>
+<li>Bangalore, India: <a href="http://bit.ly/crri_bangalore">CastleRock Research</a></li>
+<li>Boulder, CO: <a href="http://plancast.com/p/5vft">Boulder Ruby user group</a></li>
+<li>New York, NY: <a href="http://www.meetup.com/ruby-75/events/25578641/">NYC on Rails</a></li>
+<li>New York, NY: <a href="http://pivotallabs.com/">Pivotal Labs</a></li>
+<li>Lehi, UT: <a href="http://utruby.org/2011/07/15/rails-hackfest">Utah Ruby User Group</a></li>
+<li>San Francisco, CA: <a href="http://blog.mochaleaf.com/?p=198">MochaLeaf, Inc.</a></li>
+<li>Portland, OR: <a href="http://rails3hackfest.eventbrite.com/">SweetSpot Diabetes Care</a></li>
+<li>Dayton, OH: <a href="http://midohiorailshackfest.eventbrite.com/">Littlelines</a></li>
+<li>Honolulu, HI: <a href="http://www.meetup.com/aloharb/events/25987651/">Aloha.rb</a></li>
+<li>Vineland, NJ: <a href="http://www.meetup.com/South-Jersey-Rails-Developers/events/26142331/">South Jersey Rails Group</a></li>
+<li>San Francisco, CA: <a href="http://blog.heroku.com/archives/2011/7/18/hosting_san_francisco_rails_3_1_hackfest/">Heroku</a></li>
+<li>Los Angeles, CA: <a href="http://www.meetup.com/laruby/events/26196011/">Ruby/Rails Meetup Group</a></li>
+<li>Rio de Janeiro, RJ, Brazil: <a href="http://rubyonrio.org/">RubyonRio</a></li>
+<li>Austin, TX: <a href="http://bit.ly/peVC3B">GameSalad</a></li>
+<li>Boulder, CO: <a href="http://plancast.com/p/6h5w">Pivotal Labs</a></li>
+<li>Porto, Portugal: <a href="http://hackathon.afuradavalley.com/">Geekslab</a></li>
+<li>Durham, NC: <a href="http://thinkrelevance.com/blog/2011/07/20/rails-3_1-hackfest-bull-city.html">Relevance, Inc.</a></li>
+<li>Ottawa, ON: <a href="http://www.shopify.com/technology/3657292-ottawa-rails-3-1-hackfest-this-sunday-july-24th">Shopify</a></li>
+</ul>
+
+<p>Keep watching this list as it continues to grow. See you on 23rd!</p>
+
+      <p class="meta">Posted in <a href="http://weblog.rubyonrails.org/activism">Activism</a>
+ <strong>|</strong>&nbsp;
+<a href="http://weblog.rubyonrails.org/2011/7/14/rails-3-1-hackfest">44 comments</a></p>
+      </div>
+  </div>
+
+  <div class="blogEntry">
+    <div class="post">
+      <h2><a href="http://weblog.rubyonrails.org/2011/6/16/ann-rails-3-0-9-has-been-released">[ANN] Rails 3.0.9 has been released!</a></h2>
+      <p class="metaData">Posted by aaronp June 16, 2011 @ 10:27 AM</p>
+      <p>Hi everybody!</p>
+
+<p>Rails 3.0.9 has been released!  Since I am at Nordic Ruby, I will deem this Nordic Ruby Edition. ;-)</p>
+
+<p>The main boogs fixed in this release are problems dealing with modifications of SafeBuffers.</p>
+
+<p><code>gem install rails</code> or update your Gemfile and <code>bundle update</code> while it's hot!</p>
+
+<h2>CHANGES</h2>
+
+<p>The major changes in this release of Rails are bug fixes surrounding modifications to SafeBuffer strings.  We had places that were modifying SafeBuffers and those places raised exceptions after the security fixes in the 3.0.8 release.</p>
+
+<p>We've since updated those code paths, and now we have this nice release for you today!</p>
+
+<p>Please check the CHANGELOG files in each section on github for more details.</p>
+
+<p>For an exhaustive list of the commits in this release, please see <a href="https://github.com/rails/rails/compare/v3.0.8...v3.0.9">github</a>.</p>
+
+<h2>Gem checksums</h2>
+
+<p>SHA-1:</p>
+
+<ul>
+<li>fb8f3c0b6c866dbad05ec33baf2af7e851f9d745  actionmailer-3.0.9.gem</li>
+<li>9bc2c05463962320d0497bb2e30f4ffa66ed4f79  actionpack-3.0.9.gem</li>
+<li>2c1004747a22f756722cf95605398bf9ba6244ed  activemodel-3.0.9.gem</li>
+<li>285759d41c79460a3f49d26d8a0b3f8c9279e868  activerecord-3.0.9.gem</li>
+<li>28f2b296525caeca1341467b5f1bbb90de88aaa7  activesupport-3.0.9.gem</li>
+<li>09d52fdcbeefba31dd267d3d7484332ec30f7539  rails-3.0.9.gem</li>
+<li>8b46dbeddb56e2e4b4ebfb5312fe81eb865a47e7  railties-3.0.9.gem</li>
+</ul>
+
+<p>Please enjoy this release of Rails!</p>
+
+<p>&lt;3 &lt;3 &lt;3</p>
+
+      <p class="meta">
+<a href="http://weblog.rubyonrails.org/2011/6/16/ann-rails-3-0-9-has-been-released">22 comments</a></p>
+      </div>
+  </div>
+
+  <div class="blogEntry">
+    <div class="post">
+      <h2><a href="http://weblog.rubyonrails.org/2011/6/9/ann-rails-3-1-0-rc4-has-been-released">[ANN] Rails 3.1.0.rc4 has been released!</a></h2>
+      <p class="metaData">Posted by aaronp June 09, 2011 @ 11:11 PM</p>
+      <p>I've pushed a 3.1.0.rc4.  Please test it against your application against this release candidate and report any regressions to the <a href="http://groups.google.com/group/rubyonrails-core">rails core mailing list</a>.  I would like to hear your feedback, good or bad.  Especially if it's good.  &lt;3 &lt;3</p>
+
+<p>In two weeks, if there are no show stopping issues I will release the final version.  If we do find regressions, I will publish another release candidate and we'll put another two weeks on the clock.</p>
+
+<p>However, I will not wait two weeks between release candidates.  I want to get the final done as quickly as possible, so I'll try to release RCs as quickly as possible.</p>
+
+<h2>CHANGES</h2>
+
+<p>Here are some of the major changes to the RC branch:</p>
+
+<ul>
+<li><code>escape_javascript</code> safebuffer fixes</li>
+<li><code>json_escape</code> safebuffer fixes</li>
+<li>RDoc / ruby-debug conflict fixes.</li>
+<li><code>arel_table</code> is cached unless the <code>table_name</code> changes</li>
+</ul>
+
+<p>For an exaustive list, please check out the commits on <a href="https://github.com/rails/rails/compare/v3.1.0.rc3...v3.1.0.rc4">github</a>.</p>
+
+<p>&lt;3 &lt;3 &lt;3</p>
+
+      <p class="meta">
+<a href="http://weblog.rubyonrails.org/2011/6/9/ann-rails-3-1-0-rc4-has-been-released">52 comments</a></p>
+      </div>
+  </div>
+
+  <div class="blogEntry">
+    <div class="post">
+      <h2><a href="http://weblog.rubyonrails.org/2011/6/9/ann-rails-3-0-9-rc3-has-been-released">[ANN] Rails 3.0.9.rc3 has been released!</a></h2>
+      <p class="metaData">Posted by aaronp June 09, 2011 @ 11:10 PM</p>
+      <p>I've pushed an rc3.  Yes, we skipped one.  I screwed up the rc2, so I yanked it, and we're going straight to rc3.  Good thing it's just a release candidate, right?  ;-)</p>
+
+<p>As usual, please test this against your application and report any regressions to the <a href="http://groups.google.com/group/rubyonrails-core">rails core mailing list</a>.  I would like to hear your feedback, good or bad.</p>
+
+<p>I will release the final in 72hours if there are no reported regressions.  If there are reported regressions, I will release another RC and the clock will start over.</p>
+
+<h2>CHANGES</h2>
+
+<p>Here are some of the major changes since 3.0.9.rc1:</p>
+
+<ul>
+<li><code>escape_javascript</code> safebuffer fixes</li>
+<li><code>json_escape</code> safebuffer fixes</li>
+<li>RDoc / ruby-debug conflict fixes.</li>
+</ul>
+
+<p>For an exaustive list, please check out the commits on <a href="https://github.com/rails/rails/compare/v3.0.9.rc1...v3.0.9.rc3">github</a>.</p>
+
+<p>&lt;3 &lt;3 &lt;3</p>
+
+      <p class="meta">
+<a href="http://weblog.rubyonrails.org/2011/6/9/ann-rails-3-0-9-rc3-has-been-released">2 comments</a></p>
+      </div>
+  </div>
+
+  <div class="blogEntry">
+    <div class="post">
+      <h2><a href="http://weblog.rubyonrails.org/2011/6/8/ann-rails-3-1-0-rc3-has-been-released">[ANN] Rails 3.1.0.rc3 has been released!</a></h2>
+      <p class="metaData">Posted by aaronp June 08, 2011 @ 10:14 PM</p>
+      <p>Hey folks.  Sorry for the multiple releases in such a short time span, but the security fixes released yesterday seem to have broken people's applications.  Even though this is a release candidate, I am not happy about breaking stuff.</p>
+
+<p>I've pushed a 3.1.0.rc3.  Please test it against your application against this release candidate and report any regressions to the <a href="http://groups.google.com/group/rubyonrails-core">rails core mailing list</a>.  I would like to hear your feedback, good or bad.  Especially if it's good.  &lt;3 &lt;3</p>
+
+<p>In two weeks, if there are no show stopping issues I will release the final version.  If we do find regressions, I will publish another release candidate and we'll put another two weeks on the clock.</p>
+
+<p>However, I will not wait two weeks between release candidates.  I want to get the final done as quickly as possible, so I'll try to release RCs as quickly as possible.</p>
+
+<h2>CHANGES</h2>
+
+<p>Here are some of the major changes to the RC branch:</p>
+
+<ul>
+<li><code>mailto</code> SafeBuffer fixes</li>
+<li><code>escape_javascript</code> SafeBuffer fixes</li>
+<li>Multiple sources in sprocket helpers</li>
+</ul>
+
+<p>For an exaustive list, please check out the commits on <a href="https://github.com/rails/rails/compare/v3.1.0.rc2...v3.1.0.rc3">github</a>.</p>
+
+<p>Thanks for your patience everyone!</p>
+
+<p>&lt;3 &lt;3 &lt;3</p>
+
+      <p class="meta">
+<a href="http://weblog.rubyonrails.org/2011/6/8/ann-rails-3-1-0-rc3-has-been-released">12 comments</a></p>
+      </div>
+  </div>
+
+  <div class="blogEntry">
+    <div class="post">
+      <h2><a href="http://weblog.rubyonrails.org/2011/6/8/ann-rails-3-0-9-rc1-has-been-released">[ANN] Rails 3.0.9.rc1 has been released!</a></h2>
+      <p class="metaData">Posted by aaronp June 08, 2011 @ 10:12 PM</p>
+      <p>Hey folks.  Sorry for the multiple releases in such a short time span, but the security fixes released yesterday seem to have broken people's applications.  I am not happy about that.</p>
+
+<p>I've pushed a 3.0.9.rc1.  Please test it against your application against this release candidate and report any regressions to the <a href="http://groups.google.com/group/rubyonrails-core">rails core mailing list</a>.  I would like to hear your feedback, good or bad.</p>
+
+<p>I will release the final in 72hours if there are no reported regressions.  If there are reported regressions, I will release another RC and the clock will start over.</p>
+
+<h2>CHANGES</h2>
+
+<p>Here are some of the major changes:</p>
+
+<ul>
+<li>MemCacheStore works with Ruby 1.9 and -Ku</li>
+<li><code>mailto</code> SafeBuffer fixes</li>
+<li><code>escape_javascript</code> SafeBuffer fixes</li>
+</ul>
+
+<p>For an exaustive list, please check out the commits on <a href="https://github.com/rails/rails/compare/v3.0.8...v3.0.9.rc1">github</a>.</p>
+
+<p>Thanks for your patience everyone!</p>
+
+<p>&lt;3 &lt;3 &lt;3</p>
+
+      <p class="meta">
+<a href="http://weblog.rubyonrails.org/2011/6/8/ann-rails-3-0-9-rc1-has-been-released">9 comments</a></p>
+      </div>
+  </div>
+
+      </div>
+    </div>
+<div class="copyright">
+	<p>
+	  Ruby on Rails was created by <a href="http://www.loudthinking.com/about.html">David Heinemeier Hansson</a>, a partner at <a href="http://www.37signals.com/">37signals</a>,<br>
+
+	  then extended and improved by a <a href="http://www.rubyonrails.org/core">core team of committers</a> and hundreds of open-source contributors.
+	</p>
+	
+	<p>Rails is released under the <a href="http://www.opensource.org/licenses/mit-license.php">MIT license</a>. Ruby under the <a href="http://www.ruby-lang.org/en/LICENSE.txt">Ruby License</a>.</p>
+
+	<p>"Rails", "Ruby on Rails", and the Rails logo are trademarks of David Heinemeier Hansson. All rights reserved.</p>
+	
+      <table>
+        <tbody><tr>
+          <td valign="center">
+            <p>Sponsored by</p>
+          </td>
+          <td><a href="http://www.37signals.com/" class="no_link_hover"><img alt="37signals" height="22" src="./Riding Rails_files/37slogo-trans.gif" style="margin-top: 2px" width="100"></a></td>
+        </tr>
+      </tbody></table>
+</div>
+  </div>
+
+<script src="./Riding Rails_files/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-1959218-2";
+urchinTracker();
+</script>
+
+
+</body></html>

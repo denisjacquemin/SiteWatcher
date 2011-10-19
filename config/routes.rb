@@ -1,4 +1,7 @@
 SiteWatcher::Application.routes.draw do
+  match 'refresh' => 'sites#refresh'
+  resources :sites
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
