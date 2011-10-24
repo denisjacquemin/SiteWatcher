@@ -1,0 +1,89 @@
+html {
+}
+    body {
+      padding-top: 40px;
+      background: url("/assets/bg.gif") repeat scroll 0 0 #EBEBEB;
+           
+      .breadcrumb {
+          margin: 50px 0 10px 0;
+          border-radius: 6px;
+          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+      }
+      
+      .content {
+        margin-left: 240px;
+        .block {
+            border-radius: 9px 9px 9px 9px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+            background: #fff;
+            padding: 0 20px;
+            h1 {
+                margin: 0 -20px 10px -20px;
+                background-color: #F1F8FE;
+                border-bottom: 1px solid #DADEE5;
+                border-top: 1px solid #DADEE5;
+                padding: 15px 20px;
+                font-size: 22px;
+                font-style: normal;
+                font-weight: bold;
+                letter-spacing: -1px;
+                line-height: 1.2em;
+                text-transform: none;
+                border-top: none;
+                border-top-left-radius: 9px;
+                border-top-right-radius: 9px;
+            }
+            form {
+              margin: 0 -20px;
+              label {
+                  padding-top: 4px;
+                  font-size: 16px;
+              
+              }
+              input, textarea {
+                  border-radius: 0;
+                  font-size: 15px;
+              } 
+              div.clearfix.error {
+                  border-radius:0;
+                  -webkit-border-radius:0;
+                  -webkit-border-radius:0;
+                  -moz-border-radius:0;
+              }
+            }
+            .actions {
+                  border-bottom-left-radius: 9px;
+                  border-bottom-right-radius: 9px;
+                  margin: 18px -20px;
+              }
+        }
+      }
+      .sidebar {
+          float: left;
+          width: 220px;
+          .notice {
+              box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+              border-radius: 9px 9px 9px 9px;
+              background: #fff;
+              padding: 10px;
+              h4 {
+                  border-bottom: 1px solid #C0C0C0;
+                  margin-bottom: 10px;
+              }
+          }
+      }
+      #msg {
+          position: fixed;
+          bottom: 0;
+          right: 25px;
+          width: 50%;
+          .alert-message {
+              
+          }
+      }
+      footer {
+          border-top: 1px solid #aaa;
+          background: #eee;
+          padding-bottom:30px;
+      }
+  }

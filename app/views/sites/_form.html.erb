@@ -10,13 +10,19 @@
       </ul>
     </div>
   <% end %>
+  
 
   <div class="field">
-    <%= f.label :url %><br />
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :url %>
     <%= f.text_field :url %>
   </div>
   <div class="field">
-    <%= f.label :selector %><br />
+    <%= f.label :selector %>
     <%= f.text_field :selector %>
   </div>
   <div class="actions">

@@ -7,6 +7,7 @@ gem 'rails', '3.1.1'
 
 gem 'sqlite3'
 gem 'nokogiri'
+gem 'htmldiff'
 
 
 gem 'twitter-bootstrap-rails'

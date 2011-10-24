@@ -1,0 +1,29 @@
+Use Cases
+  1. Securiser l'application
+  2. ajouter/deleter un Site/Selector
+  3. scheduler l'enregistrement d'une version de snippet
+  4. Visualiser un Site/Selector et la liste des snippets par date
+  5. Selectionner 2 snippets et visualiser les differences
+  6. scheduler l'envoi d'un email si il y a une difference
+  
+  
+1.
+
+email/password
+
+2.
+
+Site: url/selector has_many :snippets
+Snippets content/created_at belongs_to :site
+
+3.
+
+crawler
+
+4.
+
+show Site/Snippets
+
+5.
+
+ 

@@ -1,4 +1,6 @@
 SiteWatcher::Application.routes.draw do
+
+  match 'dashboard' => 'dashboard#index'
   match 'refresh' => 'sites#refresh'
   resources :sites
 

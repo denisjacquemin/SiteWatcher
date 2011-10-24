@@ -1,0 +1,22 @@
+<div id="msg">
+  <% unless flash[:notice].nil? %>
+    <div class="alert-message success fade in" data-alert="alert">
+      <a href="#" class="close">×</a>
+      <p><%= notice %></p>
+    </div>
+  <% end %>
+  
+  <% unless flash[:alert].nil? %>
+    <div class="alert-message warning fade in" data-alert="alert">
+      <a href="#" class="close">×</a>
+      <p><%= warning %></p>
+    </div>
+  <% end %>
+  
+  <% unless flash[:error].nil? %>
+    <div class="alert-message error fade in" data-alert="alert">
+      <a href="#" class="close">×</a>
+      <p><%= yield :errors %></p>
+    </div>
+  <% end %>  
+</div>

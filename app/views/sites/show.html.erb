@@ -1,20 +1,46 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Url:</b>
-  <%= @site.url %>
-</p>
-
-<p>
-  <b>Selector:</b>
-  <%= @site.selector %>
-</p>
-
-<% @site.snippets.each do |snippet| %>
-  <p>
-    <input type="checkbox" value="snippet.id" /> <%= snippet.created_at %>
-  </p>
-<% end %>
-
-<%= link_to 'Edit', edit_site_path(@site) %> |
-<%= link_to 'Back', sites_path %>
+<ul class="breadcrumb">
+  <li>Dashboard<span class="separator"> / </span></li>
+  <li>Site Details</li>
+</ul>
+<div class="sidebar">
+  <div class="notice">
+    <h4>Snippets</h4>
+    <ul>
+      <% @site.snippets.each do |snippet| %>
+        <li>
+          <input type="checkbox" value="<%= snippet.id %>" /> <%= snippet.created_at %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<div class="content">
+  <div class="block">
+    <p id="notice"><%= notice %></p>
+    <h1>
+      <%= @site.name %>
+      <div id="site-url"><span class="url-label">Url: </span><%= @site.url %></div>
+      <div id="site-selector"><span class="selector-label">Selector: </span><%= @site.selector %></div>
+    </h1>
+    <div id="snippets-selector">
+      Compare between
+      <select id="stackedSelect" name="stackedSelect">
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                    </select> and
+                    <select id="stackedSelect" name="stackedSelect">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                  </select>
+    </div>
+    <div class="actions">
+      <%= link_to 'Delete', @site, confirm: 'Are you sure?', method: :delete, :class => 'btn danger' %>
+    </div>
+  </div>
+</div>

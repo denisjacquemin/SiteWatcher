@@ -1,14 +1,41 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>SiteWatcher</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Site-Watcher</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-<%= yield %>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    
+    <%= stylesheet_link_tag "application" %>
+    
+    <%= csrf_meta_tag %>  
+  </head>
+  <body>
+    <div class="container-fluid">
+      <%= render :partial => 'shared/topbar'  %>
+      <%= render :partial => 'shared/message' %>
+      <div data-pjax-container>
+        <%= yield %>
+      </div>
+    </div>
+    <%= render :partial => 'shared/footer' %>
+    
+    <%= javascript_include_tag :application %>  
+    
+    <%= javascript_tag do %>
+    <% end %>
 
-</body>
+    <!-- Change UA-XXXXX-X to be your site's ID -->
+    <script>
+      var _gaq=[["_setAccount","UA-XXXXX-X"],["_trackPageview"]];
+      (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
+      g.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";
+      s.parentNode.insertBefore(g,s)}(document,"script"));
+    </script>
+  </body>
 </html>

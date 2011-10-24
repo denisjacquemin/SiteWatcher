@@ -1,0 +1,15 @@
+diffins {
+    background: green;
+    color: white;
+    text-decoration: none;
+}
+
+diffdel {
+    background: red;
+    color: white;
+}
+
+diffmod {
+    background: orange;
+    color: white;
+}
