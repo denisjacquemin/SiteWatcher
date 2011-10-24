@@ -1,9 +1,9 @@
 // Place all the styles related to the sites controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-#snippets-selector {
-      margin: 0 -20px;
-      width: 100%;
-      padding: 0 20px;
+#site-url, #site-selector {
+      font-size: 12px;
+      font-weight: normal;
+      display:inline;
       
   }

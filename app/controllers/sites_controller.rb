@@ -85,6 +85,10 @@ class SitesController < ApplicationController
     end
   end
   
+  def compare
+    DiffHtml.diff(Snippet.find(1).content, Snippet.find(2).content)
+  end
+  
   def refresh
     
     site = Site.find(params[:siteid])

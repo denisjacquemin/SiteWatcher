@@ -1,0 +1,20 @@
+#compare-result {
+  margin: 10px;
+  border: 1px solid #bbb;
+  padding: 20px;
+  .diffins {
+      background: green;
+      color: white;
+      text-decoration: none;
+  }
+  
+  .diffdel {
+      background: red;
+      color: white;
+  }
+  
+  .diffmod {
+      background: orange;
+      color: white;
+  }
+}

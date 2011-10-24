@@ -24,20 +24,13 @@
     </h1>
     <div id="snippets-selector">
       Compare between
-      <select id="stackedSelect" name="stackedSelect">
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                    </select> and
-                    <select id="stackedSelect" name="stackedSelect">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                  </select>
+      <%= collection_select(:site, :snippets, @site.snippets, :id, :created_at, :prompt => true) %> and
+      <%= collection_select(:site, :snippets, @site.snippets, :id, :created_at, :prompt => true) %>
+      <input type="button" class="btn" id="compare" value="Compare" />
+      <div id="compare-result">
+      <%= raw DiffHtml.diff(Snippet.find(1).content, Snippet.find(2).content) %>
+      
+      </div>
     </div>
     <div class="actions">
       <%= link_to 'Delete', @site, confirm: 'Are you sure?', method: :delete, :class => 'btn danger' %>
