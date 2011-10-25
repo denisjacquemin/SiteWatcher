@@ -13,24 +13,29 @@
       <% end %>
     </ul>
   </div>
+  <div class="notice">
+    <h4>Actions</h4>
+    <%= link_to 'Delete', @site, confirm: 'Are you sure?', method: :delete, :class => 'btn danger' %>
+  </div>
+  
 </div>
 <div class="content">
   <div class="block">
     <p id="notice"><%= notice %></p>
     <h1>
       <%= @site.name %>
-      <div id="site-url"><span class="url-label">Url: </span><%= @site.url %></div>
-      <div id="site-selector"><span class="selector-label">Selector: </span><%= @site.selector %></div>
     </h1>
-    <div id="snippets-selector">
+    <div id="snippets-selector">    
+    <%= form_tag('compare', :format => :json, :remote => true, :id => "compare_it") do %>
       Compare between
-      <%= collection_select(:site, :snippets, @site.snippets, :id, :created_at, :prompt => true) %> and
-      <%= collection_select(:site, :snippets, @site.snippets, :id, :created_at, :prompt => true) %>
-      <input type="button" class="btn" id="compare" value="Compare" />
-      <div id="compare-result">
-      <%= raw DiffHtml.diff(Snippet.find(1).content, Snippet.find(2).content) %>
-      
-      </div>
+      <%= select_tag "selection[first]", options_from_collection_for_select(@site.snippets, "id", "created_at") %>
+      and
+      <%= select_tag "selection[second]", options_from_collection_for_select(@site.snippets, "id", "created_at") %>
+      <%= submit_tag 'compare', :class => 'btn primary'%>
+    <% end %>
+    </div>
+
+    <div id="compare-result">
     </div>
     <div class="actions">
       <%= link_to 'Delete', @site, confirm: 'Are you sure?', method: :delete, :class => 'btn danger' %>

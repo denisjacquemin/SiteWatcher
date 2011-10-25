@@ -5,3 +5,7 @@
 $("a[rel=twipsy]").twipsy({
 live: true
 })
+
+$('#compare_it').live('ajax:success', (xhr, data, status) ->
+  $('#compare-result').prepend(data.content)
+)

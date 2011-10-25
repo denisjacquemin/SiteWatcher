@@ -2,7 +2,7 @@ require 'open-uri'
 
 
 class SitesController < ApplicationController
- 
+  
   # GET /sites
   # GET /sites.json
   def index
@@ -86,7 +86,15 @@ class SitesController < ApplicationController
   end
   
   def compare
-    DiffHtml.diff(Snippet.find(1).content, Snippet.find(2).content)
+    firstSelection = params[:selection][:first]
+    secondSelection = params[:selection][:second]
+
+    #DiffHtml.diff(Snippet.find(1).content, Snippet.find(2).content)
+    
+    render json: {
+      :content => DiffHtml.diff(Snippet.find(firstSelection).content, Snippet.find(secondSelection).content)
+    }
+    
   end
   
   def refresh
