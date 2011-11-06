@@ -8,6 +8,7 @@ gem 'rails', '3.1.1'
 gem 'sqlite3'
 gem 'nokogiri'
 gem 'htmldiff'
+gem "imgkit", "~> 1.3.2"
 
 
 gem 'twitter-bootstrap-rails'
