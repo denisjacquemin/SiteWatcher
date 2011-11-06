@@ -86,21 +86,19 @@ class SitesController < ApplicationController
   end
   
   def compare
+    site_id = params[:selection][:site_id]
     firstSelection = params[:selection][:first]
     secondSelection = params[:selection][:second]
 
-    #DiffHtml.diff(Snippet.find(1).content, Snippet.find(2).content)
+    site = Site.find(site_id)
+    doc1 = Nokogiri::HTML(Snippet.find(firstSelection).content)
+    doc2 = Nokogiri::HTML(Snippet.find(secondSelection).content)
+        
+    diff = DiffHtml.diff(doc1.at_css(site.selector).to_s, doc2.at_css(site.selector).to_s)
     
     render json: {
-      :content => DiffHtml.diff(Snippet.find(firstSelection).content, Snippet.find(secondSelection).content)
+      :content => diff
     }
     
-  end
-  
-  def refresh
-    
-    site = Site.find(params[:siteid])
-    doc = Nokogiri::HTML(open(site.url))
-    Snippet.create(:site_id => site.id, :content => doc.at_css("#{site.selector}").to_xhtml)
   end
 end
