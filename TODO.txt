@@ -26,4 +26,10 @@ show Site/Snippets
 
 5.
 
+
+
+Objectif: visualiser les updates sur un site
+
+=> version actuelle du site a comparer avec le dernier snippet enregistre
+
  

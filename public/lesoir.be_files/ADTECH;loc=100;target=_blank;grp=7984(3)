@@ -1,0 +1,71 @@
+__ADTECH_CODE__ = "";
+__theDocument = document;
+__theWindow = window;
+__bCodeFlushed = false;
+
+function __flushCode() {
+	if (!__bCodeFlushed) {
+		var span = parent.document.createElement("SPAN");
+		span.innerHTML = __ADTECH_CODE__;
+		window.frameElement.parentNode.appendChild(span);
+		__bCodeFlushed = true;
+	}
+}
+
+if (typeof inFIF != "undefined") {
+	document.write = function(str) {
+		__ADTECH_CODE__ += str;
+	};
+	
+	document.writeln = function(str) { document.write(str + "\n"); };
+
+	__theDocument = parent.document;
+	__theWindow = parent;
+}
+document.write("<div class=\"bouton_M\">\n");
+document.write("<h3 class=\"titre_XL\" style=\"text-align:left\"><a href=\"http://adserver.adtech.de/adlink/927/2436228/0/3178/AdId=6966781;BnId=1;itime=599220352;nodecode=yes;link=http://studioweb.lesoir.be/mini06/\" target=\"_blank\" class=\"titre_pub_XL\">Supplément</a></h3>\n");
+document.write("<div><a href=\"http://adserver.adtech.de/adlink/927/2436228/0/3178/AdId=6966781;BnId=1;itime=599220352;nodecode=yes;link=http://studioweb.lesoir.be/mini06/\" target=\"_blank\" class=\"lien_img\"><img src=\"http://aka-cdn-ns.adtech.de/apps/509/Ad6966781St3Sz3178Sq101387973V1Id1/M017480_XL_Promo_Top.jpg\" border=\"0\" /></a>\n");
+document.write("<p class=\"txt_xl\" style=\"text-align:left\"><a href=\"http://adserver.adtech.de/adlink/927/2436228/0/3178/AdId=6966781;BnId=1;itime=599220352;nodecode=yes;link=http://studioweb.lesoir.be/mini06/\" target=\"_blank\" class=\"txt_lien_XL\">Le Top des entreprises du BW</a></p>\n");
+document.write("</div></div>\n");
+function cleanUp() {
+	if (typeof __parent.swappedRefs2436228 == "undefined") {
+		__parent.swappedRefs2436228 = new Array();
+	}
+		
+	while (__parent.swappedRefs2436228.length > 0) {
+		var ref = __parent.swappedRefs2436228.pop();
+		if (ref != "swappedRefs2436228") {
+			__parent[ref] = null;
+		}
+	}
+}
+
+if (typeof inFIF != "undefined" && inFIF == true) {
+	__parent = window.parent;
+	window.onunload = cleanUp;
+	cleanUp();
+
+	
+	for (var ref in window) {
+		if ((typeof __parent[ref] == "undefined" || __parent[ref] == null) 
+					&& ref != "frameElement" && ref != "event" && ref != "swappedRefs2436228" && ref != "onunload") {
+			try {__parent[ref] = window[ref]; __parent.swappedRefs2436228.push(ref);} catch (e) {}
+		}
+	}	
+}	
+
+
+
+
+if (typeof inFIF != "undefined" && inFIF) {
+	__flushCode();
+}
+
+if (typeof inFIF != "undefined" && inFIF == true) {
+try {parent.write = write;
+} catch (e) {}try {parent.writeln = writeln;
+} catch (e) {}try {parent.__flushCode = __flushCode;
+} catch (e) {}}
+
+var adcount_2436228_1_=new Image();
+adcount_2436228_1_.src="http://adserver.adtech.de/adcount/3.0/927/2436228/0/3178/AdId=6966781;BnId=1;ct=4152197572;st=1012;adcid=1;itime=599220352;reqtype=5;";

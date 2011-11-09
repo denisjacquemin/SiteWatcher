@@ -21,7 +21,7 @@
     </div>
 
     <div id="compare-result">
-      <iframe src="http://localhost:3000/Riding%20Rails.html" width="100%" height="700px" border="0"></iframe>
+      <iframe src="<%= @site.url %>" width="100%" height="700px" border="0"></iframe>
     </div>
     <div class="actions">
       <%= link_to 'Delete', @site, confirm: 'Are you sure?', method: :delete, :class => 'btn danger' %>

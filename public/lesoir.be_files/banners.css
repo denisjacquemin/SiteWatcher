@@ -1,0 +1,825 @@
+* {margin:0; padding:0}
+html, body {
+height: 100%;
+}
+body { margin:0px; padding:0px; font-family:Arial; font-size:13px; background-color: #6B6B6B; height: 100%; overflow:hidden;}
+p, div { margin:0px; padding:0px;}
+a {outline:none;}
+* html #banner1,* html #banner2,* html #banner3 {
+height: 100%;
+}
+
+/* Style for banner-160x600 */
+#banner1 {border:1px solid #929292; height: 598px; overflow:hidden; background-color: #f7f8f8; color: #333333}
+#banner1 #header { height: 105px; border: 0px; overflow:hidden; }
+#banner1 #underheader {height:5px; border: 0px; margin: 0px; padding: 0px; overflow:hidden;}
+#banner1 .wrapper {margin:0 auto; width:158px; overflow:hidden;}
+#banner1 .new-left {float:left; display:inline; font-family:Arial; font-size:11px;}
+#banner1 .new-right {float:right; display:inline; font-family:Arial; font-size:11px;}
+#banner1 .new-clear {clear:both; height:0px;}
+
+#banner1 #content {padding-top:3px; overflow:hidden; }
+#banner1 #content .box {background: url(../images/banners/banner1-box-bg.gif) repeat-y #ffffff; padding:6px 9px;}
+#banner1 #content .title {font-size:14px; line-height:15px; color:#000000; font-weight:bold;}
+#banner1 #content a.button-fr {display:block; width:133px; height:33px; background:url(../fr/images/but_decouvrir_banner_160x600.gif) no-repeat; display: block;}
+#banner1 #content a.button-nl {display:block; width:135px; height:35px; background:url(../nl/images/but_decouvrir_banner_160x600.gif) no-repeat; display: block;}
+#banner1 .txtOrange {color:#ff6000;}
+
+/* select box style */
+/* Drop down styles*/
+#banner1 div.selectbox-wrapper {
+  position:absolute;
+  width:140px;
+  background-color:white;
+  border:1px solid #999999;
+  margin:0px;
+  padding:0px;
+  text-align:left;
+  overflow:auto;
+}
+
+/*Drop down list styles*/
+#banner1 div.selectbox-wrapper ul {
+  list-style-type:none;
+  margin:0px;
+  padding:0px;
+  overflow-x:hidden;
+  overflow-y:scroll;
+  max-height:150px;
+  height:150px;
+  width: 147px;
+}
+/* Selected item in dropdown list*/
+#banner1 div.selectbox-wrapper ul li.selected { 
+  color: #ff6000;
+}
+
+/* Hover state for dropdown list */
+#banner1 div.selectbox-wrapper ul li.current { 
+  color: #ff6000;
+}
+
+/* Drop down list items style*/
+#banner1 div.selectbox-wrapper ul li {
+  list-style-type:none;
+  display:block;
+  margin:0;
+  height:20px;
+  line-height:20px;
+  padding:0 5px;
+  font-family:Arial; font-size:12px; color:#333333;
+  cursor:pointer;
+  font-weight: bold;
+}
+
+/* Look and feel of select box */
+#banner1 .selectbox 
+{
+  padding-left:10px;
+  font-family:Arial;
+  font-size:15px;/* Resize Font*/
+  width : 137px; /* Resize Width */
+  height:24px;
+  font-weight:bold;
+  line-height:25px;
+  display : block;
+  text-align:left; 
+  background: url(../images/banners/banner1-select-bg.gif) top left no-repeat;
+  cursor: pointer;
+  border:0px;
+  color:#333333;
+}
+
+
+
+/* Style for banner-200x200 */
+#banner2 {border:1px solid #929292; height: 198px; overflow:hidden; background-color: #f7f8f8; color: #333333}
+#banner2 #header { height: 47px; border: 0px; overflow:hidden; }
+#banner2 #underheader {height:5px; border: 0px; margin: 0px; padding: 0px; overflow:hidden;}
+#banner2 .wrapper {margin:0 auto; width:198px; overflow:hidden;}
+#banner2 .new-left {float:left; display:inline; font-family:Arial; font-size:11px;}
+#banner2 .new-right {float:right; display:inline; font-family:Arial; font-size:11px;}
+#banner2 .new-clear {clear:both; height:0px;}
+
+#banner2 #content {overflow:hidden; }
+#banner2 #content .box {background: url(../images/banners/banner2-box-bg.gif) repeat-y #ffffff; padding:0px 9px 1px 9px;}
+#banner2 #content .title {font-size:12px; line-height:15px; color:#000000; font-weight:bold;}
+#banner2 #content a.button-fr {display:block; width:117px; height:22px; background:url(../fr/images/but_decouvrir_banner_200x200.gif) no-repeat; display: block;}
+#banner2 #content a.button-nl {display:block; width:117px; height:22px; background:url(../nl/images/but_decouvrir_banner_200x200.gif) no-repeat; display: block;}
+#banner2 .txtOrange {color:#ff6000; font-size:12px;}
+
+/* select box style */
+/* Drop down styles*/
+#banner2 div.selectbox-wrapper {
+  position:absolute;
+  width:110px;
+  background-color:white;
+  border:1px solid #999999;
+  margin:0px;
+  padding:0px;
+  text-align:left;
+  overflow:auto;
+}
+
+/*Drop down list styles*/
+#banner2 div.selectbox-wrapper ul {
+  list-style-type:none;
+  margin:0px;
+  padding:0px;
+  overflow-x:hidden;
+  overflow-y:scroll;
+  max-height:150px;
+  height:150px;
+  width: 110px;
+}
+/* Selected item in dropdown list*/
+#banner2 div.selectbox-wrapper ul li.selected { 
+  color: #ff6000;
+}
+
+/* Hover state for dropdown list */
+#banner2 div.selectbox-wrapper ul li.current { 
+  color: #ff6000;
+}
+
+/* Drop down list items style*/
+#banner2 div.selectbox-wrapper ul li {
+  list-style-type:none;
+  display:block;
+  margin:0;
+  height:20px;
+  line-height:20px;
+  padding:0 5px;
+  font-family:Arial; font-size:12px; color:#333333;
+  cursor:pointer;
+  font-weight: bold;
+}
+
+/* Look and feel of select box */
+#banner2 .selectbox 
+{
+  padding-left:10px;
+  font-family:Arial;
+  font-size:15px;/* Resize Font*/
+  width : 100px; /* Resize Width */
+  height:24px;
+  font-weight:bold;
+  line-height:25px;
+  display : block;
+  text-align:left; 
+  background: url(../images/banners/banner2-select-bg.gif) top left no-repeat;
+  cursor: pointer;
+  border:0px;
+  color:#333333;
+}
+
+
+/* Style for banner-250x250 */
+#banner3 {border:1px solid #929292; height: 248px; overflow:hidden; background-color: #f7f8f8; color: #333333}
+#banner3 #header { height: 40px; border: 0px; overflow:hidden; }
+#banner3 #underheader {height:5px; border: 0px; margin: 0px; padding: 0px; overflow:hidden;}
+#banner3 .wrapper {margin:0 auto; width:248px; overflow:hidden;}
+#banner3 .new-left {float:left; display:inline; font-family:Arial; font-size:11px;}
+#banner3 .new-right {float:right; display:inline; font-family:Arial; font-size:11px;}
+#banner3 .new-clear {clear:both; height:0px;}
+
+#banner3 #content {padding-top:3px; overflow:hidden; }
+#banner3 #content .box {background: url(../images/banners/banner3-box-bg.gif) repeat-y #ffffff; padding:0px 9px 1px 9px;}
+#banner3 #content .title {font-size:12px; line-height:15px; color:#000000; font-weight:bold;}
+#banner3 #content a.button-fr {display:block; width:125px; height:22px; background:url(../fr/images/but_decouvrir_banner_250x250.gif) no-repeat; display: block;}
+#banner3 #content a.button-nl {display:block; width:125px; height:22px; background:url(../nl/images/but_decouvrir_banner_250x250.gif) no-repeat; display: block;}
+#banner3 .txtOrange {color:#ff6000; font-size:12px;}
+
+/* select box style */
+/* Drop down styles*/
+#banner3 div.selectbox-wrapper {
+  position:absolute;
+  width:110px;
+  background-color:white;
+  border:1px solid #999999;
+  margin:0px;
+  padding:0px;
+  text-align:left;
+  overflow:auto;
+}
+
+/*Drop down list styles*/
+#banner3 div.selectbox-wrapper ul {
+  list-style-type:none;
+  margin:0px;
+  padding:0px;
+  overflow-x:hidden;
+  overflow-y:scroll;
+  max-height:150px;
+  height:150px;
+  width: 110px;
+}
+/* Selected item in dropdown list*/
+#banner3 div.selectbox-wrapper ul li.selected { 
+  color: #ff6000;
+}
+
+/* Hover state for dropdown list */
+#banner3 div.selectbox-wrapper ul li.current { 
+  color: #ff6000;
+}
+
+/* Drop down list items style*/
+#banner3 div.selectbox-wrapper ul li {
+  list-style-type:none;
+  display:block;
+  margin:0;
+  height:20px;
+  line-height:20px;
+  padding:0 5px;
+  font-family:Arial; font-size:12px; color:#333333;
+  cursor:pointer;
+  font-weight: bold;
+}
+
+/* Look and feel of select box */
+#banner3 .selectbox 
+{
+  padding-left:10px;
+  font-family:Arial;
+  font-size:15px;/* Resize Font*/
+  width : 100px; /* Resize Width */
+  height:24px;
+  font-weight:bold;
+  line-height:25px;
+  display : block;
+  text-align:left; 
+  background: url(../images/banners/banner3-select-bg.gif) top left no-repeat;
+  cursor: pointer;
+  border:0px;
+  color:#333333;
+}
+
+
+/* Style for banner-300x250 */
+#banner4 {border:1px solid #929292; height: 248px; overflow:hidden; background-color: #f7f8f8; color: #333333}
+#banner4 #header { height: 50px; border: 0px; overflow:hidden; }
+#banner4 #underheader {height:5px; border: 0px; margin: 0px; padding: 0px; overflow:hidden;}
+#banner4 .wrapper {margin:0 auto; width:298px; overflow:hidden;}
+#banner4 .new-left {float:left; display:inline; font-family:Arial; font-size:11px;}
+#banner4 .new-right {float:right; display:inline; font-family:Arial; font-size:11px;}
+#banner4 .new-clear {clear:both; height:0px;}
+
+#banner4 #content {overflow:hidden; }
+#banner4 #content .box {background: url(../images/banners/banner4-box-bg.gif) repeat-y #ffffff; padding:0px 9px 0px 9px;}
+#banner4 #content .title {font-size:12px; line-height:13px; color:#000000; font-weight:bold;}
+#banner4 #content a.button-fr {display:block; width:118px; height:22px; background:url(../fr/images/but_decouvrir_banner_300x250.gif) no-repeat; display: block;}
+#banner4 #content a.button-nl {display:block; width:118px; height:22px; background:url(../nl/images/but_decouvrir_banner_300x250.gif) no-repeat; display: block;}
+#banner4 .txtOrange {color:#ff6000; font-size:12px;}
+
+/* select box style */
+/* Drop down styles*/
+#banner4 div.selectbox-wrapper {
+  position:absolute;
+  width:110px;
+  background-color:white;
+  border:1px solid #999999;
+  margin:0px;
+  padding:0px;
+  text-align:left;
+  overflow:auto;
+}
+
+/*Drop down list styles*/
+#banner4 div.selectbox-wrapper ul {
+  list-style-type:none;
+  margin:0px;
+  padding:0px;
+  overflow-x:hidden;
+  overflow-y:scroll;
+  max-height:150px;
+  height:150px;
+  width: 110px;
+}
+/* Selected item in dropdown list*/
+#banner4 div.selectbox-wrapper ul li.selected { 
+  color: #ff6000;
+}
+
+/* Hover state for dropdown list */
+#banner4 div.selectbox-wrapper ul li.current { 
+  color: #ff6000;
+}
+
+/* Drop down list items style*/
+#banner4 div.selectbox-wrapper ul li {
+  list-style-type:none;
+  display:block;
+  margin:0;
+  height:20px;
+  line-height:20px;
+  padding:0 5px;
+  font-family:Arial; font-size:12px; color:#333333;
+  cursor:pointer;
+  font-weight: bold;
+}
+
+/* Look and feel of select box */
+#banner4 .selectbox 
+{
+  padding-left:10px;
+  font-family:Arial;
+  font-size:15px;/* Resize Font*/
+  width : 100px; /* Resize Width */
+  height:24px;
+  font-weight:bold;
+  line-height:25px;
+  display : block;
+  text-align:left; 
+  background: url(../images/banners/banner4-select-bg.gif) top left no-repeat;
+  cursor: pointer;
+  border:0px;
+  color:#333333;
+}
+
+
+/* Style for banner-336x280 */
+#banner5 {border:1px solid #929292; height: 278px; overflow:hidden; background-color: #f7f8f8; color: #333333}
+#banner5 #header { height: 55px; border: 0px; overflow:hidden; }
+#banner5 #underheader {height:5px; border: 0px; margin: 0px; padding: 0px; overflow:hidden;}
+#banner5 .wrapper {margin:0 auto; width:334px; overflow:hidden;}
+#banner5 .new-left {float:left; display:inline; font-family:Arial; font-size:11px;}
+#banner5 .new-right {float:right; display:inline; font-family:Arial; font-size:11px;}
+#banner5 .new-clear {clear:both; height:0px;}
+
+#banner5 #content {padding-top:2px; overflow:hidden; }
+#banner5 #content .box {background: url(../images/banners/banner5-box-bg.gif) repeat-y #ffffff; padding:0px 9px 0px 9px;}
+#banner5 #content .title {font-size:13px; line-height:14px; color:#000000; font-weight:bold;}
+#banner5 #content a.button-fr {display:block; width:125px; height:22px; background:url(../fr/images/but_decouvrir_banner_336x280.gif) no-repeat; display: block;}
+#banner5 #content a.button-nl {display:block; width:125px; height:22px; background:url(../nl/images/but_decouvrir_banner_336x280.gif) no-repeat; display: block;}
+#banner5 .txtOrange {color:#ff6000; font-size:12px;}
+
+/* select box style */
+/* Drop down styles*/
+#banner5 div.selectbox-wrapper {
+  position:absolute;
+  width:110px;
+  background-color:white;
+  border:1px solid #999999;
+  margin:0px;
+  padding:0px;
+  text-align:left;
+  overflow:auto;
+}
+
+/*Drop down list styles*/
+#banner5 div.selectbox-wrapper ul {
+  list-style-type:none;
+  margin:0px;
+  padding:0px;
+  overflow-x:hidden;
+  overflow-y:scroll;
+  max-height:150px;
+  height:150px;
+  width: 110px;
+}
+/* Selected item in dropdown list*/
+#banner5 div.selectbox-wrapper ul li.selected { 
+  color: #ff6000;
+}
+
+/* Hover state for dropdown list */
+#banner5 div.selectbox-wrapper ul li.current { 
+  color: #ff6000;
+}
+
+/* Drop down list items style*/
+#banner5 div.selectbox-wrapper ul li {
+  list-style-type:none;
+  display:block;
+  margin:0;
+  height:20px;
+  line-height:20px;
+  padding:0 5px;
+  font-family:Arial; font-size:12px; color:#333333;
+  cursor:pointer;
+  font-weight: bold;
+}
+
+/* Look and feel of select box */
+#banner5 .selectbox 
+{
+  padding-left:10px;
+  font-family:Arial;
+  font-size:15px;/* Resize Font*/
+  width : 100px; /* Resize Width */
+  height:24px;
+  font-weight:bold;
+  line-height:25px;
+  display : block;
+  text-align:left; 
+  background: url(../images/banners/banner5-select-bg.gif) top left no-repeat;
+  cursor: pointer;
+  border:0px;
+  color:#333333;
+}
+
+/* Style for banner-468x60 */
+#banner6 {border:1px solid #929292; height: 58px; overflow:hidden; background-color: #f7f8f8; color: #333333}
+#banner6 #header { margin: 0px; padding: 0px; height: 58px; border: 0px; overflow:hidden; width: 142px;}
+#banner6 .new-left {float:left; display:inline; font-family:Arial; font-size:11px;}
+#banner6 .new-right {float:right; display:inline; font-family:Arial; font-size:11px;}
+#banner6 .new-clear {clear:both; height:0px;}
+
+#banner6 #content { overflow:hidden; }
+#banner6 #content .title {font-size:11px; line-height:13px; color:#000000; font-weight:bold;}
+#banner6 #content a.button-fr {display:block; width:109px; height:13px; background:url(../fr/images/but_decouvrir_banner_468x60.gif) no-repeat; display: block;}
+#banner6 #content a.button-nl {display:block; width:109px; height:13px; background:url(../nl/images/but_decouvrir_banner_468x60.gif) no-repeat; display: block;}
+#banner6 .txtOrange {color:#ff6000; font-size:11px;}
+
+/* select box style */
+/* Drop down styles*/
+#banner6 div.selectbox-wrapper {
+  position:absolute;
+  width:110px;
+  background-color:white;
+  border:1px solid #999999;
+  margin:0px;
+  padding:0px;
+  text-align:left;
+  overflow:auto;
+  top: 4px;
+  left: 123px;
+}
+
+/*Drop down list styles*/
+#banner6 div.selectbox-wrapper ul {
+  list-style-type:none;
+  margin:0px;
+  padding:0px;
+  overflow-x:hidden;
+  overflow-y:scroll;
+  max-height:50px;
+  height:50px;
+  width: 110px;
+}
+/* Selected item in dropdown list*/
+#banner6 div.selectbox-wrapper ul li.selected { 
+  color: #ff6000;
+}
+
+/* Hover state for dropdown list */
+#banner6 div.selectbox-wrapper ul li.current { 
+  color: #ff6000;
+}
+
+/* Drop down list items style*/
+#banner6 div.selectbox-wrapper ul li {
+  list-style-type:none;
+  display:block;
+  margin:0;
+  height:20px;
+  line-height:20px;
+  padding:0 5px;
+  font-family:Arial; font-size:12px; color:#333333;
+  cursor:pointer;
+  font-weight: bold;
+}
+
+/* Look and feel of select box */
+#banner6 .selectbox 
+{
+  padding-left:10px;
+  font-family:Arial;
+  font-size:11px;/* Resize Font*/
+  width : 100px; /* Resize Width */
+  height:19px;
+  font-weight:bold;
+  line-height:17px;
+  display : block;
+  text-align:left; 
+  background: url(../images/banners/banner6-select-bg.gif) top left no-repeat;
+  cursor: pointer;
+  border:0px;
+  color:#333333;
+}
+
+
+/* Style for banner-728x90 */
+#banner7 {border:1px solid #929292; height: 88px; overflow:hidden; background-color: #f7f8f8; color: #333333}
+#banner7 #header { margin: 0px; padding: 0px; height: 88px; border: 0px; overflow:hidden;}
+#banner7 .new-left {float:left; display:inline; font-family:Arial; font-size:11px;}
+#banner7 .new-right {float:right; display:inline; font-family:Arial; font-size:11px;}
+#banner7 .new-clear {clear:both; height:0px;}
+
+#banner7 #content {overflow:hidden;}
+#banner7 #content .box {background: url(../images/banners/banner7-box-bg.gif) repeat-y #ffffff; padding:0px 18px 0px 18px;}
+#banner7 #content .title {font-size:12px; line-height:14px; color:#000000; font-weight:bold;}
+#banner7 #content a.button-fr {display:block; width:118px; height:17px; background:url(../fr/images/but_decouvrir_banner_728x90.gif) no-repeat; display: block;}
+#banner7 #content a.button-nl {display:block; width:118px; height:17px; background:url(../nl/images/but_decouvrir_banner_728x90.gif) no-repeat; display: block;}
+#banner7 .txtOrange {color:#ff6000; font-size:12px;}
+
+/* select box style */
+/* Drop down styles*/
+#banner7 div.selectbox-wrapper {
+  position:absolute;
+  width:110px;
+  background-color:white;
+  border:1px solid #999999;
+  margin:0px;
+  padding:0px;
+  text-align:left;
+  overflow:auto;
+  top: 4px;
+  left: 123px;
+}
+
+/*Drop down list styles*/
+#banner7 div.selectbox-wrapper ul {
+  list-style-type:none;
+  margin:0px;
+  padding:0px;
+  overflow-x:hidden;
+  overflow-y:scroll;
+  max-height:80px;
+  height:80px;
+  width: 110px;
+}
+/* Selected item in dropdown list*/
+#banner7 div.selectbox-wrapper ul li.selected { 
+  color: #ff6000;
+}
+
+/* Hover state for dropdown list */
+#banner7 div.selectbox-wrapper ul li.current { 
+  color: #ff6000;
+}
+
+/* Drop down list items style*/
+#banner7 div.selectbox-wrapper ul li {
+  list-style-type:none;
+  display:block;
+  margin:0;
+  height:20px;
+  line-height:20px;
+  padding:0 5px;
+  font-family:Arial; font-size:12px; color:#333333;
+  cursor:pointer;
+  font-weight: bold;
+}
+
+/* Look and feel of select box */
+#banner7 .selectbox 
+{
+  padding-left:10px;
+  font-family:Arial;
+  font-size:15px;/* Resize Font*/
+  width : 100px; /* Resize Width */
+  height:24px;
+  font-weight:bold;
+  line-height:25px;
+  display : block;
+  text-align:left; 
+  background: url(../images/banners/banner7-select-bg.gif) top left no-repeat;
+  cursor: pointer;
+  border:0px;
+  color:#333333;
+}
+
+
+/* Style for banner-LeSoir-155x220 */
+#bannerLeSoir {border:1px solid #929292; height: 213px; width: 143px; overflow:hidden; background-color: #fff; color: #333333; margin: 0px; padding: 0px 5px 5px 5px;}
+#bannerLeSoir #header { height: 75px; border: 0px; overflow:hidden; }
+#bannerLeSoir .wrapper {margin:0 auto; width:143px; overflow:hidden;}
+#bannerLeSoir .new-left {float:left; display:inline; font-family:Arial; font-size:11px;}
+#bannerLeSoir .new-right {float:right; display:inline; font-family:Arial; font-size:11px;}
+#bannerLeSoir .new-clear {clear:both; height:0px;}
+
+#bannerLeSoir #content { overflow:hidden; }
+#bannerLeSoir #content .box {padding:0px;}
+#bannerLeSoir #content .title {font-size:12px; line-height:13px; color:#000000; font-weight:bold;}
+#bannerLeSoir #content a.button-fr {display:block; width:44px; height:26px; background:url(../fr/images/but_deal_view.gif) no-repeat; display: block;}
+#bannerLeSoir #content a.button-nl {display:block; width:44px; height:26px; background:url(../nl/images/but_deal_view.gif) no-repeat; display: block;}
+#bannerLeSoir .txtOrange {color:#ff6000;}
+
+/* select box style */
+/* Drop down styles*/
+#bannerLeSoir div.selectbox-wrapper {
+  position:absolute;
+  width:140px;
+  background-color:white;
+  border:1px solid #999999;
+  margin:0px;
+  padding:0px;
+  text-align:left;
+  overflow:auto;
+}
+
+/*Drop down list styles*/
+#bannerLeSoir div.selectbox-wrapper ul {
+  list-style-type:none;
+  margin:0px;
+  padding:0px;
+  overflow-x:hidden;
+  overflow-y:scroll;
+  max-height:150px;
+  height:120px;
+  width: 140px;
+}
+/* Selected item in dropdown list*/
+#bannerLeSoir div.selectbox-wrapper ul li.selected { 
+  color: #ff6000;
+}
+
+/* Hover state for dropdown list */
+#bannerLeSoir div.selectbox-wrapper ul li.current { 
+  color: #ff6000;
+}
+
+/* Drop down list items style*/
+#bannerLeSoir div.selectbox-wrapper ul li {
+  list-style-type:none;
+  display:block;
+  margin:0;
+  height:20px;
+  line-height:20px;
+  padding:0 5px;
+  font-family:Arial; font-size:12px; color:#333333;
+  cursor:pointer;
+  font-weight: bold;
+}
+
+/* Look and feel of select box */
+#bannerLeSoir .selectbox 
+{
+  padding-left:5px;
+  font-family:Arial;
+  font-size:15px;/* Resize Font*/
+  width : 138px; /* Resize Width */
+  height:24px;
+  font-weight:bold;
+  line-height:25px;
+  display : block;
+  text-align:left; 
+  background: url(../images/banners/banner-LeSoir-select-bg.gif) top left no-repeat;
+  cursor: pointer;
+  border:0px;
+  color:#333333;
+}
+
+/* Style for banner-LeSoir-155x220 */
+#bannerLeSoir2 {border:1px solid #929292; height: 213px; width: 143px; overflow:hidden; background-color: #fff; color: #333333; margin: 0px; padding: 0px 8px 5px 7px;}
+#bannerLeSoir2 #header { height: 75px; border: 0px; overflow:hidden; }
+#bannerLeSoir2 .wrapper {margin:0 auto; width:143px; overflow:hidden;}
+#bannerLeSoir2 .new-left {float:left; display:inline; font-family:Arial; font-size:11px;}
+#bannerLeSoir2 .new-right {float:right; display:inline; font-family:Arial; font-size:11px;}
+#bannerLeSoir2 .new-clear {clear:both; height:0px;}
+
+#bannerLeSoir2 #content { overflow:hidden; }
+#bannerLeSoir2 #content .box {padding:0px;}
+#bannerLeSoir2 #content .title {font-size:12px; line-height:13px; color:#000000; font-weight:bold;}
+#bannerLeSoir2 #content a.button-fr {display:block; width:44px; height:26px; background:url(../fr/images/but_deal_view.gif) no-repeat; display: block;}
+#bannerLeSoir2 #content a.button-nl {display:block; width:44px; height:26px; background:url(../nl/images/but_deal_view.gif) no-repeat; display: block;}
+#bannerLeSoir2 .txtOrange {color:#ff6000;}
+
+/* select box style */
+/* Drop down styles*/
+#bannerLeSoir2 div.selectbox-wrapper {
+  position:absolute;
+  width:140px;
+  background-color:white;
+  border:1px solid #999999;
+  margin:0px;
+  padding:0px;
+  text-align:left;
+  overflow:auto;
+}
+
+/*Drop down list styles*/
+#bannerLeSoir2 div.selectbox-wrapper ul {
+  list-style-type:none;
+  margin:0px;
+  padding:0px;
+  overflow-x:hidden;
+  overflow-y:scroll;
+  max-height:150px;
+  height:120px;
+  width: 140px;
+}
+/* Selected item in dropdown list*/
+#bannerLeSoir2 div.selectbox-wrapper ul li.selected { 
+  color: #ff6000;
+}
+
+/* Hover state for dropdown list */
+#bannerLeSoir2 div.selectbox-wrapper ul li.current { 
+  color: #ff6000;
+}
+
+/* Drop down list items style*/
+#bannerLeSoir2 div.selectbox-wrapper ul li {
+  list-style-type:none;
+  display:block;
+  margin:0;
+  height:20px;
+  line-height:20px;
+  padding:0 5px;
+  font-family:Arial; font-size:12px; color:#333333;
+  cursor:pointer;
+  font-weight: bold;
+}
+
+/* Look and feel of select box */
+#bannerLeSoir2 .selectbox 
+{
+  padding-left:5px;
+  font-family:Arial;
+  font-size:15px;/* Resize Font*/
+  width : 138px; /* Resize Width */
+  height:24px;
+  font-weight:bold;
+  line-height:25px;
+  display : block;
+  text-align:left; 
+  background: url(../images/banners/banner-LeSoir-select-bg.gif) top left no-repeat;
+  cursor: pointer;
+  border:0px;
+  color:#333333;
+}
+
+
+/* Style for banner-468x400 */
+#banner8 {border:1px solid #929292; height: 398px; overflow:hidden; background-color: #f7f8f8; color: #333333}
+#banner8 #header { height: 74px; border: 0px; overflow:hidden; }
+#banner8 #underheader {height:5px; border: 0px; margin: 0px; padding: 0px; overflow:hidden;}
+#banner8 .wrapper {margin:0 auto; width:466px; overflow:hidden;}
+#banner8 .new-left {float:left; display:inline; font-family:Arial; font-size:11px;}
+#banner8 .new-right {float:right; display:inline; font-family:Arial; font-size:11px;}
+#banner8 .new-clear {clear:both; height:0px;}
+
+#banner8 #content {padding-top:2px; overflow:hidden; }
+#banner8 #content .box {background: url(../images/banners/banner8-box-bg.gif) repeat-y #ffffff; padding:2px 21px 6px 21px;}
+#banner8 #content .title {font-size:17px; line-height:18px; color:#000000; font-weight:bold;}
+#banner8 #content a.button-fr {display:block; width:79px; height:36px; background:url(../fr/images/but_decouvrir_banner_468x400.gif) no-repeat; display: block;}
+#banner8 #content a.button-nl {display:block; width:79px; height:36px; background:url(../nl/images/but_decouvrir_banner_468x400.gif) no-repeat; display: block;}
+#banner8 .txtOrange {color:#ff6000; font-size:18px;}
+
+/* select box style */
+/* Drop down styles*/
+#banner8 div.selectbox-wrapper {
+  position:absolute;
+  width:166px;
+  background-color:white;
+  border:1px solid #999999;
+  margin:0px;
+  padding:0px;
+  text-align:left;
+  overflow:auto;
+}
+
+/*Drop down list styles*/
+#banner8 div.selectbox-wrapper ul {
+  list-style-type:none;
+  margin:0px;
+  padding:0px;
+  overflow-x:hidden;
+  overflow-y:scroll;
+  max-height:150px;
+  height:150px;
+  width: 166px;
+}
+/* Selected item in dropdown list*/
+#banner8 div.selectbox-wrapper ul li.selected { 
+  color: #ff6000;
+}
+
+/* Hover state for dropdown list */
+#banner8 div.selectbox-wrapper ul li.current { 
+  color: #ff6000;
+}
+
+/* Drop down list items style*/
+#banner8 div.selectbox-wrapper ul li {
+  list-style-type:none;
+  display:block;
+  margin:0;
+  height:20px;
+  line-height:20px;
+  padding:0 5px;
+  font-family:Arial; font-size:12px; color:#333333;
+  cursor:pointer;
+  font-weight: bold;
+}
+
+/* Look and feel of select box */
+#banner8 .selectbox 
+{
+  padding-left:10px;
+  font-family:Arial;
+  font-size:18px;/* Resize Font*/
+  width : 156px; /* Resize Width */
+  height:28px;
+  font-weight:bold;
+  line-height:28px;
+  display : block;
+  text-align:left; 
+  background: url(../images/banners/banner8-select-bg.gif) top left no-repeat;
+  cursor: pointer;
+  border:0px;
+  color:#333333;
+}
