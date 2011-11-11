@@ -33,6 +33,11 @@ html {
                 border-top: none;
                 border-top-left-radius: 9px;
                 border-top-right-radius: 9px;
+                .right {
+                    float:right;
+                    font-weight:normal;
+                    letter-spacing: normal;
+                }
             }
             form {
               margin: 0 -20px;
@@ -55,7 +60,7 @@ html {
             .actions {
                   border-bottom-left-radius: 9px;
                   border-bottom-right-radius: 9px;
-                  margin: 18px -20px;
+                  margin: 18px 0 0 -20px;
               }
         }
       

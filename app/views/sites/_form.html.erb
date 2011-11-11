@@ -1,5 +1,5 @@
-<%= form_for(@site) do |f| %>
-  <% if @site.errors.any? %>
+<%= form_for(@site, :html => { :class => "form-stacked" }) do |f| %>
+  <% if @site.errors.any? %> 
     <div id="error_explanation">
       <h2><%= pluralize(@site.errors.count, "error") %> prohibited this site from being saved:</h2>
 
@@ -11,21 +11,30 @@
     </div>
   <% end %>
   
-
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :url %>
-    <%= f.text_field :url %>
-  </div>
-  <div class="field">
-    <%= f.label :selector %>
-    <%= f.text_field :selector %>
-  </div>
+  <fieldset> 
+    <div class="clearfix">
+      <%= f.label :name %>
+      <div class="input">
+        <%= f.text_field :name, :class => 'xlarge' %>
+      </div>
+    </div>
+    
+    <div class="clearfix">
+      <%= f.label :url %>
+      <div class="input">
+        <%= f.text_field :url, :class => 'xlarge' %>
+      </div>
+    </div>
+    
+    <div class="clearfix">
+      <%= f.label :selector %>
+      <div class="input">
+        <%= f.text_field :selector, :class => 'xlarge' %>
+      </div>
+    </div>
+  </fieldset>
+    
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class => 'btn primary' %>
   </div>
 <% end %>

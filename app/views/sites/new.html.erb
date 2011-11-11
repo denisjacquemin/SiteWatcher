@@ -1,5 +1,12 @@
-<h1>New site</h1>
+<ul class="breadcrumb">
+  <li><%= link_to 'Watchers Listing', sites_path %> <span class="divider">/</span></li>
+  <li class="active">New Watcher</li>
 
-<%= render 'form' %>
+</ul>
 
-<%= link_to 'Back', sites_path %>
+<div class="content">
+  <div class="block">
+    <h1>New Watcher</h1>
+    <%= render 'form' %>
+  </div>
+</div>
