@@ -7,5 +7,5 @@ live: true
 })
 
 $('#compare_it').live('ajax:success', (xhr, data, status) ->
-  $('#compare-result').prepend(data.content)
+  $('#compare-result').replaceWith('<iframe id="compare-result" width="100%" height="700px" border="0">' + data.content + '</iframe>')
 )

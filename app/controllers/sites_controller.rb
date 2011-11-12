@@ -94,10 +94,36 @@ class SitesController < ApplicationController
     doc1 = Nokogiri::HTML(Snippet.find(firstSelection).content)
     doc2 = Nokogiri::HTML(Snippet.find(secondSelection).content)
         
-    diff = DiffHtml.diff(doc1.at_css(site.selector).to_s, doc2.at_css(site.selector).to_s)
+    diff_snippet = DiffHtml.diff(doc1.at_css(site.selector).to_s, doc2.at_css(site.selector).to_s)
+    
+    # get stylesheets
+    doc = Nokogiri::HTML(open(site.url))
+    snippet_to_replace = doc.at_css(site.selector)
+    
+    # build nokogiri object 
+    new_snippet = Nokogiri::HTML::DocumentFragment.parse "#{diff_snippet}"    
+
+    snippet_to_replace.parent = new_snippet
+    
+    # manage stylesheets
+    stylesheets = doc.css("link[href$='css']")
+    html = doc.to_html
+    
+    css = stylesheets.collect do |stylesheet|
+      href = stylesheet.attr('href')
+      root = site.url
+      
+      stylesheet_full_url = URI.parse(root).merge(URI.parse(href)).to_s
+      
+      puts href
+      puts stylesheet_full_url
+      
+      html.gsub(href, stylesheet_full_url)
+      
+    end
     
     render json: {
-      :content => diff
+      :content => html
     }
     
   end
