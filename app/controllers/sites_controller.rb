@@ -96,15 +96,6 @@ class SitesController < ApplicationController
         
     diff = DiffHtml.diff(doc1.at_css(site.selector).to_s, doc2.at_css(site.selector).to_s)
     
-    #get the document and replace the snippet by the diff snippet
-    doc = Nokogiri::HTML(open(site.url))
-    current_snippet = doc.at_css(site.selector)
-    puts doc.to_xhtml
-    current_snippet.replace(diff)
-    
-    kit = IMGKit.new(doc, :quality => 50)
-    kit.to_file('/Users/denisjacquemin/file.jpg')
-    
     render json: {
       :content => diff
     }
