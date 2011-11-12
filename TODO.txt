@@ -22,8 +22,6 @@ Filters
   
 todo:
 
-- deploy sur heroku
-- comment scheduler des jobs sur heroku
 - scheduler fetch_snippets 5h
 - modifier detect_changes pour sauver les images sur s3
 - creer une table differences (date, snippet_id, ref vers image s3)
