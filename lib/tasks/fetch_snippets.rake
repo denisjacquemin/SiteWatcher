@@ -7,8 +7,14 @@ task :fetch_snippets => :environment do
   Site.all.each do |site|
     puts "opening #{site.url}"
     doc = Nokogiri::HTML(open(site.url))
-    content = ::Iconv.conv('UTF-8//IGNORE', 'UTF-8', doc.at_css(site.selector).to_s + ' ')[0..-2]
-    Snippet.create( :site_id => site.id, :content => content)
+    current_snippet = ::Iconv.conv('UTF-8//IGNORE', 'UTF-8', doc.at_css(site.selector).to_s + ' ')[0..-2]
+    
+    last_snippet = Snippet.where(:site_id => site.id).last()
+    
+    if current_snippet != last_snippet
+      puts "difference detected, saving new snippet to db" 
+      Snippet.create( :site_id => site.id, :content => current_snippet)
+    end
   end
 end
 
