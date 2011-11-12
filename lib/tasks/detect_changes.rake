@@ -16,10 +16,15 @@ task :detect_changes => :environment do
         doc = Nokogiri::HTML(open(site.url))
         stylesheets = doc.css("link[href$='css']")
         css = stylesheets.collect do |stylesheet|
-
-          puts stylesheet.attr('href')
-
-          open(stylesheet.attr('href'))
+          href = stylesheet.attr('href')
+          root = site.url
+          
+          stylesheet_full_url = URI.parse(root).merge(URI.parse(href)).to_s
+          
+          puts href
+          puts stylesheet_full_url
+          
+          open(stylesheet_full_url)
         end
 
         snippet_to_replace = doc.at_css(site.selector)
