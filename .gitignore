@@ -4,3 +4,6 @@ log/*.log
 tmp/
 .sass-cache/
 TODO.txt
+config/s3_data_file_config.yml
+
+config/initializers/carrier_wave.rb
