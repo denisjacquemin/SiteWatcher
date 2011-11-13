@@ -37,7 +37,10 @@ task :detect_changes => :environment do
 
         kit.stylesheets = css
 
-        kit.to_file("/Users/denisjacquemin/#{site.name}.jpg")    
+        uploader = SnapshotUploader.new
+
+        file = kit.to_file("#{site.name}.jpg") 
+        uploader.store!(file)           
       end
     end
   end
