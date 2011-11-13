@@ -8,23 +8,22 @@ task :detect_changes => :environment do
 
     if snippets.size == 2 # if 2 snippets found continue
       if snippets[0].content != snippets[1].content # if a difference is found continue
-        diff_snippet = DiffHtml.diff(snippets[0].content, snippets[1].content)
+        diff_snippet = DiffHtml.diff(snippets[0].content, snippets[1].content) # add <ins> tags to highlight differences
 
-        # generate image
+        # image starts here
         
-        # get stylesheets
-        doc = Nokogiri::HTML(open(site.url))
-        stylesheets = doc.css("link[href$='css']")
-        css = stylesheets.collect do |stylesheet|
-          href = stylesheet.attr('href')
-          root = site.url
+        doc = Nokogiri::HTML(open(site.url)) # first get the current document as a Nokogiri object
+        stylesheets = doc.css("link[href$='css']") # get all the stylesheets url, later they'll be transform to be sure they are absolute 
+        css = stylesheets.collect do |stylesheet| # for each stylesheet url 
+          href = stylesheet.attr('href')  # get the url in href
+          root = site.url # the site root is site.url
           
-          stylesheet_full_url = URI.parse(root).merge(URI.parse(href)).to_s
+          stylesheet_full_url = URI.parse(root).merge(URI.parse(href)).to_s # build the absolute path
           
           puts href
           puts stylesheet_full_url
           
-          open(stylesheet_full_url)
+          open(stylesheet_full_url) #
         end
 
         snippet_to_replace = doc.at_css(site.selector)
@@ -38,9 +37,8 @@ task :detect_changes => :environment do
         kit.stylesheets = css
 
         uploader = SnapshotUploader.new
-
         file = kit.to_file("#{site.name}.jpg") 
-        uploader.store!(file)           
+        #uploader.store!(open(file))        
       end
     end
   end
