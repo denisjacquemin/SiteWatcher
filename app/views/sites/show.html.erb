@@ -10,7 +10,7 @@
       <%= @site.name %>
     </h1>
     <div id="snippets-selector">    
-    <%= form_tag('compare', :format => :json, :remote => true, :id => "compare_it") do %>
+    <%= form_tag('compare', :id => "compare_it") do %>
       <%= hidden_field_tag "selection[site_id]", @site.id %>
       Compare between
       <%= select_tag "selection[first]", options_from_collection_for_select(@site.snippets, "id", "created_at") %>

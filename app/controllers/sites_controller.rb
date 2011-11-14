@@ -107,7 +107,7 @@ class SitesController < ApplicationController
     
     # manage stylesheets
     stylesheets = doc.css("link[href$='css']")
-    html = doc.to_html
+    @html = doc.to_html
     
     css = stylesheets.collect do |stylesheet|
       href = stylesheet.attr('href')
@@ -118,13 +118,11 @@ class SitesController < ApplicationController
       puts href
       puts stylesheet_full_url
       
-      html.gsub(href, stylesheet_full_url)
+      @html.gsub(href, stylesheet_full_url)
       
     end
     
-    render json: {
-      :content => html
-    }
+    render :layout => false
     
   end
 end
