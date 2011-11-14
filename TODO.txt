@@ -23,9 +23,17 @@ Filters
 todo:
 
 - scheduler fetch_snippets 5h
-- modifier detect_changes pour sauver les images sur s3
 - creer une table differences (date, snippet_id, ref vers image s3)
 - modifier detect_changes pour remplir la table differences
 - scheduler detect_changes 6h
 - creer tache send_alerts qui envoi un email si une difference a ete detectee
+
+
+Ce soir 
+- deploy en prod
+- save de la doc de carrier wave
+- save de l'email
+- ecrire au helpdesk heroku pour le schedule des taches
+- obtenir le charset d'un document?
+- installer wkimage sur heroku
 
