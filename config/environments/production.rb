@@ -57,4 +57,9 @@ SiteWatcher::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+  
+  
+  IMGKit.configure do |config|
+    config.wkhtmltoimage = Rails.root.join('bin', 'wkhtmltoimage-amd64').to_s if ENV['RACK_ENV'] == 'production'
+  end
 end
