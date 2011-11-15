@@ -3,7 +3,8 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $("a[rel=twipsy]").twipsy({
-live: true
+live: true,
+parentContainer: '#data-pjax-container'
 })
 
 $('#compare_it').live('ajax:success', (xhr, data, status) ->
