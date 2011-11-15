@@ -22,3 +22,11 @@ task :fetch_snippets => :environment do
   end
 end
 
+desc "Send Alerts"
+task :send_alerts => :environment do
+  differences = Difference.all
+  differences.each do |difference|
+    AlertMailer.difference_found_email(difference).deliver
+  end
+end
+

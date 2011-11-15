@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Watcher Alert for <%= @site.name %></h1>
+    <div>
+      <img src="@difference.snapshot.url" />
+    </div>
+    <p>
+      To access the current site <%= link_to 'follow this link', @site.url %>.
+    </p>
+    <p>
+      To manage this alert <%= link_to 'follow this link', 'todo' %>
+    </p>
+  </body>
+</html>

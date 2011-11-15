@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111115055732) do
+ActiveRecord::Schema.define(:version => 20111115063113) do
 
   create_table "differences", :force => true do |t|
     t.integer  "site_id"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(:version => 20111115055732) do
     t.string   "selector"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "email"
   end
 
   create_table "snippets", :force => true do |t|
