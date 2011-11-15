@@ -20,6 +20,8 @@ gem 'twitter-bootstrap-rails'
 gem 'carrierwave'
 gem 'fog'
 gem 'thin'
+gem 'pjax_rails'
+
 
 
 # Gems used only for assets and not required
