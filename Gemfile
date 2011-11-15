@@ -11,11 +11,12 @@ end
 group :development, :test do
   gem 'sqlite3'
   gem "nice_layout", :path => "/Users/denisjacquemin/Documents/code/github/nice-layout"
+  gem "imgkit", "~> 1.3.2"
 end
 
 gem 'nokogiri'
 gem 'htmldiff'
-gem "imgkit", "~> 1.3.2"
+
 gem 'twitter-bootstrap-rails'
 gem 'carrierwave'
 gem 'fog'
