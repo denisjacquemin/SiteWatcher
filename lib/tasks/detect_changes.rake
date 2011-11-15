@@ -13,7 +13,7 @@ task :detect_changes => :environment do
         diff_snippet = DiffHtml.diff(snippets[0].content, snippets[1].content) # add <ins> tags to highlight differences
 
         # image starts here
-        
+        puts "opening #{site.url}"
         doc = Nokogiri::HTML(open(site.url)) # first get the current document as a Nokogiri object
         stylesheets = doc.css("link[href$='css']") # get all the stylesheets url, later they'll be transform to be sure they are absolute 
 
@@ -51,7 +51,11 @@ task :detect_changes => :environment do
         kit.stylesheets = css
 
         uploader = SnapshotUploader.new
+        difference = Difference.new
+        difference.site_id = site.id
         file = kit.to_file("#{site.name}.jpg") 
+        difference.snapshot = File.open file
+        difference.save! # should sva it to s3 and add one record to db
         #uploader.store!(open(file))        
       end
     end

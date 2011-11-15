@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111016162539) do
+ActiveRecord::Schema.define(:version => 20111115055732) do
+
+  create_table "differences", :force => true do |t|
+    t.integer  "site_id"
+    t.string   "snapshot"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "sites", :force => true do |t|
     t.string   "name"
