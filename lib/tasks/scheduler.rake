@@ -9,7 +9,8 @@ task :fetch_snippets => :environment do
   sites.each do |site|
     puts "opening #{site.url}"
     doc = Nokogiri::HTML(open(site.url))
-    current_snippet = ::Iconv.conv('UTF-8//IGNORE', 'UTF-8', doc.at_css(site.selector).to_s + ' ')[0..-2]
+    #options = {:encoding => 'ISO-8859-1'}
+    current_snippet = ::Iconv.conv('UTF-8//IGNORE', 'ISO-8859-1', doc.at_css(site.selector).to_xhtml + ' ')[0..-2]
     
     last_snippet = Snippet.where(:site_id => site.id).last()
     
