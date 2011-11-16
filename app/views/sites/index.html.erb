@@ -3,9 +3,10 @@
 </ul>
 <div class="sidebar">
   <div class="notice">
-    <h4>test</h4>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <h4>Description</h4>
+    <p>Follow updates on web pages</p>
+    <h4>Watchers</h4>
+    <p>See a Watcher like a robot who will crawl a web page every day. Each time an update is done on the page you receive an email with a screenshot of the page </p>
   </div>
 </div>
 <div class="content">
@@ -25,7 +26,10 @@
         <% @sites.each do |site| %>
           <tr>
             <td><%= link_to site.name, site, :rel => "twipsy", :title => "#{site.url} / #{site.selector}" %></td>
-            <td><span class="label important">rss</span>&nbsp;<span class="label notice">alert</span></td>
+            <td><span class="label important">rss</span>&nbsp;
+            <% unless site.email.nil? %>
+              <span class="label notice" rel="twipsy" data-original-title="Alert sent to <%= site.email %>">alert</span></td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>
