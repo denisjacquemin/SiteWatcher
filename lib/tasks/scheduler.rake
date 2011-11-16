@@ -88,7 +88,7 @@ task :detect_changes => :environment do
         difference.site_id = site.id
         file = kit.to_file("#{site.name}.jpg") 
         difference.snapshot = File.open file
-        difference.save! # should sva it to s3 and add one record to db
+        difference.save! # should save it to s3 and add one record to db
         #uploader.store!(open(file))        
       end
     end
