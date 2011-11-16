@@ -28,8 +28,7 @@ todo:
 
 
 Ce soir 
-- save de l'email
-- ecrire au helpdesk heroku pour le schedule des taches
-- obtenir le charset d'un document?
-- installer wkimage sur heroku
+- pb d'ebncoding
+- faire fonctionner wkimage sur heroku
+- utiliser les pass s3 en prod
 
