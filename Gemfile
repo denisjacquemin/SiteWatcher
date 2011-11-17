@@ -15,7 +15,7 @@ end
 
 gem 'nokogiri'
 gem 'htmldiff'
-gem "imgkit", "~> 1.3.3"
+gem "imgkit", "~> 1.3.2"
 
 gem 'twitter-bootstrap-rails'
 gem 'carrierwave'
