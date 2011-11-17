@@ -29,6 +29,7 @@ todo:
 
 Ce soir 
 - pb d'ebncoding
-- faire fonctionner wkimage sur heroku
+- faire fonctionner wkimage sur heroku, verifier si le bin est bien executable
 - utiliser les pass s3 en prod
+
 

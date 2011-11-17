@@ -39,6 +39,12 @@ html {
                     letter-spacing: normal;
                 }
             }
+            table {
+                td.nopadding {
+                    padding: 3px;
+                }
+                
+            }
             form {
               margin: 0 -20px;
               label {
@@ -61,7 +67,10 @@ html {
                   border-bottom-left-radius: 9px;
                   border-bottom-right-radius: 9px;
                   margin: 18px 0 0 -20px;
-              }
+                  .right {
+                      float: right;
+                  }
+            }
         }
       
       .sidebar {

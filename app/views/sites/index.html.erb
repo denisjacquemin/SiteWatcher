@@ -4,21 +4,22 @@
 <div class="sidebar">
   <div class="notice">
     <h4>Description</h4>
-    <p>Follow updates on web pages</p>
+    <p>Follow updates on web pages. Select an interesting area on a web page and be alerted when it is updated.</p>
     <h4>Watchers</h4>
-    <p>See a Watcher like a robot who will crawl a web page every day. Each time an update is done on the page you receive an email with a screenshot of the page </p>
+    <p>See a Watcher like a robot who will crawl a web page every day. Each time an update is done on the page you receive an email with a screenshot of the page, the differences between old and new version are highlighted.</p>
   </div>
 </div>
 <div class="content">
   <div class="block">
     <h1>
-      Listing sites
-      <span class="right"><%= link_to 'New Site', new_site_path, :class => 'btn primary' %></span>
+      Listing Watchers
+      <span class="right"><%= link_to 'New Watcher', new_site_path, :class => 'btn primary' %></span>
     </h1>
     <table class="zebra-striped">
       <thead>
         <tr>
           <th>Name</th>
+          <th></th>
           <th></th>
         </tr>
       </thead>
@@ -30,6 +31,7 @@
             <% unless site.email.nil? %>
               <span class="label notice" rel="twipsy" data-original-title="Alert sent to <%= site.email %>">alert</span></td>
             <% end %>
+            <td class="nopadding"><%= link_to 'Update', edit_site_url(site), :class => 'btn small' %></td>
           </tr>
         <% end %>
       </tbody>
