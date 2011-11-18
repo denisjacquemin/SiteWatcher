@@ -80,7 +80,7 @@ task :detect_changes => :environment do
         
         kit = IMGKit.new(html, :quality => 70)
         
-        css << open('http://0.0.0.0:5000/stylesheets/diff.css')
+        css << open('/stylesheets/diff.css')
         kit.stylesheets = css
 
         uploader = SnapshotUploader.new
