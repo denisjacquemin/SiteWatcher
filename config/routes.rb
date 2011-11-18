@@ -1,5 +1,7 @@
 SiteWatcher::Application.routes.draw do
 
+  devise_for :users
+
   match 'sites/compare' => 'sites#compare' 
   match 'dashboard' => 'dashboard#index'
   resources :sites

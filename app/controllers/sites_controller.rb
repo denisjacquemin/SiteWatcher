@@ -3,6 +3,8 @@ require 'open-uri'
 
 class SitesController < ApplicationController
   
+  before_filter :authenticate_user!
+  
   # GET /sites
   # GET /sites.json
   def index
