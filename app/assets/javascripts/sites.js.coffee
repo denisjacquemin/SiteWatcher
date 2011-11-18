@@ -10,3 +10,5 @@ parentContainer: '#data-pjax-container'
 $('#compare_it').live('ajax:success', (xhr, data, status) ->
   $('#compare-result').replaceWith('<iframe id="compare-result" width="100%" height="700px" border="0">' + data.content + '</iframe>')
 )
+
+$('#difference').live( 'change', (event) -> alert value)

@@ -1,5 +1,5 @@
 <ul class="breadcrumb">
-  <li>Dashboard</li>
+  <li>Watchers</li>
 </ul>
 <div class="sidebar">
   <div class="notice">
@@ -20,7 +20,6 @@
         <tr>
           <th>Name</th>
           <th></th>
-          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -31,7 +30,6 @@
             <% unless site.email.nil? %>
               <span class="label notice" rel="twipsy" data-original-title="Alert sent to <%= site.email %>">alert</span></td>
             <% end %>
-            <td class="nopadding"><%= link_to 'Update', edit_site_url(site), :class => 'btn small' %></td>
           </tr>
         <% end %>
       </tbody>

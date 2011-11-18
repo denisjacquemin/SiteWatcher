@@ -11,13 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111115063113) do
+ActiveRecord::Schema.define(:version => 20111116174400) do
 
   create_table "differences", :force => true do |t|
     t.integer  "site_id"
     t.string   "snapshot"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "old_snippet_id"
+    t.integer  "new_snippet_id"
   end
 
   create_table "sites", :force => true do |t|
