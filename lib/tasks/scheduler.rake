@@ -80,7 +80,7 @@ task :detect_changes => :environment do
         
         kit = IMGKit.new(html, :quality => 70)
         
-        css << open('/stylesheets/diff.css')
+        css << open('http://sitewatcher.herokuapp.com/stylesheets/diff.css')
         kit.stylesheets = css
 
         uploader = SnapshotUploader.new
