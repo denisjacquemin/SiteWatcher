@@ -1,5 +1,11 @@
 SiteWatcher::Application.routes.draw do
 
+  devise_scope :user do
+    get "login", :to => "devise/sessions#new"
+    get "logout", :to => "devise/sessions#destroy"
+    get "account", :to => "devise/registrations#edit"
+  end
+  #devise_for :users, :path_names => { :sign_in => 'login', :sign_out => 'logout', :password => 'secret', :confirmation => 'verification', :unlock => 'unblock', :registration => 'register', :sign_up => 'cmon_let_me_in' }
   devise_for :users
 
   match 'sites/compare' => 'sites#compare' 
