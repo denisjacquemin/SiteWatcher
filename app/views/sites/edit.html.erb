@@ -1,7 +1,6 @@
 <ul class="breadcrumb">
-  <li><%= link_to 'Watchers', sites_path %><span class="separator"> / </span></li>
-  <li><%= link_to 'Details', @site %><span class="separator"> / </span></li>
-  
+  <li><%= link_to 'Listing Watchers', sites_path %><span class="separator"> / </span></li>
+  <li><%= link_to 'Watcher History', @site %><span class="separator"> / </span></li>
   <li>Update Watcher</li>
 </ul>
 <div class="sidebar">
@@ -14,7 +13,7 @@
       <dt>URL*:</dt>
       <dd>Enter the internet address of the page to watch.</dd>
       <dt>Selector*:</dt>
-      <dd>Enter a css3 selector of the area to watch. ie: use <i>body</i> for all page.</dd>
+      <dd>Enter a css3 selector of the area to watch. ie: use <i>body</i> to monitor the entire page.</dd>
       <dt>E-mail:</dt>
       <dd>Enter the e-mail address to be alerted for every updates. By fill in this field you enable the automatic alert.</dd>
     </dl>

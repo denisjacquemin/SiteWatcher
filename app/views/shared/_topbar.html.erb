@@ -1,7 +1,7 @@
 <nav class="topbar">
   <div class="topbar-inner">
     <div class="container">
-      <%= link_to 'Site-Watcher', '/', :class => 'brand' %>
+      <%= link_to 'Columbo', '/', :class => 'brand' %>
       <ul class="nav">
         <li class="active"><%= link_to 'Watchers', sites_path %></li>
         <li><%= link_to 'People', '' %></li>
@@ -11,12 +11,12 @@
         <li class="dropdown" data-dropdown="dropdown" >
           <a href="#" class="dropdown-toggle">Settings</a>
           <ul class="dropdown-menu">
-            <li><%= link_to 'Click Me', '' %></li>
+            <li><%= link_to 'Application', '' %></li>
             <li class="divider"></li>
-            <li><a href="#">Profile</a></li>
+            <li><%= link_to 'Account', account_path %></li>
           </ul>
         </li>
-        <li><%= link_to 'logout', logout_path %></li>
+        <li><%= link_to 'Logout', logout_path %></li>
       </ul>
     </div>
   </div>

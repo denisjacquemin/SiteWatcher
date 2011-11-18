@@ -1,18 +1,9 @@
-General
-  1. Securiser l'application
 
 
 Watchers
-  2. ajouter/deleter un Site/Selector
-  3. scheduler l'enregistrement d'une version de snippet
   4. Visualiser les diff par date
   6. scheduler l'envoi d'un email si il y a une difference
-  
-  
-  a. un job qui enregistre une fois par jour les snippets pojr chaque site (fetch_snippets.rake)
-  b. un job qui calcul les difference et genere une image (s3) (detect_changes)
-  c. un job qui envoi un email (avec image s3) si une difference a ete detectee
-  
+    
 People
   1. form (firstname, lastname), affichage des title et company depuis linkedin
 
@@ -22,14 +13,10 @@ Filters
   
 todo:
 
-- scheduler fetch_snippets 5h
 - scheduler detect_changes 6h
-- creer tache send_alerts qui envoi un email si une difference a ete detectee
-
 
 Ce soir 
 - pb d'ebncoding
-- faire fonctionner wkimage sur heroku, verifier si le bin est bien executable
-- utiliser les pass s3 en prod
+- faire fonctionner wkimage sur heroku
 
 

@@ -29,7 +29,7 @@
     </div>
     
     <div class="clearfix">
-      <%= f.label :selector, 'Selector *' %>
+      <%= f.label :selector, 'Area *' %>
       <div class="input">
         <%= f.text_field :selector, :class => 'xlarge' %>
         <span class="help-block">ie: <i>#content > .news</i></span>
@@ -46,11 +46,11 @@
   </fieldset>
     
   <div class="actions">
-    <%= f.submit :class => 'btn large primary' %>
+    <%= f.submit :class => 'btn primary' %>
     &nbsp;&nbsp;<%= link_to 'Cancel', :back %>
     <% unless @site.new_record? %>
       <div class="right">
-        <%= link_to 'Delete', @site, confirm: 'Are you sure?', method: :delete, :class => 'btn danger ', 'data-skip-pjax' => true%>
+        <%= link_to 'Delete', @site, confirm: 'Are you sure?', method: :delete, :class => 'btn danger ', 'data-skip-pjax' => true %>
       </div>
     <% end %>
   </div>
