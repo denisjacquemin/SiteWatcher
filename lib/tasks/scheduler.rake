@@ -78,21 +78,28 @@ task :detect_changes => :environment do
           html = html.gsub(src, src_full_url)
         end        
         
-        #kit = IMGKit.new(html, :quality => 70)
         
-        #css << open('http://sitewatcher.herokuapp.com/stylesheets/diff.css')
-        #kit.stylesheets = css
-
+        htmlfile = File.new("#{site.name}.html", 'w') 
+        htmlfile.puts html
+        
         #uploader = SnapshotUploader.new
         difference = Difference.new
-        difference.htmlfile = File.open("#{site.name}.html", 'w') {|f| f.write(html) }
+#        difference.htmlfile = File.open("#{site.name}.html", 'w') {|f| f.write(html) }
+        difference.htmlfile = htmlfile
+        difference.site_id = site.id
         difference.save!
-        #difference.site_id = site.id
-        #file = kit.to_file("#{site.name}.jpg")
-        #difference.snapshot = File.open file
-        #difference.old_snippet_id = snippets[0].id
-        #difference.new_snippet_id = snippets[1].id
-        #difference.save! # should save it to s3 and add one record to db
+        
+        kit = IMGKit.new(difference.htmlfile.url, :quality => 70)
+        
+        css << open('http://sitewatcher.herokuapp.com/stylesheets/diff.css')
+        kit.stylesheets = css
+        
+        
+        file = kit.to_file("#{site.name}.jpg")
+        difference.snapshot = File.open file
+        difference.old_snippet_id = snippets[0].id
+        difference.new_snippet_id = snippets[1].id
+        difference.save! # should save it to s3 and add one record to db
         #uploader.store!(open(file))        
       end
     end
