@@ -76,10 +76,7 @@ task :detect_changes => :environment do
           src_full_url = URI.parse(root).merge(URI.parse(src)).to_s # build the absolute path
           puts src_full_url
           html = html.gsub(src, src_full_url)
-        end
-        
-        htmlFile = File.open("#{site.name}.html", 'w') {|f| f.write(html) }
-        
+        end        
         
         #kit = IMGKit.new(html, :quality => 70)
         
@@ -88,7 +85,7 @@ task :detect_changes => :environment do
 
         #uploader = SnapshotUploader.new
         difference = Difference.new
-        difference.html = htmlFile
+        difference.htmlfile = File.open("#{site.name}.html", 'w') {|f| f.write(html) }
         difference.save!
         #difference.site_id = site.id
         #file = kit.to_file("#{site.name}.jpg")
