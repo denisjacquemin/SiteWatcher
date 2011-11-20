@@ -48,17 +48,14 @@ task :detect_changes => :environment do
         # image starts here
         puts "opening #{site.url}"
         doc = Nokogiri::HTML(open(site.url)) # first get the current document as a Nokogiri object
-        stylesheets = doc.css("link[href$='css']") # get all the stylesheets url, later they'll be transform to be sure they are absolute 
+        hrefs = doc.css("[href]") # get all the stylesheets url, later they'll be transform to be sure they are absolute 
 
-        css = stylesheets.collect do |stylesheet| # for each stylesheet url 
-          href = stylesheet.attr('href')  # get the href from href attribute
+        hrefs.each do |href_tag| # for each stylesheet url 
+          href = href_tag.attr('href')  # get the href from href attribute
           
-          stylesheet_full_url = URI.parse(root).merge(URI.parse(href)).to_s # build the absolute path
+          href_full_url = URI.parse(root).merge(URI.parse(href)).to_s # build the absolute path
           
-          puts href
-          puts stylesheet_full_url
-          
-          open(stylesheet_full_url)
+          html = html.gsub(href, href_full_url)
         end
 
         snippet_to_replace = doc.at_css(site.selector)
