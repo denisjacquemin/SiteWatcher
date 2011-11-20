@@ -71,32 +71,20 @@ task :detect_changes => :environment do
         src_tags = doc.css("[src]")
         src_tags.each do |src_tag|
           src = src_tag.attr('src')
-          puts src
           
           src_full_url = URI.parse(root).merge(URI.parse(src)).to_s # build the absolute path
-          puts src_full_url
           html = html.gsub(src, src_full_url)
         end        
         
         
         htmlfile = File.new("#{site.name}.html", 'w') 
         htmlfile.puts html
+
+        puts html
         
-        #uploader = SnapshotUploader.new
         difference = Difference.new
-#        difference.htmlfile = File.open("#{site.name}.html", 'w') {|f| f.write(html) }
         difference.htmlfile = htmlfile
         difference.site_id = site.id
-        difference.save!
-        
-        kit = IMGKit.new(difference.htmlfile.url, :quality => 70)
-        
-        css << open('http://sitewatcher.herokuapp.com/stylesheets/diff.css')
-        kit.stylesheets = css
-        
-        
-        file = kit.to_file("#{site.name}.jpg")
-        difference.snapshot = File.open file
         difference.old_snippet_id = snippets[0].id
         difference.new_snippet_id = snippets[1].id
         difference.save! # should save it to s3 and add one record to db
@@ -106,4 +94,15 @@ task :detect_changes => :environment do
   end
 end
 
-
+desc "Generate images"
+task :generate_images => :environment do
+  differences = Difference.all
+  differences.each do |difference|
+    kit = IMGKit.new(difference.htmlfile.url, :quality => 70)
+    
+    css << open('http://sitewatcher.herokuapp.com/stylesheets/diff.css')
+    kit.stylesheets = css
+    difference.snapshot = kit.to_file("#{site.name}.jpg")
+    difference.save!
+  end
+end
