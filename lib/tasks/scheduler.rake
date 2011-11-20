@@ -48,6 +48,8 @@ task :detect_changes => :environment do
         # image starts here
         puts "opening #{site.url}"
         doc = Nokogiri::HTML(open(site.url)) # first get the current document as a Nokogiri object
+        html = doc.to_html
+        
         hrefs = doc.css("[href]") # get all the stylesheets url, later they'll be transform to be sure they are absolute 
 
         hrefs.each do |href_tag| # for each stylesheet url 
@@ -62,7 +64,6 @@ task :detect_changes => :environment do
         new_snippet = Nokogiri::HTML::DocumentFragment.parse "#{diff_snippet}"    
         snippet_to_replace.replace new_snippet
 
-        html = doc.to_html
         
         # replace all images path with there absolute equivalent
         src_tags = doc.css("[src]")
