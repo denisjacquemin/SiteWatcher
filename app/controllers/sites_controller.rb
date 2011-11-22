@@ -8,8 +8,8 @@ class SitesController < ApplicationController
   # GET /sites
   # GET /sites.json
   def index
-    @sites = Site.all
-
+    @sites = Site.by_user(current_user.id)
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @sites }
@@ -47,6 +47,7 @@ class SitesController < ApplicationController
   # POST /sites.json
   def create
     @site = Site.new(params[:site])
+    @site.user_id = current_user.id
 
     respond_to do |format|
       if @site.save
