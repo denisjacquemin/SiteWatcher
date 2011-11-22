@@ -18,6 +18,16 @@
   <body>
     <div>
       <div data-pjax-container id="signin-box">
+        <% unless flash[:alert].nil? %>
+          <div class="msg">
+            <span class="alert"><%= alert %></span>
+          </div>
+        <% end %>
+        <% unless flash[:error].nil? %>
+          <div class="msg">
+            <span class="error"><%= error %></span>
+          </div>
+        <% end %>
         <%= yield %>
       </div>
     </div>

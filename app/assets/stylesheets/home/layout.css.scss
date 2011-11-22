@@ -4,6 +4,18 @@
     background: whiteSmoke;
     border: 1px solid #E5E5E5;
     width: 335px;
+    .msg {
+        border: 1px solid red;
+        background: #fff;
+        padding: 5px;
+        margin: 0 0 20px 0;
+    }
+    .error {
+        color: red;
+    }
+    .alert {
+        color: red;
+    }
     h2 {
         font-size: 16px;
         line-height: 17px;
@@ -13,6 +25,7 @@
         color: #222;
         font: 81.25% arial, helvetica, sans-serif;
         font-weight: bold;
+        
     }
     label {
         font: 81.25% arial, helvetica, sans-serif;
@@ -53,6 +66,7 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     position: relative;
+    font-size: 13px;
     }
     #rememberme-box {
         height: 16px;
