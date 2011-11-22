@@ -172,7 +172,7 @@ task :generate_images => :environment do
   differences = Difference.where(:snapshot => nil)
   differences.each do |difference|
 
-    kit = IMGKit.new("http://localhost:5000" + difference.htmlfile.url, :quality => 70)
+    kit = IMGKit.new(difference.htmlfile.url, :quality => 70)
     file = kit.to_file("#{difference.site.name}.jpg")
     difference.snapshot = File.open file
     
