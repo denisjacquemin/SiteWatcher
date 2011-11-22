@@ -24,3 +24,7 @@ lesoir local iso.jpg
 TODO.txt
 
 .DS_Store
+
+bin/wkhtmltoimage-amd64-0.11.0_rc2
+
+bin/wkhtmltoimage-amd64-0.11.0_rc1
