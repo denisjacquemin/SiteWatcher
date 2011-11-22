@@ -64,18 +64,21 @@ task :generate_htmlfile => :environment do
           link.set_attribute("type", "text/css")
           head << link 
           
-                 
           # 4.
           snippet_to_replace = original_doc.at_css(site.selector) # get original snippet
           new_snippet = Nokogiri::HTML::DocumentFragment.parse "#{diff_snippet}" # get nokogiri object from the diff_snippet
           snippet_to_replace.replace new_snippet # proceed with replacement
           
-          # 5.     
+          # 5.
+          s = URI.split(site.url)
+          host = s[0] + '://' + s[2]
+          puts host
           original_html = original_doc.to_xhtml
           original_doc.css("[src]").each do |node|
             url = node.attr('src')
-            unless url.start_with?('http://') or url.strip.empty? or url.start_with?('javascript') 
-              original_html.gsub!(url, URI.parse(site.url).merge(URI.parse(url)).to_s)
+            unless url.start_with?('http://') or url.strip.empty? or url.start_with?('javascript')
+              puts URI.parse(host).merge(URI.parse(url)).to_s
+              original_html.gsub!(url, URI.parse(host).merge(URI.parse(url)).to_s)
             end
           end
           original_doc.css("[href]").each do |node|
