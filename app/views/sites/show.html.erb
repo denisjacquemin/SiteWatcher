@@ -10,26 +10,11 @@
       <%= @site.name %>
       <span class="right"><%= link_to 'Update', edit_site_url(@site), :class => 'btn primary' %></span>
     </h1>
-    Choose your update: <%= select_tag "difference", options_from_collection_for_select(@site.differences, "id", "created_at") %>
-    
-    
-    
-    
-    <!--
-    <div id="snippets-selector">    
-    <%= form_tag('compare', :id => "compare_it") do %>
-      <%= hidden_field_tag "selection[site_id]", @site.id %>
-      Compare between
-      <%= select_tag "selection[first]", options_from_collection_for_select(@site.snippets, "id", "created_at") %>
-      and
-      <%= select_tag "selection[second]", options_from_collection_for_select(@site.snippets, "id", "created_at") %>
-      <%= submit_tag 'compare', :class => 'btn primary'%>
+    <%= form_for(:site, :url => show_difference_path, :format => :json, :remote => true, :html => {:id => 'difference-form'}) do |f| %>
+    Choose your update: <%= select_tag "difference", options_from_collection_for_select(@site.differences, "id", "created_at"), :onchange => "$('#difference').closest('form').submit();" %>
     <% end %>
+    <div id="difference-details">
+      
     </div>
-   
-    <div>
-      <iframe id="compare-result" width="100%" height="700px" border="0"><p>toto</p></iframe>
-    </div>
-    -->
   </div>
 </div>

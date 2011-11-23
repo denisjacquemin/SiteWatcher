@@ -88,6 +88,15 @@ class SitesController < ApplicationController
     end
   end
   
+  def show_difference
+    difference = Difference.find(params[:difference])
+    render json: {
+      :snapshot_url => difference.snapshot.url,
+      :htmlfile_url => difference.htmlfile.url,
+      :created_at => "#{ l difference.created_at, :format => :dmy }"
+    }
+  end
+  
   def compare
     site_id = params[:selection][:site_id]
     firstSelection = params[:selection][:first]

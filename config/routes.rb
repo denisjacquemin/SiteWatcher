@@ -1,5 +1,6 @@
 SiteWatcher::Application.routes.draw do
 
+  match 'showdifference' => 'sites#show_difference', :as => :show_difference
   devise_scope :user do
     get "login", :to => "devise/sessions#new"
     get "logout", :to => "devise/sessions#destroy"

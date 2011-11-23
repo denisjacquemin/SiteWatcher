@@ -3,3 +3,8 @@
 
 en:
   hello: "Hello world"
+  
+  time:
+    formats:
+      dmy: "%d/%m/%Y"
+      dmyhm: "%d/%m/%Y %H:%M"
