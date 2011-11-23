@@ -60,7 +60,7 @@ task :generate_htmlfile => :environment do
           head = original_doc.at_css('head')
           link = Nokogiri::XML::Node.new('link', original_doc)
           link.set_attribute("rel", "stylesheet")
-          link.set_attribute("href", "http://localhost:5000/stylesheets/diff.css")
+          link.set_attribute("href", "http://sitewatcher.herokuapp.com/stylesheets/diff.css")
           link.set_attribute("type", "text/css")
           head << link 
           
@@ -76,12 +76,14 @@ task :generate_htmlfile => :environment do
           original_doc.css("[src]").each do |node|
             url = node.attr('src')
             unless url.start_with?('http://') or url.strip.empty? or url.start_with?('javascript')
+              puts "src: #{url} => #{URI.parse(host).merge(URI.parse(url)).to_s}"
               original_html.gsub!(url, URI.parse(host).merge(URI.parse(url)).to_s)
             end
           end
           original_doc.css("[href]").each do |node|
             url = node.attr('href')            
             unless url.start_with?('http://') or url.strip.empty? or url.start_with?('javascript') 
+              puts "href: #{url} => #{URI.parse(host).merge(URI.parse(url)).to_s}"
               original_html.gsub!(url, URI.parse(site.url).merge(URI.parse(url)).to_s)
             end
           end
