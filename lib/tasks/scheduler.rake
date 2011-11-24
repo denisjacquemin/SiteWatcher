@@ -69,14 +69,18 @@ task :generate_htmlfile => :environment do
           new_snippet = Nokogiri::HTML::DocumentFragment.parse "#{diff_snippet}" # get nokogiri object from the diff_snippet
           snippet_to_replace.replace new_snippet # proceed with replacement
           
+          
           # 5.
           s = URI.split(site.url)
           host = s[0] + '://' + s[2]
           original_html = original_doc.to_xhtml
+          
+          puts "before original_html: #{original_html}"
+          
           original_doc.css("[src]").each do |node|
             url = node.attr('src')
             unless url.start_with?('http://') or url.strip.empty? or url.start_with?('javascript')
-              puts "src: #{url} => #{URI.parse(host).merge(URI.parse(url)).to_s}"
+              #puts "src: #{url} => #{URI.parse(host).merge(URI.parse(url)).to_s}"
               original_html.gsub!(url, URI.parse(host).merge(URI.parse(url)).to_s)
             end
           end
@@ -88,6 +92,9 @@ task :generate_htmlfile => :environment do
             end
           end
           
+          puts "after original_html: #{original_html}"
+          
+          
           # 6.
           htmlfile = File.new("#{site.name}.html", 'w') 
           htmlfile.puts original_html
@@ -96,7 +103,7 @@ task :generate_htmlfile => :environment do
           difference.site_id = site.id
           difference.old_snippet_id = snippets[0].id
           difference.new_snippet_id = snippets[1].id
-          difference.save!
+          #difference.save!
           
           puts "htmfile saved for #{site.name}"
           
