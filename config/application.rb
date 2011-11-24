@@ -46,7 +46,7 @@ module SiteWatcher
     config.assets.version = '1.0'
     
     # required by devise
-    config.assets.initialize_on_precompile = true
+    #config.assets.initialize_on_precompile = true
     
     config.to_prepare {
       Devise::SessionsController.layout "devise"

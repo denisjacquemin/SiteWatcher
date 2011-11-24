@@ -75,7 +75,6 @@ task :generate_htmlfile => :environment do
           host = s[0] + '://' + s[2]
           original_html = original_doc.to_xhtml
           
-          puts "before original_html: #{original_html}"
           
           original_doc.css("[src]").each do |node|
             url = node.attr('src')
@@ -90,10 +89,7 @@ task :generate_htmlfile => :environment do
               #puts "href: #{url} => #{URI.parse(host).merge(URI.parse(url)).to_s}"
               original_html.gsub!(url, URI.parse(site.url).merge(URI.parse(url)).to_s)
             end
-          end
-          
-          puts "after original_html: #{original_html}"
-          
+          end          
           
           # 6.
           htmlfile = File.new("#{site.name}.html", 'w') 
@@ -103,7 +99,7 @@ task :generate_htmlfile => :environment do
           difference.site_id = site.id
           difference.old_snippet_id = snippets[0].id
           difference.new_snippet_id = snippets[1].id
-          #difference.save!
+          difference.save!
           
           
           puts "htmfile saved for #{site.name}"
