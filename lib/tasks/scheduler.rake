@@ -87,7 +87,7 @@ task :generate_htmlfile => :environment do
           original_doc.css("[href]").each do |node|
             url = node.attr('href')            
             unless url.start_with?('http://') or url.strip.empty? or url.start_with?('javascript') 
-              puts "href: #{url} => #{URI.parse(host).merge(URI.parse(url)).to_s}"
+              #puts "href: #{url} => #{URI.parse(host).merge(URI.parse(url)).to_s}"
               original_html.gsub!(url, URI.parse(site.url).merge(URI.parse(url)).to_s)
             end
           end
@@ -104,6 +104,7 @@ task :generate_htmlfile => :environment do
           difference.old_snippet_id = snippets[0].id
           difference.new_snippet_id = snippets[1].id
           #difference.save!
+          
           
           puts "htmfile saved for #{site.name}"
           
