@@ -180,7 +180,7 @@ task :generate_images => :environment do
   differences = Difference.where(:snapshot => nil)
   differences.each do |difference|
     s = URI.split(difference.site.url)
-    host = s[0] + '://' + s[2] + ":5000"
+    host = s[0] + '://' + s[2]
     htmlfile_url = URI.parse(host).merge(URI.parse(difference.htmlfile.url)).to_s
     puts "generate image for #{htmlfile_url}"
     kit = IMGKit.new(htmlfile_url, :quality => 70)
