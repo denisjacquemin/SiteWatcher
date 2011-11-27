@@ -73,33 +73,33 @@ task :generate_htmlfile => :environment do
           # 5.
           s = URI.split(site.url)
           host = s[0] + '://' + s[2]
-          original_html = original_doc.to_xhtml
                     
           original_doc.css("[src]").each do |node|
             url = node.attr('src')
             unless url.start_with?('http://') or url.strip.empty? or url.start_with?('javascript')
-              puts "src: #{url} => #{URI.parse(host).merge(URI.parse(url)).to_s}"
-              original_html.gsub!(url, URI.parse(host).merge(URI.parse(url)).to_s)
+              #puts "src: #{url} => #{URI.parse(host).merge(URI.parse(url)).to_s}"
+              #original_html.gsub!(url, URI.parse(host).merge(URI.parse(url)).to_s)
+              node['src'] = URI.parse(host).merge(URI.parse(url)).to_s
             end
           end
           original_doc.css("[href]").each do |node|
             url = node.attr('href')            
             unless url.start_with?('http://') or url.strip.empty? or url.start_with?('javascript') 
-              puts "href: #{url} => #{URI.parse(host).merge(URI.parse(url)).to_s}"
-              original_html.gsub!(url, URI.parse(site.url).merge(URI.parse(url)).to_s)
+              # puts "href: #{url} => #{URI.parse(host).merge(URI.parse(url)).to_s}"
+              # original_html.gsub!(url, URI.parse(site.url).merge(URI.parse(url)).to_s)
+              node['src'] = URI.parse(host).merge(URI.parse(url)).to_s
             end
-          end          
-          
+          end
           
           # 6.
-          #htmlfile = File.new("#{site.name}_#{Time.now.to_i}.html", 'w') 
-          #htmlfile.puts original_html
-          #difference = Difference.new
-          #difference.htmlfile = htmlfile
-          #difference.site_id = site.id
-          #difference.old_snippet_id = snippets[0].id
-          #difference.new_snippet_id = snippets[1].id
-          #difference.save!
+          htmlfile = File.new("#{site.name}_#{Time.now.to_i}.html", 'w') 
+          htmlfile.puts original_doc.to_xhtml
+          difference = Difference.new
+          difference.htmlfile = htmlfile
+          difference.site_id = site.id
+          difference.old_snippet_id = snippets[0].id
+          difference.new_snippet_id = snippets[1].id
+          difference.save!
           
           
           puts "htmfile saved for #{site.name}"
