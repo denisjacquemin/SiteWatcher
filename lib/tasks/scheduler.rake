@@ -74,21 +74,18 @@ task :generate_htmlfile => :environment do
           s = URI.split(site.url)
           host = s[0] + '://' + s[2]
           original_html = original_doc.to_xhtml
-          
-          puts original_html
-          
-          
+                    
           original_doc.css("[src]").each do |node|
             url = node.attr('src')
             unless url.start_with?('http://') or url.strip.empty? or url.start_with?('javascript')
-              #puts "src: #{url} => #{URI.parse(host).merge(URI.parse(url)).to_s}"
+              puts "src: #{url} => #{URI.parse(host).merge(URI.parse(url)).to_s}"
               original_html.gsub!(url, URI.parse(host).merge(URI.parse(url)).to_s)
             end
           end
           original_doc.css("[href]").each do |node|
             url = node.attr('href')            
             unless url.start_with?('http://') or url.strip.empty? or url.start_with?('javascript') 
-              #puts "href: #{url} => #{URI.parse(host).merge(URI.parse(url)).to_s}"
+              puts "href: #{url} => #{URI.parse(host).merge(URI.parse(url)).to_s}"
               original_html.gsub!(url, URI.parse(site.url).merge(URI.parse(url)).to_s)
             end
           end          
