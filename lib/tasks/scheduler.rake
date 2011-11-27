@@ -58,11 +58,9 @@ task :generate_htmlfile => :environment do
           
           # 3.
           head = original_doc.at_css('head')
-          link = Nokogiri::XML::Node.new('link', original_doc)
-          link.set_attribute("rel", "stylesheet")
-          link.set_attribute("href", "http://sitewatcher.herokuapp.com/stylesheets/diff.css")
-          link.set_attribute("type", "text/css")
-          head << link 
+          styleTag = Nokogiri::XML::Node.new "style", original_doc
+          styleTag.content = ".diffins { background: green; color: white; text-decoration: none; } .diffdel { background: red; color: white; } .diffmod { background: orange; color: white; }"
+          head.add_next_sibling(styleTag)
           
           # 4.
           snippet_to_replace = original_doc.at_css(site.selector) # get original snippet
