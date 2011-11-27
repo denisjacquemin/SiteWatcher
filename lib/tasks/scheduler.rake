@@ -75,6 +75,8 @@ task :generate_htmlfile => :environment do
           host = s[0] + '://' + s[2]
           original_html = original_doc.to_xhtml
           
+          puts original_html
+          
           
           original_doc.css("[src]").each do |node|
             url = node.attr('src')
@@ -91,7 +93,6 @@ task :generate_htmlfile => :environment do
             end
           end          
           
-          puts original_html
           
           # 6.
           #htmlfile = File.new("#{site.name}_#{Time.now.to_i}.html", 'w') 
