@@ -11,10 +11,14 @@
       <span class="right"><%= link_to 'Update', edit_site_url(@site), :class => 'btn primary' %></span>
     </h1>
     <%= form_for(:site, :url => show_difference_path, :format => :json, :remote => true, :html => {:id => 'difference-form'}) do |f| %>
-    Choose your update: <%= select_tag "difference", options_from_collection_for_select(@site.differences, "id", "created_at"), :onchange => "$('#difference').closest('form').submit();" %>
+    <div>Choose your update: <%= select_tag "difference", options_from_collection_for_select(@site.differences, "id", "created_at"), :onchange => "$('#difference').closest('form').submit();" %></div>
     <% end %>
+    <% last_difference = Difference.by_site(@site.id).last %>
     <div id="difference-details">
-      
+      <% unless last_difference.nil? and last_difference.snapshot.nil? %>
+        <img id="snapshot" src="<%= last_difference.snapshot.url %>" />
+      <% end %>
     </div>
+    
   </div>
 </div>

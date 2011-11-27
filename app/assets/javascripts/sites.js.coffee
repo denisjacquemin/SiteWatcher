@@ -11,8 +11,6 @@ $('#compare_it').live('ajax:success', (xhr, data, status) ->
   $('#compare-result').replaceWith('<iframe id="compare-result" width="100%" height="700px" border="0">' + data.content + '</iframe>')
 )
 
-$('#difference').live( 'change', (event) -> alert value)
-
 $('#difference-form').live('ajax:success', (xhr, data, status) ->
     displayDifferenceDetails(data)
 )
@@ -20,9 +18,8 @@ $('#difference-form').live('ajax:success', (xhr, data, status) ->
 displayDifferenceDetails = (data) ->
   $('#difference-details').replaceWith('<div id="difference-details">
                                           <div><a href="' + data.htmlfile_url + '" target="_blank">html difference</a></div>
-                                          <div><a href="' + data.snapshot_url + '" target="_blank">snapshot</a></div>
+                                          <div><img id="snapshot" src="' + data.snapshot_url + '" /></div>
                                           <div>Created at: ' + data.created_at + '</div>
-                                        
                                         </div>')
                                         
 

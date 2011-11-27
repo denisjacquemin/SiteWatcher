@@ -165,6 +165,7 @@ task :detect_changes => :environment do
         difference = Difference.new
         difference.htmlfile = htmlfile
         difference.site_id = site.id
+        difference.user_id = site.user_id
         difference.old_snippet_id = snippets[0].id
         difference.new_snippet_id = snippets[1].id
         difference.save! # should save it to s3 and add one record to db
@@ -178,9 +179,12 @@ desc "Generate images"
 task :generate_images => :environment do
   differences = Difference.where(:snapshot => nil)
   differences.each do |difference|
-
-    kit = IMGKit.new(difference.htmlfile.url, :quality => 70)
-    file = kit.to_file("#{difference.site.name}.jpg")
+    s = URI.split(difference.site.url)
+    host = s[0] + '://' + s[2] + ":5000"
+    htmlfile_url = URI.parse(host).merge(URI.parse(difference.htmlfile.url)).to_s
+    puts "generate image for #{htmlfile_url}"
+    kit = IMGKit.new(htmlfile_url, :quality => 70)
+    file = kit.to_file("#{difference.site.name}_#{Time.now.to_i}.jpg")
     difference.snapshot = File.open file
     
     difference.save!
