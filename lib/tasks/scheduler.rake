@@ -87,19 +87,21 @@ task :generate_htmlfile => :environment do
             unless url.start_with?('http://') or url.strip.empty? or url.start_with?('javascript') 
               # puts "href: #{url} => #{URI.parse(host).merge(URI.parse(url)).to_s}"
               # original_html.gsub!(url, URI.parse(site.url).merge(URI.parse(url)).to_s)
-              node['src'] = URI.parse(host).merge(URI.parse(url)).to_s
+              node['href'] = URI.parse(host).merge(URI.parse(url)).to_s
             end
           end
           
+          puts original_doc.to_xhtml
+          
           # 6.
-          htmlfile = File.new("#{site.name}_#{Time.now.to_i}.html", 'w') 
-          htmlfile.puts original_doc.to_xhtml
-          difference = Difference.new
-          difference.htmlfile = htmlfile
-          difference.site_id = site.id
-          difference.old_snippet_id = snippets[0].id
-          difference.new_snippet_id = snippets[1].id
-          difference.save!
+          #htmlfile = File.new("#{site.name}_#{Time.now.to_i}.html", 'w') 
+          #htmlfile.puts original_doc.to_xhtml
+          #difference = Difference.new
+          #difference.htmlfile = htmlfile
+          #difference.site_id = site.id
+          #difference.old_snippet_id = snippets[0].id
+          #difference.new_snippet_id = snippets[1].id
+          #difference.save!
           
           
           puts "htmfile saved for #{site.name}"
