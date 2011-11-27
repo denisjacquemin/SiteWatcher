@@ -91,15 +91,17 @@ task :generate_htmlfile => :environment do
             end
           end          
           
+          puts original_html
+          
           # 6.
-          htmlfile = File.new("#{site.name}.html", 'w') 
-          htmlfile.puts original_html
-          difference = Difference.new
-          difference.htmlfile = htmlfile
-          difference.site_id = site.id
-          difference.old_snippet_id = snippets[0].id
-          difference.new_snippet_id = snippets[1].id
-          difference.save!
+          #htmlfile = File.new("#{site.name}_#{Time.now.to_i}.html", 'w') 
+          #htmlfile.puts original_html
+          #difference = Difference.new
+          #difference.htmlfile = htmlfile
+          #difference.site_id = site.id
+          #difference.old_snippet_id = snippets[0].id
+          #difference.new_snippet_id = snippets[1].id
+          #difference.save!
           
           
           puts "htmfile saved for #{site.name}"
