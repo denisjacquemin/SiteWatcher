@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111125070231) do
+ActiveRecord::Schema.define(:version => 20111122065728) do
 
   create_table "differences", :force => true do |t|
     t.integer  "site_id"
@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(:version => 20111125070231) do
     t.integer  "old_snippet_id"
     t.integer  "new_snippet_id"
     t.string   "htmlfile"
-    t.integer  "user_id"
   end
 
   create_table "sites", :force => true do |t|

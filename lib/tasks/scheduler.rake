@@ -25,7 +25,7 @@ end
 
 desc "Send Alerts"
 task :send_alerts => :environment do
-  differences = Difference.all
+  differences = Difference.where(:alert_sent => false)
   differences.each do |difference|
     AlertMailer.difference_found_email(difference).deliver
   end
