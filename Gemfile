@@ -23,7 +23,7 @@ gem 'carrierwave'
 gem 'fog'
 gem 'thin'
 gem 'pjax_rails'
-
+gem 'mechanize'
 
 
 # Gems used only for assets and not required
