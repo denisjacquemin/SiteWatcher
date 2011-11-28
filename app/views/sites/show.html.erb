@@ -15,7 +15,7 @@
     <% end %>
     <% last_difference = Difference.by_site(@site.id).last %>
     <div id="difference-details">
-      <% unless last_difference.nil? and last_difference.snapshot.nil? %>
+      <% unless last_difference.nil? or last_difference.snapshot.nil? %>
         <img id="snapshot" src="<%= last_difference.snapshot.url %>" />
       <% end %>
     </div>

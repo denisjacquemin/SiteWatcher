@@ -1,4 +1,4 @@
-<%= form_for(@person) do |f| %>
+<%= form_for(@person, :html => { :class => "form-stacked" }) do |f| %>
   <% if @person.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@person.errors.count, "error") %> prohibited this person from being saved:</h2>
@@ -11,27 +11,31 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :firstname %><br />
-    <%= f.text_field :firstname %>
-  </div>
-  <div class="field">
-    <%= f.label :lastname %><br />
-    <%= f.text_field :lastname %>
-  </div>
-  <div class="field">
-    <%= f.label :linkedinid %><br />
-    <%= f.text_field :linkedinid %>
-  </div>
-  <div class="field">
-    <%= f.label :jobtitle %><br />
-    <%= f.text_field :jobtitle %>
-  </div>
-  <div class="field">
-    <%= f.label :company %><br />
-    <%= f.text_field :company %>
-  </div>
+  <fieldset> 
+    <div class="clearfix">
+      <%= f.label :firstname, 'Firstname *' %>
+      <div class="input">
+        <%= f.text_field :firstname, :class => 'xlarge' %>
+        <span class="help-block">ie: <i>Michael</i></span>
+      </div>
+    </div>
+    
+    <div class="clearfix">
+      <%= f.label :lastname, 'Lastname *' %>
+      <div class="input">
+        <%= f.text_field :lastname, :class => 'xlarge' %>
+        <span class="help-block">ie: <i>Jackson</i></span>
+      </div>
+    </div>
+  </fieldset>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class => 'btn primary' %>
+    &nbsp;&nbsp;<%= link_to 'Cancel', :back %>
+    <% unless @person.new_record? %>
+      <div class="right">
+        <%= link_to 'Delete', @person, confirm: 'Are you sure?', method: :delete, :class => 'btn danger ', 'data-skip-pjax' => true %>
+      </div>
+    <% end %>
   </div>
 <% end %>

@@ -1,6 +1,22 @@
-<h1>Editing person</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @person %> |
-<%= link_to 'Back', people_path %>
+<ul class="breadcrumb">
+  <li><%= link_to 'Listing People', sites_path %><span class="separator"> / </span></li>
+  <li>Editing Person</li>
+</ul>
+<div class="sidebar">
+  <div class="notice">
+    <h4>Description</h4>
+    <p>Use this form to create a new Person.</br> <strong>All fields with a * are required</strong>.</p>
+    <dl>
+      <dt>Firstname*:</dt>
+      <dd>Enter the Firstname.</dd>
+      <dt>Lastname*:</dt>
+      <dd>Enter the lastname.</dd>
+    </dl>
+  </div>
+</div>
+<div class="content">
+  <div class="block">
+    <h1>Editing Person</h1>
+    <%= render 'form' %>
+  </div>
+</div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111127191436) do
+ActiveRecord::Schema.define(:version => 20111128072011) do
 
   create_table "differences", :force => true do |t|
     t.integer  "site_id"
@@ -23,6 +23,16 @@ ActiveRecord::Schema.define(:version => 20111127191436) do
     t.string   "htmlfile"
     t.integer  "user_id"
     t.boolean  "alert_sent",     :default => false
+  end
+
+  create_table "people", :force => true do |t|
+    t.string   "firstname"
+    t.string   "lastname"
+    t.string   "linkedinid"
+    t.string   "jobtitle"
+    t.string   "company"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "sites", :force => true do |t|

@@ -159,8 +159,6 @@ task :detect_changes => :environment do
         
         htmlfile = File.new("test.html", 'w') 
         htmlfile.puts html
-
-        puts html
         
         difference = Difference.new
         difference.htmlfile = htmlfile

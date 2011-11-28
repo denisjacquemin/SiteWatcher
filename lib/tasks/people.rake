@@ -13,6 +13,6 @@ task :people => :environment do
   # submit the form
   agent.submit(login_form, login_form.buttons.first)
   
-  # scrapping begins, get the 
+  # scrapping begins, get the h1
   puts agent.page.at('h1')
 end

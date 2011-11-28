@@ -1,31 +1,41 @@
-<h1>Listing people</h1>
-
-<table>
-  <tr>
-    <th>Firstname</th>
-    <th>Lastname</th>
-    <th>Linkedinid</th>
-    <th>Jobtitle</th>
-    <th>Company</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @people.each do |person| %>
-  <tr>
-    <td><%= person.firstname %></td>
-    <td><%= person.lastname %></td>
-    <td><%= person.linkedinid %></td>
-    <td><%= person.jobtitle %></td>
-    <td><%= person.company %></td>
-    <td><%= link_to 'Show', person %></td>
-    <td><%= link_to 'Edit', edit_person_path(person) %></td>
-    <td><%= link_to 'Destroy', person, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Person', new_person_path %>
+<ul class="breadcrumb">
+  <li>Listing People</li>
+</ul>
+<div class="sidebar">
+  <div class="notice">
+    <h4>Description</h4>
+    <p>Follow weekly the job title and the company from there linkedin account</p>
+    <h4>Alert</h4>
+    <p>If the field <i>e-mail</i> is filled in, an e-mail is sent when the <i>Watcher</i> detects an update on the selected site area. It contains a screenschot of the page with the updates highlighted.</p>
+    <h4>RSS</h4>
+    <p>An RSS stream is automaticaly created for each <i>Watcher</i>.
+  </div>
+</div>
+<div class="content">
+  <div class="block">
+    <h1>
+      Listing People
+      <span class="right"><%= link_to 'New Person', new_person_path, :class => 'btn primary' %></span>
+    </h1>
+    <table class="zebra-striped">
+      <thead>
+        <tr>
+          <th>Fitstname</th>
+          <th>Lastname</th>
+          <th>Job Title at Company</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @people.each do |person| %>
+          <tr>
+            <td><%= link_to person.firstname, edit_person_url(person) %></td>
+            <td><%= link_to person.lastname, edit_person_url(person) %></td>
+            <td><%= "#{person.jobtitle} at #{person.company}" %></td>
+            <td><span class="label important">rss</span>&nbsp;
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -6,6 +6,12 @@ Watchers
     
 People
   1. form (firstname, lastname), affichage des title et company depuis linkedin
+  
+  Model: People (firstname:string, :lastname:string, linkedin_id:string, jobtitle:string, company:string)
+  
+  rake task qui fetch les jobtitle et company pour chaque Person
+    si linkedin_id est not nil? alors l'utiliser 
+    sinon utiliser le search de linkedin
 
 Filters
   Afficher des infos d'un site base sur les class et ids css3
