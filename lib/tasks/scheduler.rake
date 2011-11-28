@@ -24,7 +24,7 @@ task :fetch_snippets => :environment do
 end
 
 desc "Send Alerts"
-task :send_alerts => :environment do
+task :send_alertgithubgithubs => :environment do
   differences = Difference.where(:alert_sent => false)
   differences.each do |difference|
     AlertMailer.difference_found_email(difference).deliver
