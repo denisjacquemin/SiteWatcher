@@ -1,5 +1,5 @@
-desc "People"
-task :people => :environment do
+desc "Test People"
+task :test_people => :environment do
   agent = Mechanize.new
   
   # get the page and the form
@@ -15,4 +15,51 @@ task :people => :environment do
   
   # scrapping begins, get the h1
   puts agent.page.at('h1')
+end
+
+desc "People"
+task :people => :environment do
+  agent = Mechanize.new
+  
+  Person.all.each do |person|
+  
+    # get linkedin homepage
+    home_page = agent.get('http://www.linkedin.com/')
+    
+    # get search form
+    search_form = home_page.form('searchForm')
+  
+    # fill in fields
+    search_form['first'] = person.firstname
+    search_form['last'] = person.lastname
+  
+    # submit the form
+    begin
+      agent.submit(search_form, search_form.buttons.first)
+      vcards = agent.page.search('.vcard')
+      vcards.each_with_index do |vcard, index|
+        data = vcard.search('.vcard-basic .title').text()
+        person.jobtitle = data
+        person.save
+        puts "#{index}. found data for #{person.firstname} #{person.lastname}: #{data}"
+      end
+    rescue Timeout::Error
+        puts "  caught Timeout::Error !"
+        retry
+    rescue Mechanize::ResponseCodeError => e
+        case e.response_code
+          when "502"
+            puts "  caught Net::HTTPBadGateway !"
+            retry
+          when "404"
+            puts "  caught Net::HTTPNotFound for #{person.firstname} #{person.lastname}!"
+          else
+            puts "  caught Excepcion !" + e.response_code
+        end
+    end
+      
+    
+
+    
+  end
 end
