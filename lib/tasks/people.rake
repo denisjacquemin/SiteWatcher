@@ -38,9 +38,10 @@ task :people => :environment do
       agent.submit(search_form, search_form.buttons.first)
       vcards = agent.page.search('.vcard')
       vcards.each_with_index do |vcard, index|
-        data = vcard.search('.vcard-basic .title').text()
-        person.jobtitle = data
-        person.save
+        title = vcard.search('.vcard-basic .title').text()
+        info = new Information
+        info.title = title
+        info.save
         puts "#{index}. found data for #{person.firstname} #{person.lastname}: #{data}"
       end
     rescue Timeout::Error

@@ -23,7 +23,7 @@
         <%= f.file_field :csv %>
         <br>
         <%= f.submit 'Upload', :class => 'btn primary small', :id => "submit-upload"%>
-        &nbsp;&nbsp;<%= link_to_function 'close', "$('#upload-form').slideUp()" %>
+        &nbsp;&nbsp;<%= link_to_function 'Cancel', "$('#upload-form').slideUp()" %>
       <% end %>
     </div>
     <table class="zebra-striped">
@@ -31,8 +31,7 @@
         <tr>
           <th>Fitstname</th>
           <th>Lastname</th>
-          <th>Job Title at Company</th>
-          <th></th>
+          <th>Title</th>
         </tr>
       </thead>
       <tbody>
@@ -40,8 +39,7 @@
           <tr>
             <td><%= link_to person.firstname, edit_person_url(person) %></td>
             <td><%= link_to person.lastname, edit_person_url(person) %></td>
-            <td><%= "#{person.jobtitle}" %></td>
-            <td><span class="label important">rss</span>&nbsp;
+            <td><%= "#{person.current_title}" %></td>
           </tr>
         <% end %>
       </tbody>

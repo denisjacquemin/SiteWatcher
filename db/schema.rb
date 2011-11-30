@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111128072011) do
+ActiveRecord::Schema.define(:version => 20111130174858) do
 
   create_table "differences", :force => true do |t|
     t.integer  "site_id"
@@ -25,12 +25,21 @@ ActiveRecord::Schema.define(:version => 20111128072011) do
     t.boolean  "alert_sent",     :default => false
   end
 
+  create_table "information", :force => true do |t|
+    t.string   "title"
+    t.string   "region"
+    t.string   "industry"
+    t.boolean  "iscurrent"
+    t.string   "linkedin_url"
+    t.text     "comment"
+    t.integer  "person_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "people", :force => true do |t|
     t.string   "firstname"
     t.string   "lastname"
-    t.string   "linkedinid"
-    t.string   "jobtitle"
-    t.string   "company"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

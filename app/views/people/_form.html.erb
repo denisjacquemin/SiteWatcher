@@ -27,6 +27,30 @@
         <span class="help-block">ie: <i>Jackson</i></span>
       </div>
     </div>
+    <% unless @person.new_record? or @person.informations.empty? %>
+      <table class="zebra-striped">
+        <thead>
+          <tr>
+            <th>Valid</th>
+            <th>Title</th>
+            <th>Region</th>
+            <th>Industry</th>
+            <th>Profiles</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @person.informations.each do |info| %>
+          <tr>
+            <td><input type="radio" /></td>
+            <td><%= info.title  %></td>
+            <td><%= info.region %></td>
+            <td><%= info.industry %></td>
+            <td><%= info.linkedin_url %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    <% end %>  
   </fieldset>
 
   <div class="actions">
