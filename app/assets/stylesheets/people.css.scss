@@ -1,3 +1,17 @@
 // Place all the styles related to the People controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#upload-form {
+    height:100px;
+    label {
+        line-height:35px;
+        font-weight:bold;
+        font-size:13px;
+        padding:0;
+        margin:0 20px 0 0;
+    }
+    #submit-upload {
+        margin: 10px 0 0 0;
+    }
+}

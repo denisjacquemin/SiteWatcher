@@ -1,4 +1,5 @@
 class PeopleController < ApplicationController
+
   # GET /people
   # GET /people.json
   def index
@@ -79,5 +80,14 @@ class PeopleController < ApplicationController
       format.html { redirect_to people_url }
       format.json { head :ok }
     end
+  end
+  
+  def upload_csv
+    require 'csv'
+    
+    file = CSV.parse(params[:person][:csv].tempfile)
+    file.each do |row|
+      Person.create(:firstname => row[0], :lastname => row[1])
+    end  
   end
 end

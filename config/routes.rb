@@ -1,5 +1,6 @@
 SiteWatcher::Application.routes.draw do
 
+  match 'people/upload_csv' => 'people#upload_csv'
   resources :people
 
   match 'showdifference' => 'sites#show_difference', :as => :show_difference
