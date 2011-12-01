@@ -90,4 +90,17 @@ class PeopleController < ApplicationController
       Person.create(:firstname => row[0], :lastname => row[1])
     end  
   end
+  
+  def refresh
+    person = Person.find(params[:id])
+    fetcher_linkedin = Linkedin.new
+    info = fetcher_linkedin.fetch_informations(person)
+    
+    if info.nil?
+      render json: { :title => 'Not Found' }
+    else
+      render json: { :title => info.title }
+    end
+
+  end
 end

@@ -40,6 +40,18 @@ html {
                 }
             }
             
+            .no-data {
+                width: 100%;
+                text-align:center;
+                padding: 60px 0;
+                p {
+                  font-size: 35px;
+                  font-weight: bold;
+                  color: #aaa;
+                  margin:40px;
+                }
+            }
+            
             form {
               margin: 0 -20px;
               label {

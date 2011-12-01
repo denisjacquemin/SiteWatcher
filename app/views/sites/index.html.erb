@@ -17,8 +17,13 @@
   <div class="block">
     <h1>
       Listing Watchers
-      <span class="right"><%= link_to 'New Watcher', new_site_path, :class => 'btn primary' %></span>
+      <% unless @sites.empty? %>
+        <span class="right"><%= link_to 'New Watcher', new_site_path, :class => 'btn primary' %></span>
+      <% end %>
     </h1>
+    <% if @sites.empty? %>
+      <div class="no-data"><p>No Watcher yet!</p><p><%= link_to 'Create Watcher', new_site_path, :class => 'btn primary large' %></p></div>
+    <% else %>
     <table class="zebra-striped">
       <thead>
         <tr>
@@ -38,5 +43,6 @@
         <% end %>
       </tbody>
     </table>
+    <% end %>
   </div>
 </div>
