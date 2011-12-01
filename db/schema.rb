@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111130174858) do
+ActiveRecord::Schema.define(:version => 20111201065542) do
 
   create_table "differences", :force => true do |t|
     t.integer  "site_id"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(:version => 20111130174858) do
     t.string   "lastname"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "linkedin_information_id"
   end
 
   create_table "sites", :force => true do |t|

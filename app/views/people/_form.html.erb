@@ -39,9 +39,9 @@
           </tr>
         </thead>
         <tbody>
-        <% @person.informations.each do |info| %>
+        <% @person.informations.currents.each do |info| %>
           <tr>
-            <td><input type="radio" /></td>
+            <td><%= f.radio_button :linkedin_information_id, info.id%></td>
             <td><%= info.title  %></td>
             <td><%= info.region %></td>
             <td><%= info.industry %></td>

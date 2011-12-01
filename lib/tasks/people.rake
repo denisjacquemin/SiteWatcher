@@ -22,7 +22,9 @@ task :people => :environment do
   agent = Mechanize.new
   
   Person.all.each do |person|
-  
+    
+    puts "### #{person.firstname} #{person.lastname}"
+    
     # get linkedin homepage
     home_page = agent.get('http://www.linkedin.com/')
     
@@ -35,14 +37,17 @@ task :people => :environment do
   
     # submit the form
     begin
+      sleep(10)
       agent.submit(search_form, search_form.buttons.first)
       vcards = agent.page.search('.vcard')
       vcards.each_with_index do |vcard, index|
         title = vcard.search('.vcard-basic .title').text()
-        info = new Information
+        info = Information.new
         info.title = title
+        info.person_id = person.id
+        info.iscurrent = true
         info.save
-        puts "#{index}. found data for #{person.firstname} #{person.lastname}: #{data}"
+        puts "#{index}. found data for #{person.firstname} #{person.lastname}: #{title}"
       end
     rescue Timeout::Error
         puts "  caught Timeout::Error !"
