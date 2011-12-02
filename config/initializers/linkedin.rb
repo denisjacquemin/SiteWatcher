@@ -20,11 +20,17 @@ class Linkedin
       info = nil
       vcards.each_with_index do |vcard, index|
         title = vcard.search('.vcard-basic .title').text()
-        info = Information.new
+        linkedin_profile_url = 'http://www.linkedin.com/834hj34348'
+        
+        info = Information.where(:linkedin_url => linkedin_profile_url) # check if the profile is already in db
+        
+        info = Information.new if info.nil? # create a new object if profile not yet in db
+        
         info.title = title
         info.person_id = person.id
         info.iscurrent = true
         info.save
+        
         puts "#{index}. found data for #{person.firstname} #{person.lastname}: #{title}"
       end
       return info
