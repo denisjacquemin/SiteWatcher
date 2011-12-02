@@ -17,9 +17,10 @@ class Linkedin
       # submit the form
       agent.submit(search_form, search_form.buttons.first)
       vcards = agent.page.search('.vcard')
-      info = Information.new
+      info = nil
       vcards.each_with_index do |vcard, index|
         title = vcard.search('.vcard-basic .title').text()
+        info = Information.new
         info.title = title
         info.person_id = person.id
         info.iscurrent = true
