@@ -11,9 +11,8 @@ $('#compare_it').live('ajax:success', (xhr, data, status) ->
   $('#compare-result').replaceWith('<iframe id="compare-result" width="100%" height="700px" border="0">' + data.content + '</iframe>')
 )
 
-$('.refresh').live('ajax:success', (xhr, data, status) ->
-  $(this).prev('.title').val(data)
-)
+# handle refresh of Person.title
+$('.refresh').live('ajax:success', (xhr, data, status) -> $(this).parent().prev().html(data.title) )
 
 $('#difference-form').live('ajax:success', (xhr, data, status) ->
     displayDifferenceDetails(data)
