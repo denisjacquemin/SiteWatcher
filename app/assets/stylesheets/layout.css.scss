@@ -53,7 +53,7 @@ html {
             }
             
             form {
-              margin: 0 -20px;
+              
               label {
                   padding-top: 4px;
                   font-size: 16px;
@@ -73,10 +73,23 @@ html {
             .actions {
                   border-bottom-left-radius: 9px;
                   border-bottom-right-radius: 9px;
-                  margin: 18px 0 0 -20px;
+                  margin: 18px -20px 0 -40px;
+                  padding-left: 40px;
+                  padding-right: 40px;
+
                   .right {
                       float: right;
                   }
+            }
+            table {
+                margin: 15px 0;
+                caption {
+                    font-size: 16px;
+                    font-weight: bold;
+                    padding-bottom: 5px;
+                    border-bottom: 1px solid #eee;
+                    text-align: left;
+                }
             }
         }
       
