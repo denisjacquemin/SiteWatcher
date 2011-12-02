@@ -14,9 +14,7 @@ $('#compare_it').live('ajax:success', (xhr, data, status) ->
 # handle refresh of Person.title
 $('.refresh').live('ajax:success', (xhr, data, status) -> $(this).parent().prev().html(data.title) )
 
-$('#difference-form').live('ajax:success', (xhr, data, status) ->
-    displayDifferenceDetails(data)
-)
+$('#difference-form').live('ajax:success', (xhr, data, status) -> displayDifferenceDetails(data) )
 
 displayDifferenceDetails = (data) ->
   $('#difference-details').replaceWith('<div id="difference-details">
