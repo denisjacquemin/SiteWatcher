@@ -1,9 +1,12 @@
 class PeopleController < ApplicationController
 
+  before_filter :authenticate_user!
+
+
   # GET /people
   # GET /people.json
   def index
-    @people = Person.includes(:informations)
+    @people = Person.includes(:informations).order(:firstname, :lastname).page params[:page]
 
     respond_to do |format|
       format.html # index.html.erb

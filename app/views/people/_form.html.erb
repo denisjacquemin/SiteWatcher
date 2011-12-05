@@ -43,7 +43,11 @@
         <% @person.informations.currents.each do |info| %>
           <tr>
             <td><%= f.radio_button :linkedin_information_id, info.id %></td>
-            <td class="pop" rel="popover" data-placement="above" data-content="<%= info.past %>" data-original-title="Past"><%= info.title  %></td>
+            <td>
+              <%= info.title  %>
+              <% unless info.past.empty? %> 
+                <span class="pop" rel="popover" data-placement="above" data-content="<%= info.past %>" data-original-title="Past">(past)</span>
+              <% end %></td>
             <td><%= info.region %></td>
             <td><%= info.industry %></td>
             <td><%= info.linkedin_url %></td>
@@ -52,6 +56,9 @@
         </tbody>
       </table>
     <% end %>  
+    <script type="text/javascript" charset="utf-8">
+      $('.pop').popover()
+    </script>
   </fieldset>
 
   <div class="actions">
