@@ -20,7 +20,7 @@
       <% end %>
     </h1>
     <div id="upload-form" style="display:none;">
-      <%= form_for :person, :url => { :action => "upload_csv" } do |f| %>
+      <%= form_for :person, :url => { :action => "upload_csv" }, :remote => true do |f| %>
         <%= f.label :csv, "CSV File" %>
         <%= f.file_field :csv %>
         <br>
@@ -55,7 +55,8 @@
             <td><%= link_to person.firstname, edit_person_url(person) %></td>
             <td><%= link_to person.lastname, edit_person_url(person) %></td>
             <td class="title"><%= "#{person.current_title}" %></td>
-            <td><%= link_to 'Refresh', refresh_url(person), :class => 'refresh', :remote => true %></td>
+            <td><img style="display:none" id="spinner" src="/assets/ajax-loader.gif" />
+            <%= link_to 'Refresh', refresh_url(person), :class => 'refresh', :remote => true %></td>
           </tr>
         <% end %>
       </tbody>

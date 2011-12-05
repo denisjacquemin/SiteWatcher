@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111201065542) do
+ActiveRecord::Schema.define(:version => 20111204205252) do
 
   create_table "differences", :force => true do |t|
     t.integer  "site_id"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20111201065542) do
     t.integer  "person_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "past"
   end
 
   create_table "people", :force => true do |t|

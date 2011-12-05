@@ -17,23 +17,34 @@ class Linkedin
       # submit the form
       agent.submit(search_form, search_form.buttons.first)
       vcards = agent.page.search('.vcard')
-      info = nil
+      info = Information.new
       vcards.each_with_index do |vcard, index|
         title = vcard.search('.vcard-basic .title').text()
+        location = vcard.search('.location').text()
+        industry = vcard.search('.industry').text()
+        past = vcard.search('.past-content').text()
         linkedin_profile_url = 'http://www.linkedin.com/834hj34348'
         
-        info = Information.where(:linkedin_url => linkedin_profile_url) # check if the profile is already in db
+        info = Information.where(:linkedin_url => linkedin_profile_url).first # check if the profile is already in db
         
-        info = Information.new if info.nil? # create a new object if profile not yet in db
-        
+        if info.nil?
+          info = Information.new # create a new object if profile not yet in db
+        end 
         info.title = title
+        info.region = location
+        info.industry = industry
         info.person_id = person.id
+        info.past = past
         info.iscurrent = true
         info.save
         
         puts "#{index}. found data for #{person.firstname} #{person.lastname}: #{title}"
       end
-      return info
+      if vcards.size > 1
+        return "found #{vcards.size} profiles(s)"
+      elsif vcards.size == 1
+        return info.title
+      end
     rescue SocketError
       return nil
     rescue Timeout::Error
@@ -43,11 +54,13 @@ class Linkedin
         case e.response_code
           when "502"
             puts "  caught Net::HTTPBadGateway !"
-            retry
+            return "HTTPBadGateway"
           when "404"
             puts "  caught Net::HTTPNotFound for #{person.firstname} #{person.lastname}!"
+            return "Not Found"
           else
-            puts "  caught Excepcion !" + e.response_code
+            puts "  caught Exception !" + e.response_code
+            return "Not Exception"
         end
     end
   end

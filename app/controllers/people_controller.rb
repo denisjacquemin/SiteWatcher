@@ -3,7 +3,7 @@ class PeopleController < ApplicationController
   # GET /people
   # GET /people.json
   def index
-    @people = Person.all
+    @people = Person.includes(:informations)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -86,21 +86,19 @@ class PeopleController < ApplicationController
     require 'csv'
     
     file = CSV.parse(params[:person][:csv].tempfile)
+    people = []
     file.each do |row|
       Person.create(:firstname => row[0], :lastname => row[1])
+      people << [row[0], row[1]]
     end  
+    redirect_to :people
   end
   
   def refresh
     person = Person.find(params[:id])
     fetcher_linkedin = Linkedin.new
-    info = fetcher_linkedin.fetch_informations(person)
+    res = fetcher_linkedin.fetch_informations(person)
     
-    if info.nil?
-      render json: { :title => 'Not Found' }
-    else
-      render json: { :title => info.title }
-    end
-
+    render json: { :title => res }
   end
 end
