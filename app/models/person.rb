@@ -12,4 +12,7 @@ class Person < ActiveRecord::Base
         "found #{infos.count} profile(s)"
       end
   end
+  
+  scope :by_user, lambda { |user_id| where(:user_id => user_id) }  
+  
 end

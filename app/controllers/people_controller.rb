@@ -6,7 +6,7 @@ class PeopleController < ApplicationController
   # GET /people
   # GET /people.json
   def index
-    @people = Person.includes(:informations).order(:firstname, :lastname).page params[:page]
+    @people = Person.by_user(current_user.id).includes(:informations).order(:firstname, :lastname).page params[:page]
 
     respond_to do |format|
       format.html # index.html.erb
@@ -45,6 +45,7 @@ class PeopleController < ApplicationController
   # POST /people.json
   def create
     @person = Person.new(params[:person])
+    @person.user_id = current_user.id
 
     respond_to do |format|
       if @person.save
@@ -91,7 +92,7 @@ class PeopleController < ApplicationController
     file = CSV.parse(params[:person][:csv].tempfile)
     people = []
     file.each do |row|
-      Person.create(:firstname => row[0], :lastname => row[1])
+      Person.create(:firstname => row[0], :lastname => row[1], :user_id => current_user.id)
       people << [row[0], row[1]]
     end  
     redirect_to :people
@@ -104,4 +105,19 @@ class PeopleController < ApplicationController
     
     render json: { :title => res }
   end
+  
+  def export_csv
+    
+    require 'csv'
+    
+    people = Person.includes(:informations).order(:firstname, :lastname)
+    csv_string = CSV.generate do |csv|
+        people.each do |person|
+          csv << [person.firstname, person.lastname]
+        end
+    end
+    
+    send_data csv_string, :filename => 'export.csv'
+  end
+  
 end
