@@ -46,10 +46,11 @@ class Linkedin
         return info.title
       end
     rescue SocketError
-      return nil
+      puts "SocketError"
+      return "Connection Error"
     rescue Timeout::Error
         puts "  caught Timeout::Error !"
-        retry
+        return "Timout Error"
     rescue Mechanize::ResponseCodeError => e
         case e.response_code
           when "502"
