@@ -19,6 +19,14 @@ html {
           box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
       }
       
+      .pop {
+          color: #0069D6;
+      }
+      
+      .pop:hover {
+          text-decoration: underline;
+      }
+      
       div.container-fluid  div.content {
         margin-left: 240px;
       }
