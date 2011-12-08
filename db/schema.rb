@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111206071017) do
+ActiveRecord::Schema.define(:version => 20111207095941) do
 
   create_table "differences", :force => true do |t|
     t.integer  "site_id"
@@ -36,6 +36,17 @@ ActiveRecord::Schema.define(:version => 20111206071017) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "past"
+  end
+
+  create_table "paperjams", :force => true do |t|
+    t.integer  "person_id"
+    t.string   "title"
+    t.string   "company"
+    t.text     "comment"
+    t.string   "photo_url"
+    t.string   "paperjam_profile_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "people", :force => true do |t|
