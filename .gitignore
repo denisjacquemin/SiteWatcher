@@ -56,3 +56,9 @@ Latest news on cnn.com_1322411429.html
 lesoir local_1322411434.html
 
 bin/wkhtmltoimage-amd64-0.10.0_beta2
+
+.DS_Store
+
+TODO.txt
+
+app/.DS_Store
