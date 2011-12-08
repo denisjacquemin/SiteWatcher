@@ -1,6 +1,8 @@
 class Person < ActiveRecord::Base
   #mount_uploader :csv, PeopleUploader
   has_many :informations
+  has_many :paperjams
+
   def current_title
     
       infos = self.informations

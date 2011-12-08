@@ -49,7 +49,8 @@
           <th>Fitstname</th>
           <th>Lastname</th>
           <th>Title</th>
-          <th><%= link_to_function 'Refresh All', "refreshAllPeople()" %></th>
+          <th><%= link_to_function 'Refresh All', "refreshAllPeople($('.refresh'), 0)" %></th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -60,6 +61,7 @@
             <td class="title"><%= "#{person.current_title}" %></td>
             <td><img style="display:none" id="spinner" src="/assets/ajax-loader.gif" />
             <%= link_to 'Refresh', refresh_url(person), :class => 'refresh', :remote => true %></td>
+            <td><%= image_tag 'bootstrap.jpg' %></td>
           </tr>
         <% end %>
       </tbody>

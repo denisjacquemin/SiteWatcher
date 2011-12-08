@@ -55,7 +55,34 @@
         <% end %>
         </tbody>
       </table>
-    <% end %>  
+    <% end %>
+    <% unless @person.new_record? or @person.paperjams.empty? %>
+      <table class="zebra-striped">
+        <caption>Paperjam Profiles</caption>
+        <thead>
+          <tr>
+            <th>Valid</th>
+            <th>Title</th>
+            <th>Company</th>
+            <th>Comment</th>
+            <th>URL</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @person.paperjams.each do |info| %>
+          <tr>
+            <td></td>
+            <td>
+              <%= info.title  %>
+            </td>
+            <td><%= info.company %></td>
+            <td><%= info.comment %></td>
+            <td></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    <% end %> 
     <script type="text/javascript" charset="utf-8">
       $('.pop').popover()
     </script>
