@@ -10,3 +10,7 @@
 //= require pjax
 //= require_tree .
 
+$('.topbar .nav li').click(function() {
+    $('.topbar .nav li.active').removeClass('active');
+    $(this).addClass('active');
+});
