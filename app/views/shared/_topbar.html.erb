@@ -3,8 +3,8 @@
     <div class="container">
       <%= link_to 'webwatcherapp.com', '/', :class => 'brand' %>
       <ul class="nav">
-        <li class="active"><%= link_to 'Watchers', sites_path %></li>
-        <li><%= link_to 'People', people_path %></li>
+        <li <% if controller_name == 'sites' %> class="active"<% end %>><%= link_to 'Watchers', sites_path %></li>
+        <li <% if controller_name == 'people' %> class="active"<% end %>><%= link_to 'People', people_path %></li>
         <!--<li><%= link_to 'Filters', '' %></li>-->
       </ul>
       <ul class="nav secondary-nav">
