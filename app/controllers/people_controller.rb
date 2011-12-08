@@ -100,8 +100,13 @@ class PeopleController < ApplicationController
   
   def refresh
     person = Person.find(params[:id])
-    fetcher_linkedin = Linkedin.new
-    res = fetcher_linkedin.fetch_informations(person)
+    fetcher_linkedin = Fetcher::Linkedin.new
+    res = fetcher_linkedin.fetch(person)
+    
+    fetcher_paperjam = Fetcher::Paperjam.new
+    paperjam_title = fetcher_paperjam.fetch(person)
+    
+    
     
     render json: { :title => res }
   end
