@@ -1,6 +1,6 @@
-class CreatePaperjams < ActiveRecord::Migration
+class CreateInfoPaperjams < ActiveRecord::Migration
   def change
-    create_table :paperjams do |t|
+    create_table :info_paperjams do |t|
       t.integer :person_id
       t.string :title
       t.string :company

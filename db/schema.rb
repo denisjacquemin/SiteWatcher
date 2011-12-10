@@ -25,6 +25,17 @@ ActiveRecord::Schema.define(:version => 20111207095941) do
     t.boolean  "alert_sent",     :default => false
   end
 
+  create_table "info_paperjams", :force => true do |t|
+    t.integer  "person_id"
+    t.string   "title"
+    t.string   "company"
+    t.text     "comment"
+    t.string   "photo_url"
+    t.string   "paperjam_profile_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "information", :force => true do |t|
     t.string   "title"
     t.string   "region"
@@ -36,17 +47,6 @@ ActiveRecord::Schema.define(:version => 20111207095941) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "past"
-  end
-
-  create_table "paperjams", :force => true do |t|
-    t.integer  "person_id"
-    t.string   "title"
-    t.string   "company"
-    t.text     "comment"
-    t.string   "photo_url"
-    t.string   "paperjam_profile_url"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "people", :force => true do |t|

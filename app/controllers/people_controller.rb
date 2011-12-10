@@ -101,14 +101,23 @@ class PeopleController < ApplicationController
   def refresh
     person = Person.find(params[:id])
     fetcher_linkedin = Fetcher::Linkedin.new
-    res = fetcher_linkedin.fetch(person)
+    result = fetcher_linkedin.fetch(person)
+    has_profiles_linkedin = result.has_profiles
+    has_error_linkedin = result.has_error
+    error_message_linkedin = result.error_message
     
     fetcher_paperjam = Fetcher::Paperjam.new
-    paperjam_title = fetcher_paperjam.fetch(person)
+    result = fetcher_paperjam.fetch(person)
+    has_profiles_paperjam = result.has_profiles
     
     
-    
-    render json: { :title => res }
+    render json: { 
+      :title => result.title,
+      :has_profiles_linkedin => has_profiles_linkedin,
+      :has_error_linkedin => has_error_linkedin,
+      :error_message_linkedin => error_message_linkedin,
+      :has_profiles_paperjam => has_profiles_paperjam,
+    }
   end
   
   def export_csv

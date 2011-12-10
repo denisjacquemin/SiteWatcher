@@ -5,6 +5,9 @@ html {
       background: url("/assets/bg.gif") repeat scroll 0 0 #EBEBEB;
       
      .topbar {
+         .topbar-inner {
+             background: url('/assets/twitter_web_sprite_bgs.png') repeat;
+         }
          #spinner {
              float: right;
              display: block;

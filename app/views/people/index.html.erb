@@ -61,7 +61,15 @@
             <td class="title"><%= "#{person.current_title}" %></td>
             <td><img style="display:none" id="spinner" src="/assets/ajax-loader.gif" />
             <%= link_to 'Refresh', refresh_url(person), :class => 'refresh', :remote => true %></td>
-            <td><%= image_tag 'bootstrap.jpg' %></td>
+            <td>
+              <% if person.has_linkedin_profiles? %>
+                <%= image_tag 'linkedin.jpg', :class => 'linkedin-icon', :style => 'display:none' %>
+              <% else %>
+                <%= image_tag 'linkedin.jpg', :class => 'linkedin-icon' %>
+              <% end %>
+              
+              <%= image_tag 'paperjam.jpg', :class => 'paperjam-icon', :style => 'display:none' %>
+            </td>
           </tr>
         <% end %>
       </tbody>

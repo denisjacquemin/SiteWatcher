@@ -8,6 +8,12 @@ function refreshAllPeople(links, index) {
     $.ajax({ url: $(links[index]).attr('href'),
              success: function(data, status, xhr) {
                 $(links[index]).parent().prev('.title').html(data.title);
+                if (data.has_profiles_linkedin == true) {
+                    $(links[index]).parent().parent().find('.linkedin-icon').show();
+                }
+                if (data.has_profiles_paperjam == true) {
+                    $(links[index]).parent().parent().find('.paperjam-icon').show();
+                }
                 $(links[index]).show();
                 $(links[index]).prev('img').hide();
                 refreshAllPeople(links, ++index);

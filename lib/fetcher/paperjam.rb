@@ -12,7 +12,7 @@ module Fetcher
         results_page = agent.get("http://www.google.lu/search?q=paperjam+#{person.firstname}+#{person.lastname}")
 
         results = agent.page.search('li.g')
-        paperjam_info = Paperjam.new
+        paperjam_info = InfoPaperjam.new
         results.each_with_index do |result, index|
           h3 = result.search('h3').text()
           puts "h3 => #{h3}"
@@ -31,28 +31,51 @@ module Fetcher
             break
           end
         end
-        if paperjam_info.nil?
-          return "Not found"
+        result = Result.new
+        if paperjam_info.nil? or paperjam_info.id.nil?
+          result.has_error = true
+          result.error_message = "not found"
+          return result
         else
-          return "found"
+          result.title = paperjam_info.title
+          result.has_profiles = true 
+          return result
         end
       rescue SocketError
         puts "SocketError"
-        return "Connection Error"
+        result = Result.new
+        result.has_error = true
+        result.error_message = "SocketError"
+        return result
       rescue Timeout::Error
-          puts "  caught Timeout::Error !"
-          return "Timout Error"
+          puts "caught Timeout::Error !"
+          result = Result.new
+          result.has_error = true
+          result.error_message = "Timeout::Error"
+          return result
       rescue Mechanize::ResponseCodeError => e
           case e.response_code
             when "502"
               puts "  caught Net::HTTPBadGateway !"
-              return "HTTPBadGateway"
+              result = Result.new
+              
+              result.has_error = true
+              result.error_message = "HTTPBadGateway"
+              return result
             when "404"
               puts "  caught Net::HTTPNotFound for #{person.firstname} #{person.lastname}!"
-              return "Not Found"
+              result = Result.new
+              
+              result.has_error = true
+              result.error_message = "Net::HTTPNotFound"
+              return result
             else
-              puts "  caught Exception !" + e.response_code
-              return "Not Exception"
+              puts "caught Exception !" + e.response_code
+              result = Result.new
+              
+              result.has_error = true
+              result.error_message = "Exception"
+              return result
           end
       end
     end

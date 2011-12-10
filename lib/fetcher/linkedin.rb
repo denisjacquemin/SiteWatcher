@@ -27,11 +27,9 @@ module Fetcher
           past = vcard.search('.past-content').text()
           linkedin_profile_url = 'http://www.linkedin.com/834hj34348'
     
-          info = Information.where(:linkedin_url => linkedin_profile_url).first # check if the profile is already in db
+          #info = Information.where(:linkedin_url => linkedin_profile_url).first # check if the profile is already in db
     
-          if info.nil?
-            info = Information.new # create a new object if profile not yet in db
-          end 
+          info = Information.new # create a new object if profile not yet in db
           info.title = title
           info.region = location
           info.industry = industry
@@ -42,31 +40,57 @@ module Fetcher
     
           puts "#{index}. found data for #{person.firstname} #{person.lastname}: #{title}"
         end
+        result = Result.new
         if vcards.size > 1
-          return "found #{vcards.size} profiles(s)"
+          result.title = "found #{vcards.size} profiles(s)"
+          result.has_profiles = true
+          return result
         elsif vcards.size == 1
-          return info.title
+          result.title = info.title
+          result.has_profiles = true 
+          return result       
         end
       rescue Net::HTTP::Persistent::Error
         puts "Net::HTTP::Persistent::Error "
-        return "Net::HTTP::Persistent::Error"
+        result = Result.new
+        result.has_error = true
+        result.error_message = "Net::HTTP::Persistent::Error"
+        return result
       rescue SocketError
         puts "SocketError"
-        return "Connection Error"
+        result = Result.new
+        result.has_error = true
+        result.error_message = "SocketError"
+        return result
       rescue Timeout::Error
-          puts "  caught Timeout::Error !"
-          return "Timout Error"
+        puts "caught Timeout::Error !"
+        result = Result.new
+        result.has_error = true
+        result.error_message = "Timeout::Error"
+        return result
       rescue Mechanize::ResponseCodeError => e
           case e.response_code
             when "502"
               puts "  caught Net::HTTPBadGateway !"
-              return "HTTPBadGateway"
+              result = Result.new
+              
+              result.has_error = true
+              result.error_message = "HTTPBadGateway"
+              return result
             when "404"
               puts "  caught Net::HTTPNotFound for #{person.firstname} #{person.lastname}!"
-              return "Not Found"
+              result = Result.new
+              
+              result.has_error = true
+              result.error_message = "Net::HTTPNotFound"
+              return result
             else
-              puts "  caught Exception !" + e.response_code
-              return "Not Exception"
+              puts "caught Exception !" + e.response_code
+              result = Result.new
+              
+              result.has_error = true
+              result.error_message = "Exception"
+              return result
           end
       end
     end

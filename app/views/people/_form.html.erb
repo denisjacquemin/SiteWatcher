@@ -56,7 +56,7 @@
         </tbody>
       </table>
     <% end %>
-    <% unless @person.new_record? or @person.paperjams.empty? %>
+    <% unless @person.new_record? or @person.info_paperjams.empty? %>
       <table class="zebra-striped">
         <caption>Paperjam Profiles</caption>
         <thead>
@@ -69,7 +69,7 @@
           </tr>
         </thead>
         <tbody>
-        <% @person.paperjams.each do |info| %>
+        <% @person.info_paperjams.each do |info| %>
           <tr>
             <td></td>
             <td>
