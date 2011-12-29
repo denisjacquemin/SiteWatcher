@@ -23,3 +23,29 @@ Ce soir
 - faire fonctionner wkimage sur heroku
 
 
+
+2011-12-29T08:31:56+00:00 app[web.1]: cache: [GET /person/refresh/192] miss
+2011-12-29T08:31:56+00:00 heroku[router]: GET sitewatcher.herokuapp.com/person/refresh/192 dyno=web.1 queue=0 wait=0ms service=563ms status=200 bytes=128
+2011-12-29T08:31:57+00:00 app[web.1]: 
+2011-12-29T08:31:57+00:00 app[web.1]: 
+2011-12-29T08:31:57+00:00 app[web.1]: Started GET "/person/refresh/165" for 85.201.109.250 at 2011-12-29 08:31:57 +0000
+2011-12-29T08:31:57+00:00 app[web.1]:   Parameters: {"id"=>"165"}
+2011-12-29T08:31:57+00:00 app[web.1]:   Processing by PeopleController#refresh as */*
+2011-12-29T08:31:57+00:00 app[web.1]: Fetcher:Linkedin.fetch(Alexandra Becker)
+2011-12-29T08:31:57+00:00 app[web.1]: 0. found data for Alexandra Becker: E-Commerce (SaaS) Strategic Sales Professional
+2011-12-29T08:31:57+00:00 app[web.1]: Completed 500 Internal Server Error in 661ms
+2011-12-29T08:31:57+00:00 app[web.1]: 
+2011-12-29T08:31:57+00:00 app[web.1]: ActiveRecord::StatementInvalid (PGError: ERROR:  value too long for type character varying(255)
+2011-12-29T08:31:57+00:00 app[web.1]: : INSERT INTO "information" ("comment", "created_at", "industry", "iscurrent", "linkedin_url", "past", "person_id", "region", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"):
+2011-12-29T08:31:57+00:00 app[web.1]:   lib/fetcher/linkedin.rb:39:in `block in fetch'
+2011-12-29T08:31:57+00:00 app[web.1]:   lib/fetcher/linkedin.rb:23:in `each_with_index'
+2011-12-29T08:31:57+00:00 app[web.1]:   lib/fetcher/linkedin.rb:23:in `fetch'
+2011-12-29T08:31:57+00:00 app[web.1]: 
+2011-12-29T08:31:57+00:00 app[web.1]:   app/controllers/people_controller.rb:104:in `refresh'
+2011-12-29T08:31:57+00:00 app[web.1]: 
+2011-12-29T08:31:57+00:00 app[web.1]: cache: [GET /person/refresh/165] miss
+2011-12-29T08:31:57+00:00 heroku[router]: GET sitewatcher.herokuapp.com/person/refresh/165 dyno=web.1 queue=0 wait=0ms service=671ms status=500 bytes=728
+denis-jacquemins-macbook:SiteWatcher denisjacquemin$ 
+
+
+
