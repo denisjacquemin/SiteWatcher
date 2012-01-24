@@ -50,7 +50,6 @@
           <th>Lastname</th>
           <th>Title</th>
           <th><%= link_to_function 'Refresh All', "refreshAllPeople($('.refresh'), 0)" %></th>
-          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -59,10 +58,7 @@
             <td><%= link_to person.firstname, edit_person_url(person) %></td>
             <td><%= link_to person.lastname, edit_person_url(person) %></td>
             <td class="title"><%= "#{person.current_title}" %></td>
-            <td><img style="display:none" id="spinner" src="/assets/ajax-loader.gif" />
-            <%= link_to 'Refresh', refresh_url(person), :class => 'refresh', :remote => true %></td>
-            <td>
-              <% if person.has_linkedin_profiles? %>
+            <td>              <% if person.has_linkedin_profiles? %>
                 <%= image_tag 'linkedin.jpg', :class => 'linkedin-icon', :style => 'display:none' %>
               <% else %>
                 <%= image_tag 'linkedin.jpg', :class => 'linkedin-icon' %>
