@@ -21,4 +21,11 @@ class Person < ActiveRecord::Base
   
   scope :by_user, lambda { |user_id| where(:user_id => user_id) }  
   
+  after_save :queue_fetch # after_save runs both on create and update
+  
+  protected
+  def queue_fetch
+    # add to delayed_fetch_job_queue
+  end
+  
 end
