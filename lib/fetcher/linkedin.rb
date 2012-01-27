@@ -22,28 +22,39 @@ module Fetcher
         info = Information.new
         vcards.each_with_index do |vcard, index|
           # fetch title and linkedin_profile_url
-          # if linkedin_profile_url found => already_exist = true else false
-          # if already_exist == false then fetch everything and create
-          # if already_exist == true then if 
-
           title = vcard.search('.vcard-basic .title').text()
-          location = vcard.search('.location').text()
-          industry = vcard.search('.industry').text()
-          past = vcard.search('.past-content').text()
           linkedin_profile_url = 'http://www.linkedin.com/834hj34348'
+          # if linkedin_profile_url found => already_exist = true else false
+          info = Information.where(:linkedin_url => linkedin_profile_url).first # check if the profile is already in db
+          if info.nil?
+            # if already_exist == false then fetch everything and create
+            
+            location = vcard.search('.location').text()
+            industry = vcard.search('.industry').text()
+            past = vcard.search('.past-content').text()
+            info = Information.new # create a new object if profile not yet in db
+            info.title = title
+            info.region = location
+            info.industry = industry
+            info.person_id = person.id
+            info.past = past
+            info.iscurrent = true
+            info.save
+            puts "#{index}. found new profile for #{person.firstname} #{person.lastname}: #{title}"
 
-          #info = Information.where(:linkedin_url => linkedin_profile_url).first # check if the profile is already in db
-
-          info = Information.new # create a new object if profile not yet in db
-          info.title = title
-          info.region = location
-          info.industry = industry
-          info.person_id = person.id
-          info.past = past
-          info.iscurrent = true
-          info.save
-    
-          puts "#{index}. found data for #{person.firstname} #{person.lastname}: #{title}"
+          else
+            # if already_exist == true then if info.title != title then update all
+            info.old_title = info.title
+            info.title = title
+            info.region = location
+            info.industry = industry
+            info.person_id = person.id
+            info.past = past
+            info.iscurrent = true
+            info.save
+            puts "#{index}. profile updated for #{person.firstname} #{person.lastname}: new title is: #{title}, old title is #{info.old_title}"
+            
+          end
         end
         result = Result.new
         if vcards.size > 1
