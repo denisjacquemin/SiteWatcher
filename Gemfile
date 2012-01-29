@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.1'
+gem 'rails', '3.2.1'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -11,6 +11,7 @@ end
 group :development, :test do
   gem 'sqlite3'
   gem "nice_layout", :path => "/Users/denisjacquemin/Documents/code/github/nice-layout"
+  gem "daemons"
 end
 
 gem 'nokogiri'
@@ -18,19 +19,20 @@ gem 'htmldiff'
 gem "imgkit", "~> 1.3.2"
 gem  'devise'
 
-gem 'twitter-bootstrap-rails'
+gem 'twitter-bootstrap-rails', '~> 1.4.3'
 gem 'carrierwave'
 gem 'fog'
 gem 'thin'
 gem 'pjax_rails'
 gem 'mechanize'
 gem 'kaminari'
+gem 'delayed_job_active_record'
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.1.4'
-  gem 'coffee-rails', '~> 3.1.1'
+  gem 'sass-rails',   '~> 3.2.3'
+  gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
 end
 
