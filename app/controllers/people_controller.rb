@@ -88,6 +88,8 @@ class PeopleController < ApplicationController
   end
   
   def upload_csv
+    require 'CSV'
+    
     file = CSV.parse(params[:person][:csv].tempfile)
     people = []
     file.each do |row|

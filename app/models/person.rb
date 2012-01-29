@@ -26,6 +26,12 @@ class Person < ActiveRecord::Base
   protected
   def queue_fetch
     # add to delayed_fetch_job_queue
+    self.delay.fetch_linkedin
+  end
+  
+  def fetch_linkedin
+    fetcher_linkedin = Fetcher::Linkedin.new
+    fetcher_linkedin.fetch(self)
   end
   
 end

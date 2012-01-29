@@ -25,6 +25,9 @@ module Fetcher
           title = vcard.search('.vcard-basic .title').text()
           linkedin_profile_url = 'http://www.linkedin.com/834hj34348'
           # if linkedin_profile_url found => already_exist = true else false
+          
+          # TODO: use first_or_create!
+          
           info = Information.where(:linkedin_url => linkedin_profile_url).first # check if the profile is already in db
           if info.nil?
             # if already_exist == false then fetch everything and create
