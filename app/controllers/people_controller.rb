@@ -7,7 +7,8 @@ class PeopleController < ApplicationController
   # GET /people.json
   def index
     @people = Person.by_user(current_user.id).includes(:informations).order(:firstname, :lastname).page params[:page]
-
+    @total = Person.by_user(current_user.id).size
+    @processed = Person.by_user(current_user.id).where(:processed => true).size
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @people }
@@ -87,8 +88,6 @@ class PeopleController < ApplicationController
   end
   
   def upload_csv
-    require 'csv'
-    
     file = CSV.parse(params[:person][:csv].tempfile)
     people = []
     file.each do |row|
@@ -121,17 +120,20 @@ class PeopleController < ApplicationController
   end
   
   def export_csv
+    @people = Person.by_user(current_user.id).includes(:informations).order(:firstname, :lastname)
     
-    require 'csv'
-    
-    people = Person.includes(:informations).order(:firstname, :lastname)
-    csv_string = CSV.generate do |csv|
-        people.each do |person|
-          csv << [person.firstname, person.lastname]
-        end
-    end
-    
-    send_data csv_string, :filename => 'export.csv'
-  end
-  
+    filename = "people-#{Time.now.strftime("%d%m%Y")}.csv"
+     if request.env['HTTP_USER_AGENT'] =~ /msie/i
+       headers['Pragma'] = 'public'
+       headers['Content-type'] = 'text/plain'
+       headers['Cache-Control'] = 'no-cache, must-revalidate, post-check=0, pre-check'
+       headers['Content-Disposition'] = "attachment; filename=\"#{filename}\""
+       headers['Expires'] = '0'
+     else
+       headers['Content-type'] ||= 'text/csv'
+       headers['Content-Disposition'] = "attachment; filename=\"#{filename}\""
+     end
+
+     render :layout => false
+  end  
 end

@@ -3,6 +3,18 @@
 </ul>
 <div class="sidebar">
   <div class="notice">
+    <h4>Status</h4>
+    <table id="status">
+      <tbody>
+        <tr><td class="right"><%= @total %></td><td>people</td></tr>
+        <tr><td class="right"><%= @processed %></td><td>processed</td></tr>
+        <tr><td class="right">404</td><td>linkedin found</td></tr>
+        <tr><td class="right">6</td><td>paperjam found</td></tr>
+      </tbody>
+      <tfoot>
+        <tr><td colspan="2">last update on 12 april 2012</td></tr>
+      </tfoot>
+    </table>
     <h4>Description</h4>
     <p>Follow weekly the job title and the company from there linkedin account</p>
     <h4>Alert</h4>
@@ -16,12 +28,9 @@
     <h1>
       Listing People
       <% unless @people.empty? %>
-        <span class="right"><%= link_to_function 'Export', "$('#export-form').slideDown()", :class => 'btn primary' %>&nbsp;&nbsp;<%= link_to_function 'Upload People', "$('#upload-form').slideDown()", :class => 'btn primary' %>&nbsp;&nbsp;<%= link_to 'New Person', new_person_path, :class => 'btn primary' %></span>
+        <span class="right"><%= link_to 'Export', export_people_csv_url(), :class => 'btn primary' %>&nbsp;&nbsp;<%= link_to_function 'Upload People', "$('#upload-form').slideDown()", :class => 'btn primary' %>&nbsp;&nbsp;<%= link_to 'New Person', new_person_path, :class => 'btn primary' %></span>
       <% end %>
     </h1>
-    <div id="export-form" style="display:none;">
-      <%= link_to 'Export csv', export_people_csv_url %>
-    </div>
     <div id="upload-form" style="display:none;">
       <%= form_for :person, :url => { :action => "upload_csv" }, :remote => true do |f| %>
         <%= f.label :csv, "CSV File" %>

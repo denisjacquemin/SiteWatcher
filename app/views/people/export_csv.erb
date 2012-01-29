@@ -1,0 +1,8 @@
+Firstname, Lastname, Title Linkedin
+<%= 
+CSV.generate do |csv|
+  @people.each do |person|
+    csv << [person[:firstname], person[:lastname], 'the title']
+  end
+end
+%>

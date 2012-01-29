@@ -56,6 +56,10 @@ module Fetcher
             
           end
         end
+        if person.processed == false
+          person.processed = true
+          person.save
+        end
         result = Result.new
         if vcards.size > 1
           result.title = "found #{vcards.size} profiles(s)"
