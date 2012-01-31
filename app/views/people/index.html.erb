@@ -28,7 +28,7 @@
     <h1>
       Listing People
       <% unless @people.empty? %>
-        <span class="right"><%= link_to 'Export', export_people_csv_url(), :class => 'btn primary' %>&nbsp;&nbsp;<%= link_to_function 'Upload People', "$('#upload-form').slideDown()", :class => 'btn primary' %>&nbsp;&nbsp;<%= link_to 'New Person', new_person_path, :class => 'btn primary' %></span>
+        <span class="right"><%= link_to 'Export', export_people_csv_url(), 'data-skip-pjax' => true, :class => 'btn primary' %>&nbsp;&nbsp;<%= link_to_function 'Upload People', "$('#upload-form').slideDown()", :class => 'btn primary' %>&nbsp;&nbsp;<%= link_to 'New Person', new_person_path, :class => 'btn primary' %></span>
       <% end %>
     </h1>
     <div id="upload-form" style="display:none;">
