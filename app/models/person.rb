@@ -27,6 +27,7 @@ class Person < ActiveRecord::Base
   def queue_fetch
     # add to delayed_fetch_job_queue
     self.delay.fetch_linkedin
+    self.delay.fetch_paperjam
   end
   
   def fetch_linkedin
@@ -34,4 +35,8 @@ class Person < ActiveRecord::Base
     fetcher_linkedin.fetch(self)
   end
   
+  def fetch_paperjam
+    fetcher_paperjam = Fetcher::Paperjam.new
+    fetcher_paperjam.fetch(self)
+  end
 end
