@@ -122,6 +122,8 @@ class PeopleController < ApplicationController
   end
   
   def export_csv
+    require 'CSV'
+    
     @people = Person.by_user(current_user.id).includes(:informations).order(:firstname, :lastname)
     
     filename = "people-#{Time.now.strftime("%d%m%Y")}.csv"
