@@ -67,7 +67,8 @@
             <td><%= link_to person.firstname, edit_person_url(person) %></td>
             <td><%= link_to person.lastname, edit_person_url(person) %></td>
             <td class="title"><%= "#{person.current_title}" %></td>
-            <td>              <% if person.has_linkedin_profiles? %>
+            <td>              
+              <% if person.has_linkedin_profiles? %>
                 <%= image_tag 'linkedin.jpg', :class => 'linkedin-icon', :style => 'display:none' %>
               <% else %>
                 <%= image_tag 'linkedin.jpg', :class => 'linkedin-icon' %>
