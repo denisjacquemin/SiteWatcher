@@ -1,14 +1,11 @@
-
+ameliorer le look de la page d'erreur
 
 Watchers
   4. Visualiser les diff par date
   6. scheduler l'envoi d'un email si il y a une difference
     
 People
-  export csv
-  tester paperjam
   RSS people par compte
-  icone paperjam et linkedin
   
 Filters
   Afficher des infos d'un site base sur les class et ids css3
@@ -16,7 +13,6 @@ Filters
   
 todo:
 
-- scheduler detect_changes 6h
 
 Ce soir 
 - pb d'ebncoding
@@ -46,6 +42,21 @@ Ce soir
 2011-12-29T08:31:57+00:00 app[web.1]: cache: [GET /person/refresh/165] miss
 2011-12-29T08:31:57+00:00 heroku[router]: GET sitewatcher.herokuapp.com/person/refresh/165 dyno=web.1 queue=0 wait=0ms service=671ms status=500 bytes=728
 denis-jacquemins-macbook:SiteWatcher denisjacquemin$ 
+
+
+
+Person has_many informations
+
+export all informations or only validated informations
+
+=> by default all informations are validated
+=> user can select only one validated
+
+
+export all informations if valid = true
+UPDATE "people" SET "linkedin_information_id" = 29, "updated_at" = '2012-01-31 17:51:33.569505' WHERE "people"."id" = 30
+
+Parameters: {"utf8"=>"✓", "authenticity_token"=>"e5/rUvq4aDUmx1ytGb9ttf6Xu9QBiXegbb682zLDBD4=", "person"=>{"firstname"=>"Aissatou", "lastname"=>"Bathily", "linkedin_information_id"=>"29"}, "commit"=>"Update Person", "id"=>"30"
 
 
 
