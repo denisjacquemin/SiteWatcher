@@ -20,6 +20,8 @@ class Person < ActiveRecord::Base
   end
   
   scope :by_user, lambda { |user_id| where(:user_id => user_id) }  
+  scope :with_validated_informations, includes(:informations).where('information.validated' => true ) #.where(:published => true)
+  
   
   after_save :queue_fetch # after_save runs both on create and update
   
