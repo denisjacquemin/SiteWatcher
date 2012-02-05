@@ -98,7 +98,7 @@ class PeopleController < ApplicationController
   end
   
   def upload_csv
-    require 'CSV'
+    require 'csv'
     
     file = CSV.parse(params[:person][:csv].tempfile)
     people = []
