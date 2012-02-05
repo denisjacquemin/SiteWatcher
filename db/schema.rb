@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120129164605) do
+ActiveRecord::Schema.define(:version => 20120131175015) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(:version => 20120129164605) do
     t.datetime "updated_at"
     t.string   "past"
     t.string   "old_title"
+    t.boolean  "validated"
   end
 
   create_table "people", :force => true do |t|
