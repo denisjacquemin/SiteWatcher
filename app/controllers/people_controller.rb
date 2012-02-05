@@ -63,6 +63,16 @@ class PeopleController < ApplicationController
   # PUT /people/1.json
   def update
     @person = Person.find(params[:id])
+    information_id_validated = params[:person][:linkedin_information_id]
+
+    # set all informations to false except information_id_validated to true   
+    @person.informations.each do |info|
+      unless info.id == information_id_validated.to_i
+        info.update_attribute(:validated, false) 
+      else
+        info.update_attribute(:validated, true) 
+      end
+    end
 
     respond_to do |format|
       if @person.update_attributes(params[:person])
@@ -111,7 +121,6 @@ class PeopleController < ApplicationController
     result = fetcher_paperjam.fetch(person)
     has_profiles_paperjam = result.has_profiles
     
-    
     render json: { 
       :title => result.title,
       :has_profiles_linkedin => has_profiles_linkedin,
@@ -124,7 +133,8 @@ class PeopleController < ApplicationController
   def export_csv
     require 'CSV'
     
-    @people = Person.by_user(current_user.id).includes(:informations).order(:firstname, :lastname)
+    #@people = Person.by_user(current_user.id).includes(:informations).order(:firstname, :lastname)
+    @people = Person.by_user(current_user.id).with_validated_informations.order(:firstname, :lastname)
     
     filename = "people-#{Time.now.strftime("%d%m%Y")}.csv"
      if request.env['HTTP_USER_AGENT'] =~ /msie/i
