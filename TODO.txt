@@ -43,6 +43,9 @@ Ce soir
 2011-12-29T08:31:57+00:00 heroku[router]: GET sitewatcher.herokuapp.com/person/refresh/165 dyno=web.1 queue=0 wait=0ms service=671ms status=500 bytes=728
 denis-jacquemins-macbook:SiteWatcher denisjacquemin$ 
 
+2012-02-05T15:44:57+00:00 app[worker.1]: Fetcher:Paperjam.fetch(Edward Bastin)
+2012-02-05T15:44:57+00:00 app[worker.1]: get => http://www.google.lu/search?q=paperjam+Edward+Bastin
+2012-02-05T15:44:57+00:00 app[worker.1]: [Worker(host:82f10f55-4881-4194-95a2-3965f147c478 pid:1)] Person#fetch_paperjam failed with Encoding::UndefinedConversionError: "\xDC" from ASCII-8BIT to UTF-8 - 2 failed attempts
 
 
 Person has_many informations
@@ -59,4 +62,115 @@ UPDATE "people" SET "linkedin_information_id" = 29, "updated_at" = '2012-01-31 1
 Parameters: {"utf8"=>"✓", "authenticity_token"=>"e5/rUvq4aDUmx1ytGb9ttf6Xu9QBiXegbb682zLDBD4=", "person"=>{"firstname"=>"Aissatou", "lastname"=>"Bathily", "linkedin_information_id"=>"29"}, "commit"=>"Update Person", "id"=>"30"
 
 
+
+
+
+logs on heroku
+
+denis-jacquemins-macbook:SiteWatcher denisjacquemin$ heroku logs
+2012-02-05T15:44:56+00:00 app[worker.1]: get => http://www.google.lu/search?q=paperjam+Charles+Barrows
+2012-02-05T15:44:56+00:00 app[worker.1]: [Worker(host:82f10f55-4881-4194-95a2-3965f147c478 pid:1)] Person#fetch_paperjam failed with Encoding::UndefinedConversionError: "\xDC" from ASCII-8BIT to UTF-8 - 2 failed attempts
+2012-02-05T15:44:56+00:00 app[worker.1]: Fetcher:Paperjam.fetch(Jean Barth)
+2012-02-05T15:44:56+00:00 app[worker.1]: get => http://www.google.lu/search?q=paperjam+Jean+Barth
+2012-02-05T15:44:57+00:00 app[worker.1]: [Worker(host:82f10f55-4881-4194-95a2-3965f147c478 pid:1)] Person#fetch_paperjam failed with Encoding::UndefinedConversionError: "\xDC" from ASCII-8BIT to UTF-8 - 2 failed attempts
+2012-02-05T15:44:57+00:00 app[worker.1]: Fetcher:Paperjam.fetch(Veronique Bascou)
+2012-02-05T15:44:57+00:00 app[worker.1]: get => http://www.google.lu/search?q=paperjam+Veronique+Bascou
+2012-02-05T15:44:57+00:00 app[worker.1]: [Worker(host:82f10f55-4881-4194-95a2-3965f147c478 pid:1)] Person#fetch_paperjam failed with Encoding::UndefinedConversionError: "\xDC" from ASCII-8BIT to UTF-8 - 2 failed attempts
+2012-02-05T15:44:57+00:00 app[worker.1]: Fetcher:Paperjam.fetch(Lindsay Bastin)
+2012-02-05T15:44:57+00:00 app[worker.1]: get => http://www.google.lu/search?q=paperjam+Lindsay+Bastin
+2012-02-05T15:44:57+00:00 app[worker.1]: [Worker(host:82f10f55-4881-4194-95a2-3965f147c478 pid:1)] Person#fetch_paperjam failed with Encoding::UndefinedConversionError: "\xDC" from ASCII-8BIT to UTF-8 - 2 failed attempts
+2012-02-05T15:44:57+00:00 app[worker.1]: Fetcher:Paperjam.fetch(Myriam Bastin)
+2012-02-05T15:44:57+00:00 app[worker.1]: get => http://www.google.lu/search?q=paperjam+Myriam+Bastin
+2012-02-05T15:44:57+00:00 app[worker.1]: [Worker(host:82f10f55-4881-4194-95a2-3965f147c478 pid:1)] Person#fetch_paperjam failed with Encoding::UndefinedConversionError: "\xDC" from ASCII-8BIT to UTF-8 - 2 failed attempts
+2012-02-05T15:44:57+00:00 app[worker.1]: Fetcher:Paperjam.fetch(Edward Bastin)
+2012-02-05T15:44:57+00:00 app[worker.1]: get => http://www.google.lu/search?q=paperjam+Edward+Bastin
+2012-02-05T15:44:57+00:00 app[worker.1]: [Worker(host:82f10f55-4881-4194-95a2-3965f147c478 pid:1)] Person#fetch_paperjam failed with Encoding::UndefinedConversionError: "\xDC" from ASCII-8BIT to UTF-8 - 2 failed attempts
+2012-02-05T15:44:57+00:00 app[worker.1]: Fetcher:Linkedin.fetch(Simon Bateman)
+2012-02-05T15:44:58+00:00 app[worker.1]: [Worker(host:82f10f55-4881-4194-95a2-3965f147c478 pid:1)] Person#fetch_linkedin failed with Encoding::UndefinedConversionError: "\x8B" from ASCII-8BIT to UTF-8 - 2 failed attempts
+2012-02-05T15:44:58+00:00 app[worker.1]: get => http://www.google.lu/search?q=paperjam+Simon+Bateman
+2012-02-05T15:44:58+00:00 app[worker.1]: Fetcher:Paperjam.fetch(Simon Bateman)
+2012-02-05T15:44:58+00:00 app[worker.1]: [Worker(host:82f10f55-4881-4194-95a2-3965f147c478 pid:1)] Person#fetch_paperjam failed with Encoding::UndefinedConversionError: "\xDC" from ASCII-8BIT to UTF-8 - 2 failed attempts
+2012-02-05T15:44:58+00:00 app[worker.1]: Fetcher:Paperjam.fetch(Aissatou Bathily)
+2012-02-05T15:44:58+00:00 app[worker.1]: get => http://www.google.lu/search?q=paperjam+Aissatou+Bathily
+
+12-02-05T15:44:58+00:00 app[worker.1]: [Worker(host:82f10f55-4881-4194-95a2-3965f147c478 pid:1)] Person#fetch_paperjam failed with Encoding::UndefinedConversionError: "\xDC" from ASCII-8BIT to UTF-8 - 2 failed attempts
+2012-02-05T15:44:58+00:00 app[worker.1]: Fetcher:Linkedin.fetch(James Bathurst)
+2012-02-05T15:44:58+00:00 app[worker.1]: 0. found new profile for James Bathurst: Director at Eastnor Castle Estates Company
+2012-02-05T15:44:58+00:00 app[worker.1]: 1. found new profile for James Bathurst: FC at Anglo Indian
+2012-02-05T15:44:58+00:00 app[worker.1]: 2. found new profile for James Bathurst: Director of Education and Training at Balance Gym
+2012-02-05T15:44:58+00:00 app[worker.1]: [Worker(host:82f10f55-4881-4194-95a2-3965f147c478 pid:1)] Person#fetch_linkedin failed with ActiveRecord::StatementInvalid: PGError: ERROR:  value too long for type character varying(255)
+2012-02-05T15:44:58+00:00 app[worker.1]: : INSERT INTO "information" ("comment", "created_at", "industry", "iscurrent", "linkedin_url", "old_title", "past", "person_id", "region", "title", "updated_at", "validated") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id" - 2 failed attempts
+2012-02-05T15:44:59+00:00 app[worker.1]: Fetcher:Paperjam.fetch(James Bathurst)
+2012-02-05T15:44:59+00:00 app[worker.1]: get => http://www.google.lu/search?q=paperjam+James+Bathurst
+2012-02-05T15:44:59+00:00 app[worker.1]: [Worker(host:82f10f55-4881-4194-95a2-3965f147c478 pid:1)] Person#fetch_paperjam failed with Encoding::UndefinedConversionError: "\xDC" from ASCII-8BIT to UTF-8 - 2 failed attempts
+2012-02-05T15:44:59+00:00 app[worker.1]: Fetcher:Paperjam.fetch(Fabien Baudet Escola)
+2012-02-05T15:44:59+00:00 app[worker.1]: get => http://www.google.lu/search?q=paperjam+Fabien+Baudet Escola
+2012-02-05T15:44:59+00:00 app[worker.1]: [Worker(host:82f10f55-4881-4194-95a2-3965f147c478 pid:1)] Person#fetch_paperjam failed with Encoding::UndefinedConversionError: "\xDC" from ASCII-8BIT to UTF-8 - 2 failed attempts
+2012-02-05T15:44:59+00:00 app[worker.1]: get => http://www.google.lu/search?q=paperjam+Anne Marie+Bausch
+2012-02-05T15:44:59+00:00 app[worker.1]: Fetcher:Paperjam.fetch(Anne Marie Bausch)
+2012-02-05T15:44:59+00:00 app[worker.1]: [Worker(host:82f10f55-4881-4194-95a2-3965f147c478 pid:1)] Person#fetch_paperjam failed with Encoding::UndefinedConversionError: "\xDC" from ASCII-8BIT to UTF-8 - 2 failed attempts
+2012-02-05T15:44:59+00:00 app[worker.1]: Fetcher:Paperjam.fetch(Karine Beauvois)
+2012-02-05T15:44:59+00:00 app[worker.1]: get => http://www.google.lu/search?q=paperjam+Karine+Beauvois
+2012-02-05T15:44:59+00:00 app[worker.1]: [Worker(host:82f10f55-4881-4194-95a2-3965f147c478 pid:1)] Person#fetch_paperjam failed with Encoding::UndefinedConversionError: "\xDC" from ASCII-8BIT to UTF-8 - 2 failed attempts
+2012-02-05T15:44:59+00:00 app[worker.1]: get => http://www.google.lu/search?q=paperjam+Philippe+Becker
+2012-02-05T15:44:59+00:00 app[worker.1]: Fetcher:Paperjam.fetch(Philippe Becker)
+2012-02-05T15:44:59+00:00 app[worker.1]: [Worker(host:82f10f55-4881-4194-95a2-3965f147c478 pid:1)] Person#fetch_paperjam failed with Encoding::UndefinedConversionError: "\xDC" from ASCII-8BIT to UTF-8 - 2 failed attempts
+2012-02-05T15:44:59+00:00 app[worker.1]: Fetcher:Paperjam.fetch(Christel Becker)
+2012-02-05T15:44:59+00:00 app[worker.1]: get => http://www.google.lu/search?q=paperjam+Christel+Becker
+2012-02-05T15:44:59+00:00 app[worker.1]: [Worker(host:82f10f55-4881-4194-95a2-3965f147c478 pid:1)] Person#fetch_paperjam failed with Encoding::UndefinedConversionError: "\xDC" from ASCII-8BIT to UTF-8 - 2 failed attempts
+2012-02-05T15:44:59+00:00 app[worker.1]: Fetcher:Linkedin.fetch(Thierry Becker)
+2012-02-05T15:45:00+00:00 app[worker.1]: : INSERT INTO "information" ("comment", "created_at", "industry", "iscurrent", "linkedin_url", "old_title", "past", "person_id", "region", "title", "updated_at", "validated") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id" - 2 failed attempts
+2012-02-05T15:45:00+00:00 app[worker.1]: [Worker(host:82f10f55-4881-4194-95a2-3965f147c478 pid:1)] Person#fetch_linkedin failed with ActiveRecord::StatementInvalid: PGError: ERROR:  value too long for type character varying(255)
+2012-02-05T15:45:00+00:00 app[worker.1]: Fetcher:Paperjam.fetch(Thierry Becker)
+
+-05T15:45:00+00:00 app[worker.1]: get => http://www.google.lu/search?q=paperjam+Thierry+Becker
+2012-02-05T15:45:00+00:00 app[worker.1]: [Worker(host:82f10f55-4881-4194-95a2-3965f147c478 pid:1)] Person#fetch_paperjam failed with Encoding::UndefinedConversionError: "\xDC" from ASCII-8BIT to UTF-8 - 2 failed attempts
+2012-02-05T15:45:00+00:00 app[worker.1]: Fetcher:Linkedin.fetch(Alexandra Becker)
+2012-02-05T15:45:01+00:00 app[worker.1]: [Worker(host:82f10f55-4881-4194-95a2-3965f147c478 pid:1)] Person#fetch_linkedin failed with Encoding::UndefinedConversionError: "\x8B" from ASCII-8BIT to UTF-8 - 2 failed attempts
+2012-02-05T15:45:01+00:00 app[worker.1]: Fetcher:Paperjam.fetch(Alexandra Becker)
+2012-02-05T15:45:01+00:00 app[worker.1]: get => http://www.google.lu/search?q=paperjam+Alexandra+Becker
+2012-02-05T15:45:01+00:00 app[worker.1]: [Worker(host:82f10f55-4881-4194-95a2-3965f147c478 pid:1)] Person#fetch_paperjam failed with Encoding::UndefinedConversionError: "\xDC" from ASCII-8BIT to UTF-8 - 2 failed attempts
+2012-02-05T15:45:01+00:00 app[worker.1]: Fetcher:Paperjam.fetch(Sven Behrends)
+2012-02-05T15:45:01+00:00 app[worker.1]: get => http://www.google.lu/search?q=paperjam+Sven+Behrends
+2012-02-05T15:45:01+00:00 app[worker.1]: [Worker(host:82f10f55-4881-4194-95a2-3965f147c478 pid:1)] Person#fetch_paperjam failed with Encoding::UndefinedConversionError: "\xDC" from ASCII-8BIT to UTF-8 - 2 failed attempts
+2012-02-05T15:45:01+00:00 app[worker.1]: Fetcher:Linkedin.fetch(Brahim Ben amar)
+2012-02-05T15:45:02+00:00 app[worker.1]: [Worker(host:82f10f55-4881-4194-95a2-3965f147c478 pid:1)] Person#fetch_linkedin failed with ActiveRecord::StatementInvalid: PGError: ERROR:  value too long for type character varying(255)
+2012-02-05T15:45:02+00:00 app[worker.1]: : INSERT INTO "information" ("comment", "created_at", "industry", "iscurrent", "linkedin_url", "old_title", "past", "person_id", "region", "title", "updated_at", "validated") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id" - 2 failed attempts
+2012-02-05T15:45:02+00:00 app[worker.1]: Fetcher:Paperjam.fetch(Brahim Ben amar)
+2012-02-05T15:45:02+00:00 app[worker.1]: get => http://www.google.lu/search?q=paperjam+Brahim+Ben amar
+2012-02-05T15:45:02+00:00 app[worker.1]: [Worker(host:82f10f55-4881-4194-95a2-3965f147c478 pid:1)] Person#fetch_paperjam failed with Encoding::UndefinedConversionError: "\xDC" from ASCII-8BIT to UTF-8 - 2 failed attempts
+2012-02-05T15:45:02+00:00 app[worker.1]: Fetcher:Linkedin.fetch(Mehdi Benali)
+2012-02-05T15:45:03+00:00 app[worker.1]: [Worker(host:82f10f55-4881-4194-95a2-3965f147c478 pid:1)] Person#fetch_linkedin failed with ActiveRecord::StatementInvalid: PGError: ERROR:  value too long for type character varying(255)
+2012-02-05T15:45:03+00:00 app[worker.1]: : INSERT INTO "information" ("comment", "created_at", "industry", "iscurrent", "linkedin_url", "old_title", "past", "person_id", "region", "title", "updated_at", "validated") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id" - 2 failed attempts
+2012-02-05T15:45:03+00:00 app[worker.1]: Fetcher:Paperjam.fetch(Mehdi Benali)
+2012-02-05T15:45:03+00:00 app[worker.1]: get => http://www.google.lu/search?q=paperjam+Mehdi+Benali
+2012-02-05T15:45:03+00:00 app[worker.1]: [Worker(host:82f10f55-4881-4194-95a2-3965f147c478 pid:1)] Person#fetch_paperjam failed with Encoding::UndefinedConversionError: "\xDC" from ASCII-8BIT to UTF-8 - 2 failed attempts
+2012-02-05T15:45:03+00:00 app[worker.1]: Fetcher:Paperjam.fetch(Jean Benchedli)
+2012-02-05T15:45:03+00:00 app[worker.1]: get => http://www.google.lu/search?q=paperjam+Jean+Benchedli
+2012-02-05T15:45:03+00:00 app[worker.1]: [Worker(host:82f10f55-4881-4194-95a2-3965f147c478 pid:1)] Person#fetch_paperjam failed with Encoding::UndefinedConversionError: "\xDC" from ASCII-8BIT to UTF-8 - 2 failed attempts
+2012-02-05T15:45:03+00:00 app[worker.1]: Fetcher:Paperjam.fetch(Samia Benmelit)
+2012-02-05T15:45:03+00:00 app[worker.1]: get => http://www.google.lu/search?q=paperjam+Samia+Benmelit
+2012-02-05T15:45:03+00:00 app[worker.1]: [Worker(host:82f10f55-4881-4194-95a2-3965f147c478 pid:1)] Person#fetch_paperjam failed with Encoding::UndefinedConversionError: "\xDC" from ASCII-8BIT to UTF-8 - 2 failed attempts
+2012-02-05T15:45:03+00:00 app[worker.1]: Fetcher:Paperjam.fetch(Tanja Berens)
+2012-02-05T15:45:03+00:00 app[worker.1]: get => http://www.google.lu/search?q=paperjam+Tanja+Berens
+2012-02-05T15:45:03+00:00 app[worker.1]: [Worker(host:82f10f55-4881-4194-95a2-3965f147c478 pid:1)] Person#fetch_paperjam failed with Encoding::UndefinedConversionError: "\xDC" from ASCII-8BIT to UTF-8 - 2 failed attempts
+2012-02-05T15:45:03+00:00 app[worker.1]: get => http://www.google.lu/search?q=paperjam+Jessy+Berger
+2012-02-05T15:45:03+00:00 app[worker.1]: Fetcher:Paperjam.fetch(Jessy Berger)
+2012-02-05T15:45:03+00:00 app[worker.1]: [Worker(host:82f10f55-4881-4194-95a2-3965f147c478 pid:1)] Person#fetch_paperjam failed with Encoding::UndefinedConversionError: "\xDC" from ASCII-8BIT to UTF-8 - 2 failed attempts
+2012-02-05T15:45:03+00:00 app[worker.1]: Fetcher:Paperjam.fetch(Renan Bergery)
+2012-02-05T15:45:03+00:00 app[worker.1]: get => http://www.google.lu/search?q=paperjam+Renan+Bergery
+2012-02-05T15:45:03+00:00 app[worker.1]: [Worker(host:82f10f55-4881-4194-95a2-3965f147c478 pid:1)] Person#fetch_paperjam failed with Encoding::UndefinedConversionError: "\xDC" from ASCII-8BIT to UTF-8 - 2 failed attempts
+2012-02-05T15:45:03+00:00 app[worker.1]: Fetcher:Linkedin.fetch(Carole Bernard)
+2012-02-05T15:45:04+00:00 app[worker.1]: 0. found new profile for Carole Bernard: Application Specialist Listed, Indexation and OTC Derivatives
+2012-02-05T15:45:04+00:00 app[worker.1]: 1. found new profile for Carole Bernard: Assistant prof at U of Waterloo
+2012-02-05T15:45:04+00:00 app[worker.1]: 2. found new profile for Carole Bernard: Product Line Manager, fixed telephony EMEA retail channels at Thomson
+2012-02-05T15:45:04+00:00 app[worker.1]: 3. found new profile for Carole Bernard: --
+2012-02-05T15:45:04+00:00 app[worker.1]: [Worker(host:82f10f55-4881-4194-95a2-3965f147c478 pid:1)] Person#fetch_linkedin failed with ActiveRecord::StatementInvalid: PGError: ERROR:  value too long for type character varying(255)
+2012-02-05T15:45:04+00:00 app[worker.1]: : INSERT INTO "information" ("comment", "created_at", "industry", "iscurrent", "linkedin_url", "old_title", "past", "person_id", "region", "title", "updated_at", "validated") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id" - 2 failed attempts
+2012-02-05T15:45:04+00:00 app[worker.1]: Fetcher:Paperjam.fetch(Carole Bernard)
+2012-02-05T15:45:04+00:00 app[worker.1]: get => http://www.google.lu/search?q=paperjam+Carole+Bernard
+2012-02-05T15:45:04+00:00 app[worker.1]: [Worker(host:82f10f55-4881-4194-95a2-3965f147c478 pid:1)] Person#fetch_paperjam failed with Encoding::UndefinedConversionError: "\xDC" from ASCII-8BIT to UTF-8 - 2 failed attempts
+denis-jacquemins-macbook:SiteWatcher denisjacquemin$ heroku scale worker=0
+Scaling worker processes... done, now running 0
+denis-jacquemins-macbook:SiteWatcher denisjacquemin$ 
 
