@@ -45,7 +45,7 @@
             <td><%= f.radio_button :linkedin_information_id, info.id %></td>
             <td>
               <%= info.title  %>
-              <% unless info.past.empty? %> 
+              <% unless info.past.nil? %> 
                 <span class="pop" rel="popover" data-placement="above" data-content="<%= info.past %>" data-original-title="Past">(past)</span>
               <% end %></td>
             <td><%= info.region %></td>
