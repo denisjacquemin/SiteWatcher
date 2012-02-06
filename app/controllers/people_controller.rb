@@ -136,7 +136,7 @@ class PeopleController < ApplicationController
     #@people = Person.by_user(current_user.id).includes(:informations).order(:firstname, :lastname)
     @people = Person.by_user(current_user.id).with_validated_informations.order(:firstname, :lastname)
     
-    filename = "people-#{Time.now.strftime("%d%m%Y")}.csv"
+    filename = "people-#{Time.now.strftime("%d-%m-%Y")}.csv"
      if request.env['HTTP_USER_AGENT'] =~ /msie/i
        headers['Pragma'] = 'public'
        headers['Content-type'] = 'text/plain'
