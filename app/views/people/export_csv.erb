@@ -1,8 +1,10 @@
-Firstname, Lastname, Title Linkedin
+Firstname, Lastname, Title LinkedIn, Region, Industry
 <%= 
 CSV.generate do |csv|
   @people.each do |person|
-    csv << [person[:firstname], person[:lastname], 'the title']
+    person.informations.each do |info|
+      csv << [person[:firstname], person[:lastname], info[:title], info[:region], "'" + info[:industry] + "'"]
+    end
   end
 end
 %>
