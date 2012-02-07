@@ -150,4 +150,11 @@ class PeopleController < ApplicationController
 
      render :layout => false
   end  
+  
+  def status
+    @total = Person.by_user(current_user.id).size
+    @processed = Person.by_user(current_user.id).where(:processed => true).size
+    render :layout => false
+    
+  end
 end
