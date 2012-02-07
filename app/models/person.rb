@@ -4,12 +4,12 @@ class Person < ActiveRecord::Base
   has_many :info_paperjams
 
   def current_title
-    
-      infos = self.informations
-      if infos.empty?
+      informations = self.informations.where(:validated => true)
+  
+      if informations.empty?
         ""
-      elsif infos.size == 1
-        infos[0].title
+      elsif informations.size == 1
+        informations[0].title
       else
         "found #{infos.count} profile(s)"
       end
