@@ -1,7 +1,7 @@
 <nav class="topbar">
   <div class="topbar-inner">
     <div class="container">
-      <%= link_to 'webwatcherapp.com', '/', :class => 'brand' %>
+      <%= link_to 'sitewatcher.herokuapp.com', '/', :class => 'brand' %>
       <ul class="nav">
         <li <% if controller_name == 'sites' %> class="active"<% end %>><%= link_to 'Watchers', sites_path %></li>
         <li <% if controller_name == 'people' %> class="active"<% end %>><%= link_to 'People', people_path %></li>
