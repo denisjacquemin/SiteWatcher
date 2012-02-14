@@ -11,7 +11,7 @@ class Person < ActiveRecord::Base
       elsif informations.size == 1
         informations[0].title
       else
-        "found #{infos.count} profile(s)"
+        "found #{informations.count} profile(s)"
       end
   end
   
