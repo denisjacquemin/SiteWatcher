@@ -4,17 +4,7 @@
 <div class="sidebar">
   <div class="notice">
     <h4>Status</h4>
-    <table id="status">
-      <tbody>
-        <tr><td class="right"><%= @total %></td><td>people</td></tr>
-        <tr><td class="right"><%= @processed %></td><td>processed</td></tr>
-        <tr><td class="right">404</td><td>linkedin found</td></tr>
-        <tr><td class="right">6</td><td>paperjam found</td></tr>
-      </tbody>
-      <tfoot>
-        <tr><td colspan="2">last update on 12 april 2012</td></tr>
-      </tfoot>
-    </table>
+    <%= render 'status' %>
     <h4>Description</h4>
     <p>Follow weekly the job title and the company from there linkedin account</p>
     <h4>Alert</h4>
