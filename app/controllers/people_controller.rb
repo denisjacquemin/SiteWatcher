@@ -7,8 +7,7 @@ class PeopleController < ApplicationController
   # GET /people.json
   def index
     @people = Person.by_user(current_user.id).includes(:informations).order(:firstname, :lastname).page params[:page]
-    @total = Person.by_user(current_user.id).size
-    @processed = Person.by_user(current_user.id).where(:processed => true).size
+    status_info
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @people }
@@ -152,9 +151,15 @@ class PeopleController < ApplicationController
   end  
   
   def status
-    @total = Person.by_user(current_user.id).size
-    @processed = Person.by_user(current_user.id).where(:processed => true).size
-    render :layout => false
-    
+    status_info
+    render :partial => 'status'
+  end
+  
+  private
+  def status_info
+    @total = Person.by_user(current_user.id).count
+    @processed = Person.by_user(current_user.id).where(:processed => true).count
+    @linkedin = Information.by_user(current_user.id).count
+    @paperjam = InfoPaperjam.by_user(current_user.id).count
   end
 end

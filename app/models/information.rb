@@ -3,5 +3,6 @@ class Information < ActiveRecord::Base
   
   # keeps only current profiles
   scope :currents, where( :iscurrent => true )
+  scope :by_user, lambda { |user_id| joins(:person).where(:people => { :user_id => user_id}) }  
   
 end
