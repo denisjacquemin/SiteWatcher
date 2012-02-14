@@ -43,6 +43,7 @@ module Fetcher
             info.past = past
             info.iscurrent = true
             info.validated = true
+
             info.save
             puts "#{index}. found new profile for #{person.firstname} #{person.lastname}: #{title}"
 
@@ -60,7 +61,7 @@ module Fetcher
             
           end
         end
-        if person.processed == false
+        if person.processed != true
           person.processed = true
           person.save
         end
