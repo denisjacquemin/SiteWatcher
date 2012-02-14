@@ -27,7 +27,7 @@ function refreshAllPeople(links, index) {
 
 (function status() {
     $.ajax({
-        url: 'people/status',
+        url: '/people/status',
         success: function(data) {
             $('#status').html(data);
         },
