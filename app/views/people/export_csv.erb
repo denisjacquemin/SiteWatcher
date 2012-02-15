@@ -1,9 +1,9 @@
-Firstname, Lastname, Title LinkedIn, Region, Industry
+Firstname;Lastname;Title LinkedIn;Region;Industry
 <%= 
-CSV.generate do |csv|
+CSV.generate(:col_sep => ';', :quote_char => '"') do |csv|
   @people.each do |person|
     person.informations.each do |info|
-      csv << [person[:firstname], person[:lastname], info[:title], info[:region], "'" + info[:industry] + "'"]
+      csv << [person[:firstname], person[:lastname], info[:title], info[:region], info[:industry]]
     end
   end
 end
