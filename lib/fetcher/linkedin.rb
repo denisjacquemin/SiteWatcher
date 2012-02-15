@@ -23,7 +23,7 @@ module Fetcher
         vcards.each_with_index do |vcard, index|
           # fetch title and linkedin_profile_url
           title = vcard.search('.vcard-basic .title').text()
-          linkedin_profile_url = 'http://www.linkedin.com/834hj34348'
+          linkedin_profile_url = vcard.search('h2 strong a').attr('href').value()
           # if linkedin_profile_url found => already_exist = true else false
           
           # TODO: use first_or_create!
