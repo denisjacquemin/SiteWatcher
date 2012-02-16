@@ -50,7 +50,7 @@
               <% end %></td>
             <td><%= info.region %></td>
             <td><%= info.industry %></td>
-            <td><%= info.linkedin_url %></td>
+            <td><%= link_to (image_tag 'linkedin.jpg', :class => 'linkedin-icon'), info.linkedin_url %></td>
           </tr>
         <% end %>
         </tbody>
