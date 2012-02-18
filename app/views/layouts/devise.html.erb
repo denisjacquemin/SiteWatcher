@@ -16,6 +16,9 @@
     <%= csrf_meta_tag %>  
   </head>
   <body>
+        <div id="background-container"><img src="/assets/adolphe1.jpg" id="background" alt="Restaurant_background_01"></div>
+    <div id="page-content">
+    <div id="center">
     <div>
       <div data-pjax-container id="signin-box">
         <% unless flash[:alert].nil? %>
@@ -31,6 +34,8 @@
         <%= yield %>
       </div>
     </div>
+    </div>
+    </div>    
         
     <%= javascript_include_tag :login %>  
     
