@@ -32,8 +32,8 @@ module Fetcher
           if info.nil?
             # if already_exist == false then fetch everything and create
             
-            location = vcard.search('.location').text()
-            industry = vcard.search('.industry').text()
+            location = vcard.search('.location').text().gsub("\n","").strip()
+            industry = vcard.search('.industry').text().gsub("\n","").strip()
             past = vcard.search('.past-content').text()
             info = Information.new # create a new object if profile not yet in db
             info.title = title
@@ -43,22 +43,23 @@ module Fetcher
             info.past = past
             info.iscurrent = true
             info.validated = true
+            info.linkedin_url = linkedin_profile_url
 
             info.save
             puts "#{index}. found new profile for #{person.firstname} #{person.lastname}: #{title}"
 
           else
-            # if already_exist == true then if info.title != title then update all
-            info.old_title = info.title
-            info.title = title
-            info.region = location
-            info.industry = industry
-            info.person_id = person.id
-            info.past = past
-            info.iscurrent = true
-            info.save
-            puts "#{index}. profile updated for #{person.firstname} #{person.lastname}: new title is: #{title}, old title is #{info.old_title}"
-            
+            if info.title != title
+              info.old_title = info.title
+              info.title = title
+              info.region = location
+              info.industry = industry
+              info.person_id = person.id
+              info.past = past
+              info.iscurrent = true
+              info.save
+              puts "#{index}. profile updated for #{person.firstname} #{person.lastname}: new title is: #{title}, old title is #{info.old_title}"
+            end 
           end
         end
         if person.processed != true
