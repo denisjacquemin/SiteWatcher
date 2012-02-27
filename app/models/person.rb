@@ -3,6 +3,8 @@ class Person < ActiveRecord::Base
   has_many :informations
   has_many :info_paperjams
 
+  validates :firstname, :lastname, :presence => true
+
   def current_title
       informations = self.informations.where(:validated => true)
   
