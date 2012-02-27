@@ -1,9 +1,11 @@
-Firstname;Lastname;Title LinkedIn;Region;Industry
 <%= 
 CSV.generate(:col_sep => ';', :quote_char => '"') do |csv|
   @people.each do |person|
     person.informations.each do |info|
       csv << [person[:firstname], person[:lastname], info[:title], info[:region], info[:industry]]
+    end
+    person.info_paperjams.each do |paperjam|
+      csv << [paperjam[:title], paperjam[:company], paperjam[:comment]]
     end
   end
 end

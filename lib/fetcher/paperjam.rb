@@ -21,9 +21,9 @@ module Fetcher
             puts "link => #{paperjam_link}"
             paperjam_page = agent.get(paperjam_link)  
             paperjam_info.person_id = person.id
-            paperjam_info.title = paperjam_page.search('.surtitle').text()
-            paperjam_info.company = paperjam_page.search('.heading a').text()
-            paperjam_info.comment = paperjam_page.search('.reduct-content p').text()
+            paperjam_info.title = paperjam_page.search('.surtitle').text().gsub("\n","").strip()
+            paperjam_info.company = paperjam_page.search('.heading a').text().gsub("\n","").strip()
+            paperjam_info.comment = paperjam_page.search('.reduct-content p').text().gsub("\n","").strip()
             paperjam_info.photo_url = paperjam_page.search('.image img[src]')
             paperjam_info.paperjam_profile_url=paperjam_link
             paperjam_info.save

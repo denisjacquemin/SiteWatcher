@@ -19,9 +19,9 @@ class Person < ActiveRecord::Base
     ! self.informations.empty?
   end
   
-  scope :by_user, lambda { |user_id| where(:user_id => user_id) }  
+  scope :by_user, lambda { |user_id| where(:user_id => user_id) }
   scope :with_validated_informations, includes(:informations).where('information.validated' => true ) #.where(:published => true)
-  
+  scope :with_info_paperjam, includes(:info_paperjams)
   
   after_save :queue_fetch # after_save runs both on create and update
   

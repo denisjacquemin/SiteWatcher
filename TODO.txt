@@ -1,3 +1,6 @@
+supprimer people/show dans les routes
+securiser people/edit
+
 ameliorer le look de la page d'erreur
 
 Watchers

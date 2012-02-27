@@ -14,16 +14,6 @@ class PeopleController < ApplicationController
     end
   end
 
-  # GET /people/1
-  # GET /people/1.json
-  def show
-    @person = Person.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @person }
-    end
-  end
 
   # GET /people/new
   # GET /people/new.json
@@ -133,7 +123,7 @@ class PeopleController < ApplicationController
     require 'csv'
     
     #@people = Person.by_user(current_user.id).includes(:informations).order(:firstname, :lastname)
-    @people = Person.by_user(current_user.id).with_validated_informations.order(:firstname, :lastname)
+    @people = Person.by_user(current_user.id).with_validated_informations.with_info_paperjam.order(:firstname, :lastname)
     
     filename = "people-#{Time.now.strftime("%d-%m-%Y")}.csv"
      if request.env['HTTP_USER_AGENT'] =~ /msie/i
