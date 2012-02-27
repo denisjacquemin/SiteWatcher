@@ -25,6 +25,6 @@ SiteWatcher::Application.routes.draw do
     end
   end
 
-  root :to => 'sites#index'
+  root :to => 'people#index'
 
 end
