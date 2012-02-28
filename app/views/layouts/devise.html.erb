@@ -13,6 +13,8 @@
     <%= stylesheet_link_tag "login" %>
     
     <%= csrf_meta_tag %>  
+    <%= javascript_include_tag :login %>  
+    
   </head>
   <body>
     <div id="background-container"><img src="/assets/adolphe1.jpg" id="background" alt="Restaurant_background_01"></div>
@@ -35,7 +37,6 @@
       </div>
     </div>    
         
-    <%= javascript_include_tag :login %>  
     
     <%= javascript_tag do %>
     <% end %>
