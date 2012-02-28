@@ -5,7 +5,7 @@ CSV.generate(:col_sep => ';', :quote_char => '"') do |csv|
       csv << [person[:firstname], person[:lastname], info[:title], info[:region], info[:industry]]
     end
     person.info_paperjams.each do |paperjam|
-      csv << [paperjam[:title], paperjam[:company], paperjam[:comment]]
+      csv << [person[:firstname], person[:lastname], paperjam[:title], paperjam[:company], paperjam[:comment]]
     end
   end
 end
