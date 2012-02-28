@@ -60,8 +60,9 @@
               <% if person.has_linkedin_profiles? %>
                 <%= image_tag 'linkedin.jpg', :class => 'linkedin-icon' %>
               <% end %>
-              
-              <%= image_tag 'paperjam.jpg', :class => 'paperjam-icon', :style => 'display:none' %>
+              <% if person.has_paperjam_profiles? %>
+                <%= image_tag 'paperjam.jpg', :class => 'paperjam-icon' %>
+              <% end %>
             </td>
           </tr>
         <% end %>

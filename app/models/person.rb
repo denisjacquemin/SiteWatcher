@@ -21,6 +21,10 @@ class Person < ActiveRecord::Base
     ! self.informations.empty?
   end
   
+  def has_paperjam_profiles?
+    ! self.info_paperjams.empty?
+  end
+  
   scope :by_user, lambda { |user_id| where(:user_id => user_id) }
   scope :with_validated_informations, includes(:informations).where('information.validated' => true ) #.where(:published => true)
   scope :with_info_paperjam, includes(:info_paperjams)
