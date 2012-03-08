@@ -28,7 +28,7 @@ module Fetcher
           
           # TODO: use first_or_create!
           
-          info = Information.where(:linkedin_url => linkedin_profile_url).first # check if the profile is already in db
+          info = Information.by_user(person.user_id).where(:linkedin_url => linkedin_profile_url).first # check if the profile is already in db
           if info.nil?
             # if already_exist == false then fetch everything and create
             
