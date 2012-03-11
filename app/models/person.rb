@@ -29,9 +29,16 @@ class Person < ActiveRecord::Base
   scope :with_validated_informations, includes(:informations).where('information.validated' => true ) #.where(:published => true)
   scope :with_info_paperjam, includes(:info_paperjams)
   
+  before_save :capitalize
   after_save :queue_fetch # after_save runs both on create and update
   
   protected
+  
+  def capitalize
+    self.firstname = self.firstname.capitalize
+    self.lastname = self.lastname.capitalize
+  end
+  
   def queue_fetch
     # add to delayed_fetch_job_queue
     self.delay.fetch_linkedin
