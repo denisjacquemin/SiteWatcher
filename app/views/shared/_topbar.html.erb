@@ -4,7 +4,7 @@
       <%= link_to 'sitewatcher.herokuapp.com', '/', :class => 'brand' %>
       <ul class="nav secondary-nav">
         <li><%= link_to 'Account', account_path %></li>
-        <li><%= link_to 'Logout', logout_path %></li>
+        <li><%= link_to 'Logout', logout_path, 'data-skip-pjax' => true %></li>
       </ul>
     </div>
   </div>
