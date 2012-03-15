@@ -18,17 +18,17 @@ module Fetcher
           puts "h3 => #{h3}"
           if h3.include?("#{person.firstname} #{person.lastname}") and h3.include?("paperJam")
             paperjam_link = result.search('h3 a').attr('href').value
-                     
-            info = InfoPaperjam.by_user(person.user_id).where(:paperjam_profile_url => paperjam_link).first # check if the profile is already in db
-            if info.nil?
-              paperjam_page = agent.get(paperjam_link) 
+            paperjam_page = agent.get(paperjam_link)
+            paperjam_profile_url = agent.current_page.uri.to_s
+            
+            # check if the profile is already in db
+            info = InfoPaperjam.by_user(person.user_id).where(:paperjam_profile_url => paperjam_profile_url).first             if info.nil?
               paperjam_info.person_id = person.id
               paperjam_info.title = paperjam_page.search('.surtitle').text().gsub("\n","").strip()
               paperjam_info.company = paperjam_page.search('.heading a').text().gsub("\n","").strip()
               paperjam_info.comment = paperjam_page.search('.reduct-content p').text().gsub("\n","").strip()
               paperjam_info.photo_url = paperjam_page.search('.image img[src]').text().gsub("\n","").strip()
-              paperjam_info.paperjam_profile_url=paperjam_link
-              puts paperjam_info.inspect()
+              paperjam_info.paperjam_profile_url = paperjam_profile_url
               paperjam_info.save
               puts "#{index}. found data on paperjam for #{person.firstname} #{person.lastname}: #{paperjam_info.title }"
             end 
