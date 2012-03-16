@@ -88,7 +88,7 @@
 
   <div class="actions">
     <%= f.submit :class => 'btn primary' %>
-    &nbsp;&nbsp;<%= link_to 'Cancel', :back %>
+    &nbsp;&nbsp;<%= link_to 'Cancel', people_path %>
     <% unless @person.new_record? %>
       <div class="right">
         <%= link_to 'Delete', @person, confirm: 'Are you sure?', method: :delete, :class => 'btn danger ', 'data-skip-pjax' => true %>

@@ -19,7 +19,10 @@
 </div>
 <div class="content">
   <div class="block">
-    <h1>Editing Person</h1>
+    <h1>
+        Editing Person
+        <span class="right"><%= link_to 'Cancel', people_path, :class => 'btn' %></span>
+    </h1>
     <%= render 'form' %>
   </div>
 </div>
