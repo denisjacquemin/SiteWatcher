@@ -7,7 +7,6 @@ class PeopleController < ApplicationController
   # GET /people.json
   def index
     @people = Person.by_user(current_user.id).includes(:informations).order(:firstname, :lastname).page params[:page]
-    status_info
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @people }
