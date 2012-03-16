@@ -11,6 +11,8 @@
     <![endif]-->
     
     <%= stylesheet_link_tag "application" %>
+    <%= javascript_include_tag :application %>  
+    
     
     <%= csrf_meta_tag %>  
   </head>
@@ -23,12 +25,6 @@
       </div>
     </div>
     <%#= render :partial => 'shared/footer' %>
-    
-    <%= javascript_include_tag :application %>  
-    
-    <%= javascript_tag do %>
-    <% end %>
-
     <script>
       var _gaq=[["_setAccount","UA–29887621–1"],["_trackPageview"]];
       (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;

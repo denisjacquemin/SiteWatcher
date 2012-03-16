@@ -36,3 +36,4 @@ function refreshAllPeople(links, index) {
         }
     })
 })();
+
