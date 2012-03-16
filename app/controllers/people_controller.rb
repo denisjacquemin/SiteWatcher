@@ -138,18 +138,6 @@ class PeopleController < ApplicationController
      end
 
      render :layout => false
-  end  
-  
-  def status
-    status_info
-    render :partial => 'status'
   end
   
-  private
-  def status_info
-    @total = Person.by_user(current_user.id).count
-    @processed = Person.by_user(current_user.id).where(:processed => true).count
-    @linkedin = Information.by_user(current_user.id).count
-    @paperjam = InfoPaperjam.by_user(current_user.id).count
-  end
 end

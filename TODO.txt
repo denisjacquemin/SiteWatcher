@@ -1,3 +1,23 @@
+Refactoring:
+
+Tout stocker dans un seul model peu importe la source
+
+Model: 
+
+== Profile has_many: data
+    - type
+    - person_id
+    - created_at
+    - updated_at
+== Data
+    - profile_id
+    - label:string
+    - value:text
+    - created_at:datetime
+    - updated_at:datetime
+
+
+
 supprimer people/show dans les routes
 securiser people/edit
 
