@@ -10,7 +10,7 @@ group :production do
 end
 group :development, :test do
   gem 'sqlite3'
-  gem "nice_layout", :path => "/Users/denisjacquemin/Documents/code/github/nice-layout"
+  #gem "nice_layout", :path => "/Users/denisjacquemin/Documents/code/github/nice-layout"
   gem "daemons"
 end
 
