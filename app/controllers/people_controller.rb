@@ -64,7 +64,7 @@ class PeopleController < ApplicationController
 
     respond_to do |format|
       if @person.update_attributes(params[:person])
-        format.html { redirect_to people_url, notice: 'Person was successfully updated.' }
+        format.html { redirect_to edit_person_url(@person), notice: 'Person was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
@@ -137,6 +137,17 @@ class PeopleController < ApplicationController
      end
 
      render :layout => false
+  end
+  
+  def next_person
+    # fetch all people ids for current_user ordered by firstname and lastname
+    people_ids = Person.by_user(current_user.id).order(:firstname, :lastname).pluck(:id)
+      
+    # find the current person's id index in the collection
+    position = people_ids.index(params[:id].to_i)
+            
+    # redirect to the edit page for the next person
+    redirect_to edit_person_url(people_ids.at(position+1))
   end
   
 end

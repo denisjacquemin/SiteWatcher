@@ -87,7 +87,8 @@
   </fieldset>
 
   <div class="actions">
-    <%= f.submit :class => 'btn primary' %>
+    <%= f.button :class => 'btn primary' %>
+    <%= link_to "Next Person", next_person_path(@person), :class => 'btn' %>
     &nbsp;&nbsp;<%= link_to 'Cancel', people_path %>
     <% unless @person.new_record? %>
       <div class="right">
