@@ -20,7 +20,7 @@
 <div class="content">
   <div class="block">
     <h1>
-        Editing Person
+        Editing Person <%= link_to "Next Person", next_person_path(@person), :class => 'small' %>
         <span class="right"><%= link_to 'Cancel', people_path, :class => 'btn' %></span>
     </h1>
     <%= render 'form' %>
