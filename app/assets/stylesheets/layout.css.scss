@@ -53,10 +53,15 @@ html {
                 border-top: none;
                 border-top-left-radius: 9px;
                 border-top-right-radius: 9px;
-                .right {
-                    float:right;
+                a, .btn {
                     font-weight:normal;
                     letter-spacing: normal;
+                }
+                .right {
+                    float:right;
+                }
+                .small {
+                    font-size: 12px;
                 }
             }
             
