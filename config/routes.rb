@@ -1,5 +1,6 @@
 SiteWatcher::Application.routes.draw do
 
+  match 'people/next/:id' => 'people#next_person', :as => :next_person
   match 'people/export_csv' => 'people#export_csv', :as => :export_people_csv
   match 'person/refresh/:id' => 'people#refresh', :as => :refresh
   match 'people/upload_csv' => 'people#upload_csv'
