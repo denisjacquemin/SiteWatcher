@@ -23,7 +23,7 @@ module Fetcher
             
             # check if the profile is already in db
             info = InfoPaperjam.by_user(person.user_id).where(:paperjam_profile_url => paperjam_profile_url).first             if info.nil?
-            unless info.nil?
+            if info.nil?
               paperjam_info.person_id = person.id
               paperjam_info.title = paperjam_page.search('.surtitle').text().gsub("\n","").strip()
               paperjam_info.company = paperjam_page.search('.heading a').text().gsub("\n","").strip()
