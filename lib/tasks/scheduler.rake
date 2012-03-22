@@ -1,3 +1,12 @@
+desc "Refresh Profiles"
+task :refresh_profiles => :environment do
+  # add refreshed_at to People
+  # for each Person where refreshed_at > 1.week do
+    # person.delay.fetch_linkedin
+    # person.delay.fetch_paperjam
+  # end
+end
+
 desc "Fetch Snippets"
 task :fetch_snippets => :environment do
   require 'nokogiri'
