@@ -1,19 +1,18 @@
 class Person < ActiveRecord::Base
+  has_and_belongs_to_many :users
   has_many :profiles
-  has_many :users, :through => :profiles
 
   validates :firstname, :lastname, :presence => true
+  
+  scope :by_user, lambda { |user_id| where(:user_id => user_id) }
+  scope :with_validated_informations, includes(:informations).where('information.validated' => true ) #.where(:published => true)
+  scope :with_info_paperjam, includes(:info_paperjams)
+  
+  before_save :capitalize
+  after_save :queue_fetch # after_save runs both on create and update
 
   def current_title
-      informations = self.informations.where(:validated => true)
-  
-      if informations.empty?
-        ""
-      elsif informations.size == 1
-        informations[0].title
-      else
-        "found #{informations.count} profile(s)"
-      end
+      p.profiles.valid.
   end
   
   def has_linkedin_profiles?
@@ -24,12 +23,7 @@ class Person < ActiveRecord::Base
     ! self.info_paperjams.empty?
   end
   
-  scope :by_user, lambda { |user_id| where(:user_id => user_id) }
-  scope :with_validated_informations, includes(:informations).where('information.validated' => true ) #.where(:published => true)
-  scope :with_info_paperjam, includes(:info_paperjams)
   
-  before_save :capitalize
-  after_save :queue_fetch # after_save runs both on create and update
   
   protected
   
@@ -40,8 +34,8 @@ class Person < ActiveRecord::Base
   
   def queue_fetch
     # add to delayed_fetch_job_queue
-    self.delay.fetch_linkedin
-    self.delay.fetch_paperjam
+    #self.delay.fetch_linkedin
+    #self.delay.fetch_paperjam
   end
   
   def fetch_linkedin

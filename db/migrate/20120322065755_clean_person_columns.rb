@@ -1,8 +1,8 @@
 class CleanPersonColumns < ActiveRecord::Migration
   def up
     remove_column :people, :linkedin_information_id
-    remove_column :people, :user_id
     remove_column :people, :processed
+    remove_column :people, :user_id
   end
 
   def down

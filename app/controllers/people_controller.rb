@@ -6,7 +6,9 @@ class PeopleController < ApplicationController
   # GET /people
   # GET /people.json
   def index
-    @people = Person.by_user(current_user.id).includes(:informations).order(:firstname, :lastname).page params[:page]
+    @people = current_user.people.order(:firstname, :lastname).page params[:page]
+    
+    #Person.by_user(current_user.id).includes(:informations).order(:firstname, :lastname).page params[:page]
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @people }
@@ -34,7 +36,7 @@ class PeopleController < ApplicationController
   # POST /people.json
   def create
     @person = Person.new(params[:person])
-    @person.user_id = current_user.id
+    @person.users << current_user
 
     respond_to do |format|
       if @person.save
