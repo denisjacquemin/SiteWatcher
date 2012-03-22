@@ -1,7 +1,6 @@
 class Person < ActiveRecord::Base
-  #mount_uploader :csv, PeopleUploader
-  has_many :informations
-  has_many :info_paperjams
+  has_many :profiles
+  has_many :users, :through => :profiles
 
   validates :firstname, :lastname, :presence => true
 
