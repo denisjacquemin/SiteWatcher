@@ -26,6 +26,7 @@ gem 'pjax_rails'
 gem 'mechanize'
 gem 'kaminari'
 gem 'delayed_job_active_record'
+gem "delayed_job_web"
 
 # Gems used only for assets and not required
 # in production environments by default.
