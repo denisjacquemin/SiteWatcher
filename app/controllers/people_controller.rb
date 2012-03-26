@@ -8,9 +8,8 @@ class PeopleController < ApplicationController
   def index
     @people = current_user.people.order(:firstname, :lastname).page params[:page]
     
-    #Person.by_user(current_user.id).includes(:informations).order(:firstname, :lastname).page params[:page]
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render json: @people }
     end
   end
@@ -35,7 +34,9 @@ class PeopleController < ApplicationController
   # POST /people
   # POST /people.json
   def create
-    @person = Person.new(params[:person])
+    @person = Person.find_by_firstname_and_lastname(params[:person][:firstname].capitalize, params[:person][:lastname].capitalize)
+    @person = Person.new(params[:person]) if @person.nil?
+    
     @person.users << current_user
 
     respond_to do |format|
@@ -143,7 +144,7 @@ class PeopleController < ApplicationController
   
   def next_person
     # fetch all people ids for current_user ordered by firstname and lastname
-    people_ids = Person.by_user(current_user.id).order(:firstname, :lastname).pluck(:id)
+    people_ids = current_user.people.order(:firstname, :lastname).pluck(:id)
       
     # find the current person's id index in the collection
     position = people_ids.index(params[:id].to_i)
