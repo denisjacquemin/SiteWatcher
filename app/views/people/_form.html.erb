@@ -10,8 +10,8 @@
       </ul>
     </div>
   <% end %>
-
   <fieldset> 
+  <% if @person.new_record? %>
     <div class="clearfix">
       <%= f.label :firstname, 'Firstname *' %>
       <div class="input">
@@ -27,7 +27,8 @@
         <span class="help-block">ie: <i>Jackson</i></span>
       </div>
     </div>
-    <% unless @person.new_record? or @person.informations.empty? %>
+  <% end %>
+    <% unless @person.new_record? or @person.profiles.linkedin.empty? %>
       <table class="zebra-striped">
         <caption>Linkedin Profiles</caption>
         <thead>
@@ -40,7 +41,7 @@
           </tr>
         </thead>
         <tbody>
-        <% @person.informations.currents.each do |info| %>
+        <% @person.profiles.by_user(current_user).each do |info| %>
           <tr>
             <td><%= f.radio_button :linkedin_information_id, info.id %></td>
             <td>
@@ -55,8 +56,12 @@
         <% end %>
         </tbody>
       </table>
+    <% else %>
+      <% unless @person.new_record?%>
+        <p>No LinkedIn profile found</p>
+      <% end %>
     <% end %>
-    <% unless @person.new_record? or @person.info_paperjams.empty? %>
+    <% unless @person.new_record? or @person.profiles.paperjam.empty? %>
       <table class="zebra-striped">
         <caption>Paperjam Career Profile</caption>
         <thead>
@@ -80,6 +85,10 @@
         <% end %>
         </tbody>
       </table>
+    <% else %>
+      <% unless @person.new_record?%>
+        <p>No Paperjam profile found</p>
+      <% end %> 
     <% end %> 
     <script type="text/javascript" charset="utf-8">
           $('.pop').popover();
