@@ -11,16 +11,18 @@ class Person < ActiveRecord::Base
   before_save :capitalize
   after_save :queue_fetch # after_save runs both on create and update
 
-  def current_title
-      p.profiles.valid.
+  def current_jobtitle
+      valid_profiles = self.profiles.validated
+      jobtitles = valid_profiles.map{|p| p.elements.pluck(:jobtitle)}
+      jobtitles.join(',')
   end
   
   def has_linkedin_profiles?
-    ! self.informations.empty?
+    self.profiles.linkedin.count > 0
   end
   
   def has_paperjam_profiles?
-    ! self.info_paperjams.empty?
+    self.profiles.paperjam.count > 0
   end
   
   
