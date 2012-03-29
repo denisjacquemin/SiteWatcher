@@ -28,68 +28,9 @@
       </div>
     </div>
   <% end %>
-    <% unless @person.new_record? or @person.profiles.linkedin.empty? %>
-      <table class="zebra-striped">
-        <caption>Linkedin Profiles</caption>
-        <thead>
-          <tr>
-            <th>Valid</th>
-            <th>Title</th>
-            <th>Region</th>
-            <th>Industry</th>
-            <th>URL</th>
-          </tr>
-        </thead>
-        <tbody>
-        <% @person.profiles.by_user(current_user).each do |info| %>
-          <tr>
-            <td><%= f.radio_button :linkedin_information_id, info.id %></td>
-            <td>
-              <%= info.title  %>
-              <% unless info.past.nil? or info.past.empty?%> 
-                <span class="pop" rel="popover" data-placement="above" data-content="<%= info.past %>" data-original-title="Past Titles">(past)</span>
-              <% end %></td>
-            <td><%= info.region %></td>
-            <td><%= info.industry %></td>
-            <td><%= link_to (image_tag 'linkedin.jpg', :class => 'linkedin-icon'), info.linkedin_url %></td>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
-    <% else %>
-      <% unless @person.new_record?%>
-        <p>No LinkedIn profile found</p>
-      <% end %>
-    <% end %>
-    <% unless @person.new_record? or @person.profiles.paperjam.empty? %>
-      <table class="zebra-striped">
-        <caption>Paperjam Career Profile</caption>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Company</th>
-            <th>Comment</th>
-            <th>URL</th>
-          </tr>
-        </thead>
-        <tbody>
-        <% @person.info_paperjams.each do |info| %>
-          <tr>
-            <td>
-              <%= info.title  %>
-            </td>
-            <td><%= info.company %></td>
-            <td><%= info.comment %></td>
-            <td><%= link_to (image_tag 'paperjam.jpg'), info.paperjam_profile_url %></td>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
-    <% else %>
-      <% unless @person.new_record?%>
-        <p>No Paperjam profile found</p>
-      <% end %> 
-    <% end %> 
+    <%= render 'linkedin', :locals => {:f => f}%>
+    <%= render 'paperjam' %> 
+    <%= render 'viadeo' %> 
     <script type="text/javascript" charset="utf-8">
           $('.pop').popover();
     </script>

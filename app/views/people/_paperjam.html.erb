@@ -1,0 +1,29 @@
+<% unless @person.new_record? or @person.profiles.paperjam.empty? %>
+  <table class="zebra-striped">
+    <caption>Paperjam Career Profile</caption>
+    <thead>
+      <tr>
+        <th>Job Title</th>
+        <th>Company</th>
+        <th>Comment</th>
+        <th>URL</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @person.profiles.paperjam.each do |profile| %>
+      <tr>
+        <td>
+          <%= profile.element('jobtitle')  %>
+        </td>
+        <td><%= profile.element('company') %></td>
+        <td><%= profile.element('comment') %></td>
+        <td><%= link_to (image_tag 'paperjam.jpg'), profile.url %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <% unless @person.new_record?%>
+    <p>No Paperjam profile found</p>
+  <% end %> 
+<% end %>
