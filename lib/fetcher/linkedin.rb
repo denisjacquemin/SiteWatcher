@@ -38,8 +38,8 @@ module Fetcher
         profile.elements << Element.new(:label => 'past',     :value => past)
         profile.save
         
-        puts "#{index}. Profile LinkedIn for #{person.firstname} #{person.lastname}: #{title}"
-        
+        puts "#{index}. Profile LinkedIn for #{person.firstname} #{person.lastname}: #{jobtitle}"
+      end
       rescue Net::HTTP::Persistent::Error
         puts "Net::HTTP::Persistent::Error for #{person.firstname} #{person.lastname}"
       rescue SocketError
