@@ -1,20 +1,14 @@
 class Person < ActiveRecord::Base
   has_and_belongs_to_many :users
-  has_many :profiles
+  has_many :profiles, :dependent => :destroy
 
   validates :firstname, :lastname, :presence => true
   
-  scope :by_user, lambda { |user_id| where(:user_id => user_id) }
-  scope :with_validated_informations, includes(:informations).where('information.validated' => true ) #.where(:published => true)
-  scope :with_info_paperjam, includes(:info_paperjams)
-  
-  before_save :capitalize
-  after_save :queue_fetch # after_save runs both on create and update
+  before_save :format_names
+  after_save :put_in_queue_fetch # after_save runs both on create and update
 
   def current_jobtitle
-      valid_profiles = self.profiles.validated
-      jobtitles = valid_profiles.map{|p| p.elements.pluck(:jobtitle)}
-      jobtitles.join(',')
+      self.profiles.map {|p| p.element('jobtitle')}.join(', ')
   end
   
   def has_linkedin_profiles?
@@ -25,19 +19,21 @@ class Person < ActiveRecord::Base
     self.profiles.paperjam.count > 0
   end
   
-  
-  
   protected
   
-  def capitalize
-    self.firstname = self.firstname.capitalize
-    self.lastname = self.lastname.capitalize
+  def format_names
+    puts "before: #{self.lastname}"
+    self.firstname = self.firstname.strip.capitalize
+    self.lastname = self.lastname.strip.capitalize
+    puts "after: #{self.lastname}"
+    
   end
   
-  def queue_fetch
+  def put_in_queue_fetch
     # add to delayed_fetch_job_queue
-    #self.delay.fetch_linkedin
-    #self.delay.fetch_paperjam
+    self.delay.fetch_linkedin
+    self.delay.fetch_paperjam
+    self.delay.fetch_viadeo
   end
   
   def fetch_linkedin
@@ -48,5 +44,10 @@ class Person < ActiveRecord::Base
   def fetch_paperjam
     fetcher_paperjam = Fetcher::Paperjam.new
     fetcher_paperjam.fetch(self)
+  end
+  
+  def fetch_viadeo
+    fetcher_viadeo = Fetcher::Viadeo.new
+    fetcher_viadeo.fetch(self)
   end
 end
