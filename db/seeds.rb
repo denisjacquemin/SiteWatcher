@@ -3,3 +3,4 @@
 
 ProfileType.create(:label => 'LinkedIn')
 ProfileType.create(:label => 'Paperjam')
+ProfileType.create(:label => 'Viadeo')
