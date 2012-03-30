@@ -46,7 +46,7 @@
           <th>Fitstname</th>
           <th>Lastname</th>
           <th>Title</th>
-          <th><!--<%= link_to_function 'Refresh All', "refreshAllPeople($('.refresh'), 0)" %>--></th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -54,7 +54,7 @@
           <tr>
             <td><%= link_to person.firstname, edit_person_url(person) %></td>
             <td><%= link_to person.lastname, edit_person_url(person) %></td>
-            <td class="title"><%= "#{person.current_title}" %></td>
+            <td class="title"><%= "#{truncate(person.current_jobtitle, :length => 75, :separator => ' ')}" %></td>
             <td>              
               <% if person.has_linkedin_profiles? %>
                 <%= image_tag 'linkedin.jpg', :class => 'linkedin-icon' %>

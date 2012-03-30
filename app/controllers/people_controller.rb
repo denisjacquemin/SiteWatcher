@@ -6,9 +6,10 @@ class PeopleController < ApplicationController
   # GET /people
   # GET /people.json
   def index
-    @people = Person.by_user(current_user.id).includes(:informations).order(:firstname, :lastname).page params[:page]
+    @people = current_user.people.order(:firstname, :lastname).page params[:page]
+    
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render json: @people }
     end
   end
@@ -33,8 +34,9 @@ class PeopleController < ApplicationController
   # POST /people
   # POST /people.json
   def create
-    @person = Person.new(params[:person])
-    @person.user_id = current_user.id
+    @person = Person.find_by_firstname_and_lastname(params[:person][:firstname].strip.capitalize, params[:person][:lastname].strip.capitalize)
+    @person = Person.new(params[:person]) if @person.nil?
+    @person.users << current_user unless @person.users.include?(current_user) 
 
     respond_to do |format|
       if @person.save
@@ -51,16 +53,6 @@ class PeopleController < ApplicationController
   # PUT /people/1.json
   def update
     @person = Person.find(params[:id])
-    information_id_validated = params[:person][:linkedin_information_id]
-
-    # set all informations to false except information_id_validated to true   
-    @person.informations.each do |info|
-      unless info.id == information_id_validated.to_i
-        info.update_attribute(:validated, false) 
-      else
-        info.update_attribute(:validated, true) 
-      end
-    end
 
     respond_to do |format|
       if @person.update_attributes(params[:person])
@@ -77,8 +69,11 @@ class PeopleController < ApplicationController
   # DELETE /people/1.json
   def destroy
     @person = Person.find(params[:id])
-    @person.destroy
-
+    @person.users.delete(current_user)
+    if @person.users.empty?
+      @person.destroy
+    end
+    
     respond_to do |format|
       format.html { redirect_to people_url }
       format.json { head :ok }
@@ -91,40 +86,19 @@ class PeopleController < ApplicationController
     file = CSV.parse(params[:person][:csv].tempfile)
     people = []
     file.each do |row|
-      Person.create(:firstname => row[0], :lastname => row[1], :user_id => current_user.id)
-      people << [row[0], row[1]]
+      person = Person.find_by_firstname_and_lastname(row[0].capitalize, row[1].capitalize)
+      person = Person.new(:firstname => row[0], :lastname => row[1]) if person.nil?
+      person.users << current_user unless person.users.include?(current_user) 
+      person.save
     end  
     redirect_to :people
   end
   
-  def refresh
-    person = Person.find(params[:id])
-    fetcher_linkedin = Fetcher::Linkedin.new
-    result = fetcher_linkedin.fetch(person)
-    has_profiles_linkedin = result.has_profiles
-    has_error_linkedin = result.has_error
-    error_message_linkedin = result.error_message
-    
-    fetcher_paperjam = Fetcher::Paperjam.new
-    result = fetcher_paperjam.fetch(person)
-    has_profiles_paperjam = result.has_profiles
-    
-    render json: { 
-      :title => result.title,
-      :has_profiles_linkedin => has_profiles_linkedin,
-      :has_error_linkedin => has_error_linkedin,
-      :error_message_linkedin => error_message_linkedin,
-      :has_profiles_paperjam => has_profiles_paperjam,
-    }
-  end
-  
   def export_csv
     require 'csv'
+    @people = current_user.people.order(:firstname, :lastname)
     
-    #@people = Person.by_user(current_user.id).includes(:informations).order(:firstname, :lastname)
-    @people = Person.by_user(current_user.id).with_validated_informations.with_info_paperjam.order(:firstname, :lastname)
-    
-    filename = "people-#{Time.now.strftime("%d-%m-%Y")}.csv"
+    filename = "profiles-#{Time.now.strftime("%d-%m-%Y")}.csv"
      if request.env['HTTP_USER_AGENT'] =~ /msie/i
        headers['Pragma'] = 'public'
        headers['Content-type'] = 'text/plain'
@@ -141,7 +115,7 @@ class PeopleController < ApplicationController
   
   def next_person
     # fetch all people ids for current_user ordered by firstname and lastname
-    people_ids = Person.by_user(current_user.id).order(:firstname, :lastname).pluck(:id)
+    people_ids = current_user.people.order(:firstname, :lastname).pluck(:id)
       
     # find the current person's id index in the collection
     position = people_ids.index(params[:id].to_i)

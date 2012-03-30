@@ -10,8 +10,8 @@
       </ul>
     </div>
   <% end %>
-
   <fieldset> 
+  <% if @person.new_record? %>
     <div class="clearfix">
       <%= f.label :firstname, 'Firstname *' %>
       <div class="input">
@@ -27,60 +27,10 @@
         <span class="help-block">ie: <i>Jackson</i></span>
       </div>
     </div>
-    <% unless @person.new_record? or @person.informations.empty? %>
-      <table class="zebra-striped">
-        <caption>Linkedin Profiles</caption>
-        <thead>
-          <tr>
-            <th>Valid</th>
-            <th>Title</th>
-            <th>Region</th>
-            <th>Industry</th>
-            <th>URL</th>
-          </tr>
-        </thead>
-        <tbody>
-        <% @person.informations.currents.each do |info| %>
-          <tr>
-            <td><%= f.radio_button :linkedin_information_id, info.id %></td>
-            <td>
-              <%= info.title  %>
-              <% unless info.past.nil? or info.past.empty?%> 
-                <span class="pop" rel="popover" data-placement="above" data-content="<%= info.past %>" data-original-title="Past Titles">(past)</span>
-              <% end %></td>
-            <td><%= info.region %></td>
-            <td><%= info.industry %></td>
-            <td><%= link_to (image_tag 'linkedin.jpg', :class => 'linkedin-icon'), info.linkedin_url %></td>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
-    <% end %>
-    <% unless @person.new_record? or @person.info_paperjams.empty? %>
-      <table class="zebra-striped">
-        <caption>Paperjam Career Profile</caption>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Company</th>
-            <th>Comment</th>
-            <th>URL</th>
-          </tr>
-        </thead>
-        <tbody>
-        <% @person.info_paperjams.each do |info| %>
-          <tr>
-            <td>
-              <%= info.title  %>
-            </td>
-            <td><%= info.company %></td>
-            <td><%= info.comment %></td>
-            <td><%= link_to (image_tag 'paperjam.jpg'), info.paperjam_profile_url %></td>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
-    <% end %> 
+  <% end %>
+    <%= render 'linkedin', :locals => {:f => f}%>
+    <%= render 'paperjam' %> 
+    <%= render 'viadeo' %> 
     <script type="text/javascript" charset="utf-8">
           $('.pop').popover();
     </script>

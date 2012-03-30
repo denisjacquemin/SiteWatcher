@@ -1,0 +1,33 @@
+<% unless @person.new_record? or @person.profiles.linkedin.empty? %>
+  <table class="zebra-striped">
+    <caption>Linkedin Profiles</caption>
+    <thead>
+      <tr>
+        <th>Export?</th>
+        <th>Job Title / Company</th>
+        <th>Location</th>
+        <th>Industry</th>
+        <th>URL</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @person.profiles.linkedin.each do |profile| %>
+      <tr>
+        <td><%= check_box_tag "person[profiles][#{profile.id}]", profile.validated, profile.validated %></td>
+        <td>
+          <%= profile.element('jobtitle')  %>
+          <% unless profile.element('past').empty? %> 
+            <span class="pop" rel="popover" data-placement="right" data-content="<%= profile.element('past') %>" data-original-title="Past Job Titles">(past)</span>
+          <% end %></td>
+        <td><%= profile.element('location') %></td>
+        <td><%= profile.element('industry') %></td>
+        <td><%= link_to (image_tag 'linkedin.jpg', :class => 'linkedin-icon'), profile.url %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <% unless @person.new_record?%>
+    <p>No LinkedIn profile found</p>
+  <% end %>
+<% end %>

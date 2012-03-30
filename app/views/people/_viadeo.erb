@@ -1,0 +1,29 @@
+<% unless @person.new_record? or @person.profiles.viadeo.empty? %>
+  <table class="zebra-striped">
+    <caption>Viado Profiles</caption>
+    <thead>
+      <tr>
+        <th>Job Title</th>
+        <th>Location</th>
+        <th>?</th>
+        <th>URL</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @person.profiles.viadeo.each do |profile| %>
+      <tr>
+        <td>
+          <%= profile.element('jobtitle')  %>
+        </td>
+        <td><%= profile.element('location') %></td>
+        <td>?</td>
+        <td><%= link_to (image_tag 'viadeo.jpg'), profile.url %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <% unless @person.new_record?%>
+    <p>No Viadeo profile found</p>
+  <% end %> 
+<% end %>

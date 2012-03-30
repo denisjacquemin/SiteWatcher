@@ -1,11 +1,22 @@
 <%= 
-CSV.generate(:col_sep => ';', :quote_char => '"') do |csv|
+CSV.generate do |csv|
   @people.each do |person|
-    person.informations.each do |info|
-      csv << [person[:firstname], person[:lastname], info[:title], info[:region], info[:industry]]
-    end
-    person.info_paperjams.each do |paperjam|
-      csv << [person[:firstname], person[:lastname], paperjam[:title], paperjam[:company], paperjam[:comment]]
+    person.profiles.each do |profile|
+      if profile.profile_type_id == 1 # linkedin
+        if profile.validated == true
+          csv << ['linkedin', person[:firstname], person[:lastname], profile.element('jobtitle'), profile.element('location'), profile.element('industry')]
+        end
+      end
+      if profile.profile_type_id == 2 # Paperjam
+        if profile.validated == true
+          csv << ['paperjam', person[:firstname], person[:lastname], profile.element('jobtitle'), profile.element('company'), profile.element('comment')]
+        end
+      end
+      if profile.profile_type_id == 3 # Viadeo
+        if profile.validated == true
+          csv << ['viadeo', person[:firstname], person[:lastname], profile.element('jobtitle'), profile.element('location')]
+        end
+      end
     end
   end
 end

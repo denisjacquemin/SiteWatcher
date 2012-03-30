@@ -17,70 +17,42 @@ module Fetcher
           h3 = result.search('h3').text()
           puts "h3 => #{h3}"
           if h3.include?("#{person.firstname} #{person.lastname}") and h3.include?("paperJam")
+            
+            # fetch all information
             paperjam_link = result.search('h3 a').attr('href').value
             paperjam_page = agent.get(paperjam_link)
             paperjam_profile_url = agent.current_page.uri.to_s
             
-            # check if the profile is already in db
-            info = InfoPaperjam.by_user(person.user_id).where(:paperjam_profile_url => paperjam_profile_url).first             if info.nil?
-            if info.nil?
-              paperjam_info.person_id = person.id
-              paperjam_info.title = paperjam_page.search('.surtitle').text().gsub("\n","").strip()
-              paperjam_info.company = paperjam_page.search('.heading a').text().gsub("\n","").strip()
-              paperjam_info.comment = paperjam_page.search('.reduct-content p').text().gsub("\n","").strip()
-              paperjam_info.photo_url = paperjam_page.search('.image img[src]').text().gsub("\n","").strip()
-              paperjam_info.paperjam_profile_url = paperjam_profile_url
-              paperjam_info.save
-              puts "#{index}. found data on paperjam for #{person.firstname} #{person.lastname}: #{paperjam_info.title }"
-            end 
+            jobtitle = paperjam_page.search('.surtitle').text().gsub("\n","").strip()
+            company  = paperjam_page.search('.heading a').text().gsub("\n","").strip()
+            comment  = paperjam_page.search('.reduct-content p').text().gsub("\n","").strip()
+            photo_url = paperjam_page.search('.image img[src]').text().gsub("\n","").strip()
+            
+            profile = Profile.where(:url => paperjam_profile_url).first
+            profile = Profile.new(:url => paperjam_profile_url, :person_id => person.id, :profile_type_id => 2) if profile.nil?
+
+            profile.elements << Element.new(:label => 'jobtitle',  :value => jobtitle)
+            profile.elements << Element.new(:label => 'company',   :value => company)
+            profile.elements << Element.new(:label => 'comment',   :value => comment)
+            profile.elements << Element.new(:label => 'photo_url', :value => photo_url)
+            profile.save
+            
+            puts "#{index}. found data on paperjam for #{person.firstname} #{person.lastname}: #{paperjam_info.title }"
             break
           end
         end
-        result = Result.new
-        if paperjam_info.nil? or paperjam_info.id.nil?
-          result.has_error = true
-          result.error_message = "not found"
-          return result
-        else
-          result.title = paperjam_info.title
-          result.has_profiles = true 
-          return result
-        end
       rescue SocketError
-        puts "SocketError"
-        result = Result.new
-        result.has_error = true
-        result.error_message = "SocketError"
-        return result
+        puts "SocketError for #{person.firstname} #{person.lastname}!"
       rescue Timeout::Error
-          puts "caught Timeout::Error !"
-          result = Result.new
-          result.has_error = true
-          result.error_message = "Timeout::Error"
-          return result
+          puts "caught Timeout::Error for #{person.firstname} #{person.lastname}!"
       rescue Mechanize::ResponseCodeError => e
           case e.response_code
-            when "502"
-              puts "  caught Net::HTTPBadGateway !"
-              result = Result.new
-              
-              result.has_error = true
-              result.error_message = "HTTPBadGateway"
-              return result
+            when "502 for #{person.firstname} #{person.lastname}!"
+              puts "  caught Net::HTTPBadGateway for #{person.firstname} #{person.lastname}!"
             when "404"
               puts "  caught Net::HTTPNotFound for #{person.firstname} #{person.lastname}!"
-              result = Result.new
-              
-              result.has_error = true
-              result.error_message = "Net::HTTPNotFound"
-              return result
             else
-              puts "caught Exception !" + e.response_code
-              result = Result.new
-              
-              result.has_error = true
-              result.error_message = "Exception"
-              return result
+              puts "caught Exception for #{person.firstname} #{person.lastname}! " + e.response_code
           end
       end
     end
