@@ -1,11 +1,16 @@
 desc "Refresh Profiles"
 task :refresh_profiles => :environment do
-  # add refreshed_at to People
-  # for each Person where refreshed_at > 1.week do
-    # person.delay.fetch_linkedin
-    # person.delay.fetch_paperjam
-  # end
+  
+  # for each profiles not refresh since at least one week
+  profiles = Profile.where("updated_at > ?", Time.now.weeks_ago(1) )
+  profiles.each do |profile|
+    profile.person.delay.fetch_linkedin
+    profile.person.delay.fetch_paperjam
+    profile.person.delay.fetch_viadeo
+  end
+  
 end
+
 
 desc "Fetch Snippets"
 task :fetch_snippets => :environment do

@@ -5,7 +5,7 @@ class Person < ActiveRecord::Base
   validates :firstname, :lastname, :presence => true
   
   before_save :format_names
-  after_save :put_in_queue_fetch # after_save runs both on create and update
+  after_save :put_in_queue_fetch # after_save runs both on create and update  
 
   def current_jobtitle
       self.profiles.map {|p| p.element('jobtitle')}.join(', ')
