@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  profile_id: 1
+  old_value: MyText
+  new_value: MyText
+
+two:
+  profile_id: 1
+  old_value: MyText
+  new_value: MyText
