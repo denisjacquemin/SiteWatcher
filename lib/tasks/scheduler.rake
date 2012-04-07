@@ -11,6 +11,15 @@ task :refresh_profiles => :environment do
   
 end
 
+desc "Sending Alert"
+task :send_alerts => :environment do
+  updates = ProfileUpdate.where("created_At > ?", Time.now.weeks_ago(1) )
+  updates.each do |update|
+    AlertMailer.difference_found_email(update).deliver
+  end
+end
+
+
 
 desc "Fetch Snippets"
 task :fetch_snippets => :environment do
